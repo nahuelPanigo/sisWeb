@@ -1,0 +1,179 @@
+* {
+	margin:0;
+	padding:0;
+}
+ 
+
+ 
+header {
+	margin-top:10px;
+    width: 100%;
+    overflow: hidden;
+    height:115px;
+    position: relative;
+}
+ 
+nav {
+    top:-20px;
+    position: absolute;
+    left:0;
+    right:0;
+	margin:20px auto;
+	max-width:1000px;
+	width:90%;
+}
+ 
+nav .menu ul {
+	list-style:none;
+}
+ 
+.menu  > ul {
+display:table;
+    /*Quitamos el overflow hidden que estaba aqui*/
+    width:100%;
+    background:#000;
+    position:relative;
+}
+
+	
+.menu > ul li {
+    display:table-cell;
+	position:relative;
+}
+ 
+/*Sub-menu*/
+.menu > ul > li:hover > ul {
+    display:block;
+    height:100%;
+}
+ 
+.menu > ul > li > ul {
+    display:block;
+    position:absolute;
+    background:#000;
+    
+    overflow:hidden;
+    height:0%;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.menu > ul > li > ul > li a:hover {
+    background:#5da5a2;
+}
+ 
+.menu > ul li a {
+	width:160px;
+    color:#fff;
+    display:block;
+    line-height:20px;
+    padding:20px;
+    position: relative;
+    text-align:center;
+    text-decoration:none;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+ 
+.menu > ul li > ul li a {
+	width:160px;
+    color:#fff;
+    display:block;
+    line-height:20px;
+    padding:20px;
+    position: relative;
+    text-align:center;
+    text-decoration:none;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+ 
+.menu > ul > li > a span {
+    background:#174459;
+    display:block;
+    height:100%;
+    width:100%;
+    left:0;
+    position:absolute;
+    top:-55px;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+ 
+.menu > ul > li > a span .icon {
+    display:block;
+    line-height:60px;
+}
+ 
+.menu > ul > li > a:hover > span {
+    top:0;
+}
+ 
+/*Colores*/
+.menu ul li a .primero {
+    background:#0e5061;
+}
+ 
+.menu ul li a .segundo {
+    background:#5da5a2;
+}
+ 
+.menu ul li a .tercero {
+    background:#f25724;
+}
+ 
+.menu ul li a .cuarto {
+    background:#174459;
+}
+ 
+.menu ul li a .quinto {
+    background:#37a4d9;
+}
+.barra {
+	margin:10px 10px 0px 10px;
+	padding:10px;
+	background:#bdbdbd;
+	height:50px;
+}
+.barra .logo {
+	float:left;
+}
+.logo img {
+	height:50px;
+}
+.barra .busqueda {
+	margin-left:400px;
+}
+.barra .busqueda input {
+	padding:5px;
+	width:350px;
+	height:36px;
+	margin-top:7px;
+	
+}
+.barra .perfil {
+	float:right;
+	position:relative;
+	margin-right:35px;
+	bottom:22px;
+}
+.barra .perfil a {
+	text-decoration:none;
+}
+
+
+
+
+

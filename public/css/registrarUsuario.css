@@ -1,0 +1,40 @@
+
+.RU_formulario fieldset{
+    height: 250px;
+    width: 177px;
+    margin-left: 380px;
+	border: 0px;
+}
+.RU_caja img{
+	width: 350px;
+	margin-top:100px;
+	margin-left: 15px;
+	float:left;
+}
+.RU_h1{
+	text-align:center;
+	margin-top:35px;
+}
+.RU_caja{
+	margin-left:320px;
+	margin-right:320px;
+	margin-bottom: 100px;
+	background-color:#bdbdbd;
+	border: 2px solid black;
+	border-radius: 10px;
+	height: 665px;
+	width: 720px;
+}
+
+.RU_caja .input input{
+	 height: 25px;
+    width: 250px;
+    margin-top: 5px;
+	border-radius: 5px;
+}
+.boton_registrarse{
+	margin-left: 70px;
+    width: 100px;
+    height: 25px;
+	margin-top:10px;
+}
