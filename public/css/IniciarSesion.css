@@ -1,0 +1,48 @@
+* {
+	margin:0px;
+	padding:0px;
+}
+body{
+	background-color:#776f6f;
+}
+.IS_caja {
+	width:700px;
+	height:400px;
+	margin-left: 350px;
+	margin-top: 30px;
+	background-color:#bdbdbd;
+	border: 2px solid black;
+	border-radius: 10px;
+}
+.IS_h1 {
+	text-align: center;
+	margin-top:35px;
+}
+.IS_caja img {
+	width: 350px;
+	margin-top:100px;
+	margin-left: 15px;
+	float:left;
+}
+.input input{
+	height: 25px;
+    width: 250px;
+    margin-top: 5px;
+	border-radius: 5px;
+}
+.IS_caja fieldset{
+    height: 250px;
+    margin-top: 80px;
+    width: 280px;
+    margin-left: 380px;
+    border:0px;
+}
+.boton_Iniciar{
+	margin-left: 70px;
+    width: 100px;
+    height: 25px;
+	margin-top:10px;
+}
+.input{
+	margin-top: 40px;
+}
