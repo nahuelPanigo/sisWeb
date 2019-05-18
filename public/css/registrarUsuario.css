@@ -1,4 +1,6 @@
-
+body{
+	background-color: #776f6f;
+}
 .RU_formulario fieldset{
     height: 250px;
     width: 177px;
