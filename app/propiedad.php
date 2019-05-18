@@ -15,4 +15,9 @@ class propiedad extends Model
     {
     	return $this->hasMany('app\Semana');
     }
+
+     public function images()
+    {
+    	return $this->hasMany('app\Image');
+    }
 }

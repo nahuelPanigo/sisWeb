@@ -14,10 +14,10 @@ class CreateAdministratorsUserTable extends Migration
     public function up()
     {
         Schema::create('administratorsUser', function (Blueprint $table) {
-                $table->unsignedBigInteger('id');
+                $table->unsignedBigInteger('id')->onDelete('cascade');
         });
         schema::table('administratorsUser',function($table){
-                $table->foreign('id')->references('id')->on('users');
+                $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
         });
 
     }

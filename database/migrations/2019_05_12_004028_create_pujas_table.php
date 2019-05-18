@@ -20,8 +20,8 @@ class CreatePujasTable extends Migration
             $table->unsignedBigInteger('subasta_id');
         });
         schema::table('pujas',function($table){
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('subasta_id')->references('id')->on('subastas'); 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subasta_id')->references('id')->on('subastas')->onDelete('cascade'); 
         });
     }
 

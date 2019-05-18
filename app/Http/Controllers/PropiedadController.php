@@ -7,14 +7,17 @@ use Illuminate\Http\Request;
 
 class PropiedadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+    public function registrarUnaPropiedad() {
+  }
+
+
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +27,7 @@ class PropiedadController extends Controller
      */
     public function create()
     {
-        //
+          return view('registrarUnaPropiedad');
     }
 
     /**
@@ -34,8 +37,17 @@ class PropiedadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $locateiedad = new prolocatead;
+        $image= new image;
+        $propiedad->name = Input::get('name');
+        $propiedad->description = Input::get('description');
+        $propiedad->locate = Input::get('locate'); 
+        $image->archiveName = Input::get('name');
+        $image->propiedad_id = $propiedad->id;
+        $propiedad->save();
+        $image->save();
+        $propiedades->images()->associate($image);
     }
 
     /**
@@ -57,7 +69,7 @@ class PropiedadController extends Controller
      */
     public function edit(propiedad $propiedad)
     {
-        //
+         return view('modificarPropiedad');
     }
 
     /**

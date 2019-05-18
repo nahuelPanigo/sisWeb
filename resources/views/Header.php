@@ -1,5 +1,5 @@
 <div class="barra">
-   <div class="logo"><img src="css/imagenes/hsh.png" > </div>
+   <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
    <div class="busqueda"><span class="icon-magnifying-glass" > <input type="text" placeholder=" Que desea buscar" ></span></div>
    <div class="perfil">
    <ul>

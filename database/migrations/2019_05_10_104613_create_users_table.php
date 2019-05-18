@@ -15,12 +15,14 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name',20);
-            $table->string('secondName',20);
-            $table->string('userName',40);
+            $table->string('name');
+            $table->string('secondName');
+            $table->string('userName');
+            $table->string('password');
             $table->string('creditCard');
             $table->integer('creditCardNumber');
             $table->integer('creditCardCode');
+            $table->date('birthDay');
             $table->date('creditCardDate');
             $table->string('mail')->unique();
             $table->string('userType');
@@ -39,7 +41,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            Schema::drop('user');
+            Schema::drop('users');
             //
         });
     }

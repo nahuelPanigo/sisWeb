@@ -8,7 +8,7 @@ class User extends Model
 {
     protected $table ='users';
 
-    protected $fillable=['name','secondName','userName','creditCardNumber','creditCardCode','creditCardDate','mail','userType','creditCard'];
+    protected $fillable=['name','secondName','userName','creditCardNumber','creditCardCode','creditCardDate','mail','userType','creditCard','password','birthDay'];
 
     public function subastas()
     {

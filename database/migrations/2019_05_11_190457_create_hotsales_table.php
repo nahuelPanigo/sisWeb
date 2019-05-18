@@ -21,8 +21,8 @@ class CreateHotsalesTable extends Migration
             $table->timestamps();
         });
         Schema::table('hotsales', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('semana_id')->references('id')->on('semanas');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('semana_id')->references('id')->on('semanas')->onDelete('cascade');
          });
 
     }

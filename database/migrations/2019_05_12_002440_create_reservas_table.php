@@ -20,8 +20,8 @@ class CreateReservasTable extends Migration
             $table->unsignedBigInteger('semana_id');
         });
         schema::table('reservas',function($table){
-            $table->foreign('userVip_id')->references('id')->on('usersVip');
-            $table->foreign('semana_id')->references('id')->on('semanas');   
+            $table->foreign('userVip_id')->references('id')->on('usersVip')->onDelete('cascade');
+            $table->foreign('semana_id')->references('id')->on('semanas')->onDelete('cascade');   
         });
 
     }

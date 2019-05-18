@@ -1,17 +1,17 @@
 <?php
 
 namespace sisWeb\Http\Controllers;
-
+use validator;
 use sisWeb\User;
 use Illuminate\Http\Request;
-
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
+
+
+   
+
+
     public function index()
     {
         //
@@ -24,9 +24,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('registrarUsuario');
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -34,10 +35,22 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
+    {   
+        $validatedData = $request -> validate([
+            'mail'=>'required|unique:users',
+            'userName'=>'required|min:6|max:20',
+            'secondName'=>'required|min:2|max:20',
+            'name'=>'required|min:2',
+            'password'=>'required|min:6',
+        ]);
+        if($validatedData){
+        $user = new User($request->all());
+        $user->password = bcrypt($request->password);  
+        $user->creditCard = 'visa';
+        $user->userType='comun';      }
+        $user->save();
+        dd($user);
+        }
     /**
      * Display the specified resource.
      *

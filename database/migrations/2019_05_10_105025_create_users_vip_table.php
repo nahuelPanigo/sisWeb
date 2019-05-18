@@ -20,7 +20,7 @@ class CreateUsersVipTable extends Migration
     
 
     Schema::table('usersVip', function($table) {
-       $table->foreign('id')->references('id')->on('users');
+       $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
    });
 
     }

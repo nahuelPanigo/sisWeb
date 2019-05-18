@@ -24,9 +24,9 @@ class CreateSubastasTable extends Migration
         });
 
         schema::table('subastas',function($table){
-            $table->foreign('user_id')->references('id')->on('users');
-              $table->foreign('user_idWinner')->references('id')->on('users');
-            $table->foreign('semana_id')->references('id')->on('semanas');            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+              $table->foreign('user_idWinner')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('semana_id')->references('id')->on('semanas')->onDelete('cascade');            
         });
     }
 

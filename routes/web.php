@@ -19,22 +19,22 @@ Route::get('/',function(){
 });
 */
 
+
+
+
+
 Route::get('/',function(){
 	return view('indexIngenieria');
 });
 
-Route::get('registrarUnaPropiedad',function(){
-	return view('registrarUnaPropiedad');
-});
-
-Route::get('registrarUsuario',function(){
-	return view('registrarUsuario');
-});
-
-Route::get('modificarPropiedad',function(){
-	return view('ModificarPropiedad');
-});
-Route::get('iniciarSesion',function(){
+Route::get('/iniciarSesion',function(){
 	return view('IniciarSesion');
 });
+
+Route::group(['prefix'=>'admin'],function() {
+	Route::resource('users','UserController');
+	Route::resource('propiedades','PropiedadController');
+});
+
+
 
