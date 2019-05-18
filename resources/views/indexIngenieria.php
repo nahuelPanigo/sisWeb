@@ -1,11 +1,11 @@
 <html>
 <head>
-	<title> HSH-Inicio </title>
-	<?php Include("Estilos.php") ?>
-	<link rel="stylesheet" type="text/css" href="css/imags.css">
-  </head>
-   <body>
-   <?php Include("Header.php")?>		
+<title> HSH Inicio </title>
+<?php Include("estilos.php") ?>
+   <link rel="stylesheet" type="text/css" href="css/imags.css">
+
+   </head>
+<?php Include("Header.php"); ?>
 		<div class="main">
 		<div class="slides">
 			<img src="http://lorempixel.com/output/city-q-c-460-300-5.jpg" alt="">
