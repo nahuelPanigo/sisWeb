@@ -1,17 +1,22 @@
 
 <html>
 <head>
-<title> Propiedades </title>
-<?php Include("estilos.php") ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="iconos/fonts/style.css">
+<link rel="stylesheet" type="text/css" href="css/crearSubasta.css">
 <link rel="stylesheet" type="text/css" href="css/nuevo.css">
+<link rel="stylesheet" type="text/css" href="css/estilos.css">
+<link rel="stylesheet" type="text/css" href="css/submenus.css">
 <link rel="stylesheet" type="text/css" href="css/zoom.css">
 
 </head>
 
 <body>
-<?php Include("Header.php"); ?>
-<h2 style="text-align:center;">Propiedades</h2>
+<?php Include("Header.php") ?>
+<br>
+
+</br>
+<h2>Propiedades</h2>
 <div class="row">
   <div class="column">
     <div class="card">
@@ -23,7 +28,7 @@
                     <li class="submenu-item"><a href="modificarPropiedad.html" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
 					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
+					<li class="submenu-item"><a href="#" class="submenu-link" onclick="document.getElementById('id01').style.display='block'"><span class="icon-flag"></span> Subastar </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
                    
 				</ul>
@@ -31,6 +36,7 @@
 			<script src="js/menu.js"></script>
 	   </div>
 	   <h3>Propiedad 1</h3>
+	  
 	  <div class="datos">
       <p><span class="icon-location"></span> Villa La Angustura, Argentina </p>
       <p><span class="icon-info-with-circle "></span> una casa muy linda con 3 ambientes, 2 banios , hermosa vista xd </p>
@@ -187,6 +193,47 @@
 <script
 src="js/zoom.js">
 </script>
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <h1>Crear Subasta</h1>
+	  <br>
+      <p>Completar todos los campos.</p>
+      <hr>
+      <label for="email" ><b>Propiedad</b></label>
+	  <br>
+      <div class="propiedad" > propiedad 1 </div>
+<br>
+<br>
+      <label for="psw"><b>Semana</b></label>
+      <input type="date" placeholder="Seleccionar semana de lunes a domingo" name="psw" required>
 
+      <label for="psw-repeat"><b>Precio base</b></label>
+      <input type="number" placeholder="Ingresar el precio base" name="psw-repeat" required>
+      
+	   <label for="psw"><b>Fecha de finalizacion </b></label>
+      <input type="date" placeholder="Seleccionar fecha de finalizacion" name="psw" required>
+
+      
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Crear Subasta</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>
