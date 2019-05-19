@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     protected $table = 'reservas';
 
-    protected fillable=['userVip_id','semana_id'];
+    protected $fillable=['userVip_id','semana_id'];
 
      public function userVip()
     {

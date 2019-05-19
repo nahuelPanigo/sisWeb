@@ -23,6 +23,8 @@ Route::get('/',function(){
 
 
 
+
+
 Route::get('/',function(){
 	return view('indexIngenieria');
 });
@@ -30,6 +32,13 @@ Route::get('/',function(){
 Route::get('/iniciarSesion',function(){
 	return view('IniciarSesion');
 });
+
+
+Route::group(['prefix'=>'categorias'],function() {
+	Route::resource('subastas','SubastaController');
+	Route::resource('hotsales','HotsaleController');
+});
+
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');

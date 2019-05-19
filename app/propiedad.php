@@ -4,11 +4,11 @@ namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
 
-class propiedad extends Model
+class Propiedad extends Model
 {
     protected $table ='propiedades';
 
-    protected fillable =['name','description','locate'];
+    protected $fillable =['name','description','locate'];
 
 
     public function semanas()

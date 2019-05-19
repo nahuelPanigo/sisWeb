@@ -4,13 +4,13 @@
 <title> Propiedades </title>
 <?php Include("estilos.php") ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/nuevo.css">
-<link rel="stylesheet" type="text/css" href="css/zoom.css">
+<link rel="stylesheet" type="text/css" href="/css/nuevo.css">
+<link rel="stylesheet" type="text/css" href="/css/zoom.css">
 
 </head>
 
 <body>
-<?php Include("Header.php"); ?>
+<?php Include("Header.php") ?>
 <h2 style="text-align:center;">Propiedades</h2>
 <div class="row">
   <div class="column">
@@ -28,14 +28,14 @@
                    
 				</ul>
 			</nav>
-			<script src="js/menu.js"></script>
+			<script src="/js/menu.js"></script>
 	   </div>
 	   <h3>Propiedad 1</h3>
 	  <div class="datos">
       <p><span class="icon-location"></span> Villa La Angustura, Argentina </p>
       <p><span class="icon-info-with-circle "></span> una casa muy linda con 3 ambientes, 2 banios , hermosa vista xd </p>
 		</div>
-	 <img src="css/imagenes/propiedad4.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+	 <img src="/css/imagenes/propiedad4.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	</div>
   </div>
 
@@ -53,14 +53,14 @@
                    
 				</ul>
 			</nav>
-			<script src="js/menu.js"></script>
+			<script src="/js/menu.js"></script>
 	   </div>
       <h3>Propiedad 2</h3>
 	  <div class="datos">
        <p><span class="icon-location"></span> Ubicacion</p>
       <p><span class="icon-info-with-circle "></span> Descripcion</p>
 		 </div>
-		 <img src="css/imagenes/propiedad1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+		 <img src="/css/imagenes/propiedad1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
    </div>
   </div>
   
@@ -78,14 +78,14 @@
                    
 				</ul>
 			</nav>
-			<script src="js/menu.js"></script>
+			<script src="/js/menu.js"></script>
 	   </div>
       <h3>Propiedad 3</h3>
 	   <div class="datos">
        <p><span class="icon-location"></span> Ubicacion</p>
       <p><span class="icon-info-with-circle "></span> Descripcion</p>
 		</div>
-	<img src="css/imagenes/propiedad2.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+	<img src="/css/imagenes/propiedad2.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	</div>
   </div>
   
@@ -103,14 +103,14 @@
                    
 				</ul>
 			</nav>
-			<script src="js/menu.js"></script>
+			<script src="/js/menu.js"></script>
 	   </div>
       <h3>Propiedad 4</h3>
 	   <div class="datos">
       <p><span class="icon-location"></span> Ubicacion</p>
       <p><span class="icon-info-with-circle "></span> Descripcion</p>
     </div>
-	 <img src="css/imagenes/propiedad3.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+	 <img src="/css/imagenes/propiedad3.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	 </div>
   </div>
    <div class="column">
@@ -127,14 +127,14 @@
                    
 				</ul>
 			</nav>
-			<script src="js/menu.js"></script>
+			<script src="/js/menu.js"></script>
 	   </div>
       <h3>Propiedad 4</h3>
 	   <div class="datos">
       <p><span class="icon-location"></span> Ubicacion</p>
       <p><span class="icon-info-with-circle "></span> Descripcion</p>
     </div>
-	 <img src="css/imagenes/propiedad3.jpg"onclick="openModal();currentSlide(1)" class="hover-shadow cursor"></div>
+	 <img src="/css/imagenes/propiedad3.jpg"onclick="openModal();currentSlide(1)" class="hover-shadow cursor"></div>
   </div>
 </div>
 <div id="myModal" class="modal">
@@ -143,22 +143,22 @@
 
     <div class="mySlides">
       <div class="numbertext">1 / 4</div>
-      <img src="css/imagenes/propiedad1.jpg" style="width:100%">
+      <img src="/css/imagenes/propiedad1.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">2 / 4</div>
-      <img src="css/imagenes/propiedad2.jpg" style="width:100%">
+      <img src="/css/imagenes/propiedad2.jpg" style="width:100%">
     </div>
 
     <div class="mySlides">
       <div class="numbertext">3 / 4</div>
-      <img src="css/imagenes/propiedad3.jpg" style="width:100%">
+      <img src="/css/imagenes/propiedad3.jpg" style="width:100%">
     </div>
     
     <div class="mySlides">
       <div class="numbertext">4 / 4</div>
-      <img src="css/imagenes/propiedad4.jpg" style="width:100%">
+      <img src="/css/imagenes/propiedad4.jpg" style="width:100%">
     </div>
     
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -185,7 +185,7 @@
 </div>
 
 <script
-src="js/zoom.js">
+src="/js/zoom.js">
 </script>
 
 </body>

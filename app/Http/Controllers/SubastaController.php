@@ -14,7 +14,7 @@ class SubastaController extends Controller
      */
     public function index()
     {
-        //
+        return view('subastas');
     }
 
     /**
@@ -24,7 +24,7 @@ class SubastaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

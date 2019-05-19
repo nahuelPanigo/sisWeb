@@ -9,7 +9,7 @@ class Image extends Model
     
 	protected $table ='images';
 
-    protected fillable =['archiveName','propiedad_id'];
+    protected $fillable=['archiveName','propiedad_id'];
 
 
     public function propiedad()

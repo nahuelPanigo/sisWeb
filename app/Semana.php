@@ -8,7 +8,7 @@ class Semana extends Model
 {
     protected $table='semanas';
 
-    protected fillable=['date','propiedad_id'];
+    protected $fillable=['date','propiedad_id'];
 
     public function propiedad()
     {

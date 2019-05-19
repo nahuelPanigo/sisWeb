@@ -23,6 +23,9 @@ body {
 	list-style:none;
 	
 }
+.slidesjs-container {
+	height: 297.872px;
+}
  
 .slidesjs-pagination li {
 	float:left;

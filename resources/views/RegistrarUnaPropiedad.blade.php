@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title> Registrar Propiedad </title>
-		<?php Include("Estilos.blade.php") ?>
+		@include ('estilos')
 		<link rel="stylesheet" type="text/css" href="/css/registrarPropiedad.css">
 		<script src="/js/registrarPropiedad.js" type="text/javascript"> </script>
 	</head>
@@ -15,10 +15,11 @@
 		</ul>
 		</div>
 		@endif
-	  <?php Include("Header.php")?>
+	  @include ('Header')
 		<div class="caja">
 		<h1 class="registrar_propiedad_h1"> Registrar Propiedad </h1> <br> <br>
-			<form action="validarRegistroDePropiedad.php" onsubmit="return validarRegistroDePropiedad()" method="POST" action='/admin/propiedades'>
+			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action='/admin/propiedades'>
+				@csrf
 			<div class="registrar_propiedad">
 				<input type="text" id="nombre" name="name" placeholder="Nombre de propiedad"> <br> <br>
 				<div id="error_nombre"> </div>
@@ -26,7 +27,7 @@
 				<div id="error_descripcion"> </div>
 				<input type="text" id="localidad" name="locate" placeholder="Localidad"><br> <br>
 				<div id="error_localidad"> </div>
-				Foto: <input type="file" id="foto" name="archivoNombre"><br> <br>
+				Foto: <input type="file" id="foto" name="archiveName">
 				<div id="error_foto"> </div>
 				</div>
 				<input type="submit" value="Registrar propiedad" class="boton_registrar">

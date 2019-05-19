@@ -2,7 +2,8 @@
 <head>
 <title> HSH Inicio </title>
 <?php Include("estilos.php") ?>
-   <link rel="stylesheet" type="text/css" href="css/imags.css">
+
+   <link rel="stylesheet" type="text/css" href="/css/imags.css">
 
    </head>
 <?php Include("Header.php"); ?>

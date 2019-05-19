@@ -49,7 +49,7 @@ class UserController extends Controller
         $user->creditCard = 'visa';
         $user->userType='comun';      }
         $user->save();
-        dd($user);
+        dd($validatedData);
         }
     /**
      * Display the specified resource.

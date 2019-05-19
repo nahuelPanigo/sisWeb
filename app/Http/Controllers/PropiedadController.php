@@ -2,8 +2,9 @@
 
 namespace sisWeb\Http\Controllers;
 
-use sisWeb\propiedad;
+use sisWeb\Propiedad;
 use Illuminate\Http\Request;
+use sisWeb\Image;
 
 class PropiedadController extends Controller
 {
@@ -17,7 +18,7 @@ class PropiedadController extends Controller
 
     public function index()
     {
-
+        return view('listarPropiedades');
     }
 
     /**
@@ -38,16 +39,26 @@ class PropiedadController extends Controller
      */
     public function store(Request $request)
     {   
-        $locateiedad = new prolocatead;
-        $image= new image;
-        $propiedad->name = Input::get('name');
-        $propiedad->description = Input::get('description');
-        $propiedad->locate = Input::get('locate'); 
-        $image->archiveName = Input::get('name');
+        $validatedData = $request -> validate([
+            'description'=>'required|max:150',
+            'name'=>'required|min:2|unique:propiedades',
+            'locate'=>'required|min:5',
+            'archiveName'=>'required',
+        ]);
+        if($validatedData>0){
+        $image= new Image; 
+        $propiedad =new Propiedad;
+        $propiedad->name =$request->Input('name');
+        $propiedad->description= $request->Input('description');
+        $propiedad->locate = $request->Input('locate'); 
+        $propiedad->save(); 
+        $propiedad = Propiedad::where('name','=',$propiedad->name)->first();
+        $image->archiveName = $request->Input('archiveName');
         $image->propiedad_id = $propiedad->id;
-        $propiedad->save();
-        $image->save();
-        $propiedades->images()->associate($image);
+        $image->save();   
+        $propiedad->images()->associate($image);
+        return view('indexIngenieria');
+        }
     }
 
     /**

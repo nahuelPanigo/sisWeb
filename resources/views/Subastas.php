@@ -4,13 +4,13 @@
 <title> Subastas </title>
 <?php Include("estilos.php") ?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/datosPuja.css">
-<link rel="stylesheet" type="text/css" href="css/subastas.css">
+<link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
+<link rel="stylesheet" type="text/css" href="/css/subastas.css">
 
 </head>
 
 <body>
-<?php Include("Header.php"); ?>
+<?php Include("Header.php") ?>
 <h2 style="text-align:center">Subastas</h2>
 
 
