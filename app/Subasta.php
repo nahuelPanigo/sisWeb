@@ -8,7 +8,7 @@ class Subasta extends Model
 {
     protected $talbe='subastas';
 
-    protected $fillable=['user_id','semana_id','minPrice','finalPrice','user_idWinner'];
+    protected $fillable=['semana_id','minPrice','finalPrice','user_idWinner'];
 
      public function user()
     {

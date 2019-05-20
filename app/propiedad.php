@@ -18,6 +18,6 @@ class Propiedad extends Model
 
      public function images()
     {
-    	return $this->hasMany('app\Image');
+    	return $this->hasMany('sisWeb\Image');
     }
 }

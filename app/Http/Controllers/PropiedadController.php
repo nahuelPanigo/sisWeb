@@ -43,20 +43,26 @@ class PropiedadController extends Controller
             'description'=>'required|max:150',
             'name'=>'required|min:2|unique:propiedades',
             'locate'=>'required|min:5',
-            'archiveName'=>'required',
         ]);
+        foreach($request->file('images')as $file ){
+            array_push($files, $file);
+        }
+        foreach ($files as $i => $file) {
+           dd($files[$i]);
+        }
         if($validatedData>0){
         $image= new Image; 
+        $image->archiveName= $request ->file('archiveName')->store('public');   
         $propiedad =new Propiedad;
         $propiedad->name =$request->Input('name');
         $propiedad->description= $request->Input('description');
         $propiedad->locate = $request->Input('locate'); 
         $propiedad->save(); 
         $propiedad = Propiedad::where('name','=',$propiedad->name)->first();
-        $image->archiveName = $request->Input('archiveName');
         $image->propiedad_id = $propiedad->id;
         $image->save();   
-        $propiedad->images()->associate($image);
+        $collection = $propiedad->images()->getEager();
+        $collection->add($image);
         return view('indexIngenieria');
         }
     }

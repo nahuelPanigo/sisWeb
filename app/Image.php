@@ -14,6 +14,6 @@ class Image extends Model
 
     public function propiedad()
      {
-     	return $this->hasOne('app\Propiedad');
+     	return $this->hasOne('sisWeb\Propiedad');
      }
 }

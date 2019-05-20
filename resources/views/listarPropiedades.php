@@ -11,6 +11,7 @@
 
 <body>
 <?php Include("Header.php") ?>
+<script src="/js/menu.js"></script>
 <h2 style="text-align:center;">Propiedades</h2>
 <div class="row">
   <div class="column">

@@ -3,10 +3,6 @@ body {
   margin: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .row > .column {
   padding: 0 8px;
 }
