@@ -11,9 +11,8 @@
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-add-to-list"></span> Solicitudes premium</a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-star-outlined"></span> Solicitar premium</a></li>
                     <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a  href="/admin/propiedades/create" class="submenu-link"><span class="icon-circle-with-plus"></span> Agregar Propiedad</a></li>
+					<li class="submenu-item"><a  href="/admin/propiedades/create"  class="submenu-link"><span class="icon-circle-with-plus"></span> Agregar Propiedad</a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-circle-with-plus"></span> Crear Subasta </a></li>
-					
 					<li class="submenu-item"><hr class="submenu-seperator" /></li>
                     <li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-log-out"></span> Cerrar Sesion</a></li>
                 </ul>

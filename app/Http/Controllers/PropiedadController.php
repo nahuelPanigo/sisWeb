@@ -44,6 +44,7 @@ class PropiedadController extends Controller
             'name'=>'required|min:2|unique:propiedades',
             'locate'=>'required|min:5',
         ]);
+        $files = array();
         foreach($request->file('images')as $file ){
             array_push($files, $file);
         }
