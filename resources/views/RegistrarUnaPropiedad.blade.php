@@ -1,24 +1,31 @@
 <html>
 	<head>
 		<title> Registrar Propiedad </title>
-		<?php Include("Estilos.blade.php") ?>
+		@include ('estilos')
 		<link rel="stylesheet" type="text/css" href="/css/registrarPropiedad.css">
 		<script src="/js/registrarPropiedad.js" type="text/javascript"> </script>
+		<meta charset="utf-8">
+   		 <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	</head>
 	<body>
-			@if($errors->any())
-			<div class="alert alert-primary" role="alert">
+	  @include ('Header')
+	  @if($errors->any())
+			<div class="alert alert-danger">
 		<ul>	
 			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
+				<li><strong>Danger!</strong> {{ $error }}</li>
 			@endforeach
 		</ul>
 		</div>
 		@endif
-	  <?php Include("Header.php")?>
 		<div class="caja">
 		<h1 class="registrar_propiedad_h1"> Registrar Propiedad </h1> <br> <br>
-			<form action="validarRegistroDePropiedad.php" onsubmit="return validarRegistroDePropiedad()" method="POST" action='/admin/propiedades'>
+			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action="/admin/propiedades" enctype="multipart/form-data">
+				@csrf
 			<div class="registrar_propiedad">
 				<input type="text" id="nombre" name="name" placeholder="Nombre de propiedad"> <br> <br>
 				<div id="error_nombre"> </div>
@@ -26,11 +33,11 @@
 				<div id="error_descripcion"> </div>
 				<input type="text" id="localidad" name="locate" placeholder="Localidad"><br> <br>
 				<div id="error_localidad"> </div>
-				Foto: <input type="file" id="foto" name="archivoNombre"><br> <br>
+				Foto: <input type="file" id="foto" name="images[]"multiple>
 				<div id="error_foto"> </div>
 				</div>
 				<input type="submit" value="Registrar propiedad" class="boton_registrar">
-			</form>
+			</form>	
 		</div>
 		<footer> <p>Gran grupo de programadores</p> </footer>
 	</body>

@@ -3,14 +3,23 @@
 	<link rel="shortcut icon" type="image/x-icon" href="/css/imagenes/hsh.png">
 	<link rel="stylesheet" type="text/css" href="/css/registrarUsuario.css">
 	<script src="/js/validarDatosING2.js" type="/text/javascript"> </script>
-	 <meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 </head>
 <body>
+
 		@if($errors->any())
-			<div class="alert alert-primary" role="alert">
+			<div class="alert alert-danger">
+    
+  		
+
 		<ul>	
 			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
+				<li><strong>Danger!</strong> {{ $error }}</li>
 			@endforeach
 		</ul>
 		</div>
