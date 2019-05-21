@@ -33,7 +33,7 @@
 				<div id="error_descripcion"> </div>
 				<input type="text" id="localidad" name="locate" placeholder="Localidad"><br> <br>
 				<div id="error_localidad"> </div>
-				Foto: <input type="file" id="foto" name="archiveName">
+				Foto: <input type="file" id="foto" name="images[]"multiple>
 				<div id="error_foto"> </div>
 				</div>
 				<input type="submit" value="Registrar propiedad" class="boton_registrar">
