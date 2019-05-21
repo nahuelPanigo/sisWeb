@@ -3,7 +3,7 @@
 	<head>
 		<title> Inicio de Sesion </title>
 		<link rel="shortcut icon" type=image/x-icon" href="css/imagenes/hsh.png">
-		<link rel="stylesheet" type="text/css" href="css/IniciarSesion.css">
+		<link rel="stylesheet" type="text/css" href="/css/IniciarSesion.css">
 		<script src="js/validarDatosING2.js" type="text/javascript"> </script>
 		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 		<meta charset="utf-8">
@@ -14,17 +14,17 @@
 		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	</head>
 	<body>
-	@if($errors->any())
+	<!--@if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
 				<li><strong>Danger!</strong> {{ $_SESSION['errorSesion'] }}</li>
 		</ul>
 		</div>
-	@endif	
+	@endif-->	
 	<h1 class="IS_h1"> Iniciar Sesion </h1>
 	<div class="IS_caja">
 		<img src="css/imagenes/hsh.png">
-		<form class="IS_formulario" method="POST" accept-charset="UTF-8" onsubmit="return validarInicioDeSesion()" action="/admin/session">
+		<form class="IS_formulario" method="POST" accept-charset="UTF-8" onsubmit="return validarInicioDeSesion()" action="admin/session">
 			<fieldset>
 				<div class="input">
 					<input type="email" id="email" name="mail" placeholder="Email"><br> <br>

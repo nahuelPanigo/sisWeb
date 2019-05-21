@@ -123,8 +123,7 @@ function validarFormatoFecha(campo) {
             return true;
       } 
             return false;
- }
-
+}
 function validarFecha(){
 var fecha = document.getElementById("fecha").value;
 	if(!validarFormatoFecha(fecha)){
@@ -169,6 +168,21 @@ function validarCodigo(){
 		return false;
 	}
 	document.getElementById("error_codigo").innerHTML ="";
+	return true;
+}
+function validarInicioDeSesion(){
+	var email = document.getElementById("email").value;
+	var contrasenia = document.getElementById("contrasenia").value;
+	document.getElementById("error_email").innerHTML = "";
+	document.getElementById("error_contrasenia").innerHTML = "";
+	if(email == ""){
+		document.getElementById("error_email").innerHTML = "Ingrese email";
+		return false;
+	}
+	if(contrasenia==""){
+		document.getElementById("error_contrasenia").innerHTML = "Ingrese contrasenia";
+		return false;
+	}
 	return true;
 }
 function validar(){
