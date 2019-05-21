@@ -18,13 +18,6 @@ Route::get('/',function(){
 	return view('indexIngenieria');
 });
 */
-
-
-
-
-
-
-
 Route::get('/',function(){
 	return view('indexIngenieria');
 });
@@ -32,7 +25,6 @@ Route::get('/',function(){
 Route::get('/iniciarSesion',function(){
 	return view('IniciarSesion');
 });
-
 
 Route::group(['prefix'=>'categorias'],function() {
 	Route::resource('subastas','SubastaController');
@@ -43,6 +35,7 @@ Route::group(['prefix'=>'categorias'],function() {
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
 	Route::resource('propiedades','PropiedadController');
+	Route::resource('session','sessionController');
 });
 
 

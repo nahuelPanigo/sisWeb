@@ -12,7 +12,8 @@
 		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	</head>
 	<body>
-		@if($errors->any())
+	  @include ('Header')
+	  @if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
 			@foreach ($errors->all() as $error)
@@ -21,7 +22,6 @@
 		</ul>
 		</div>
 		@endif
-	  @include ('Header')
 		<div class="caja">
 		<h1 class="registrar_propiedad_h1"> Registrar Propiedad </h1> <br> <br>
 			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action="/admin/propiedades" enctype="multipart/form-data">
@@ -37,7 +37,7 @@
 				<div id="error_foto"> </div>
 				</div>
 				<input type="submit" value="Registrar propiedad" class="boton_registrar">
-			</form>
+			</form>	
 		</div>
 		<footer> <p>Gran grupo de programadores</p> </footer>
 	</body>
