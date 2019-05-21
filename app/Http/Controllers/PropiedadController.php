@@ -43,14 +43,8 @@ class PropiedadController extends Controller
             'description'=>'required|max:150',
             'name'=>'required|min:2|unique:propiedades',
             'locate'=>'required|min:5',
+            'archiveName'=>'|image|required',
         ]);
-        $files = array();
-        foreach($request->file('images')as $file ){
-            array_push($files, $file);
-        }
-        foreach ($files as $i => $file) {
-           dd($files[$i]);
-        }
         if($validatedData>0){
         $image= new Image; 
         $image->archiveName= $request ->file('archiveName')->store('public');   

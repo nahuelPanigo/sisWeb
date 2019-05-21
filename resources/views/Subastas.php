@@ -18,13 +18,13 @@
   <ul class="price">
     <li class="header">Basic</li>
 	<div class="opcAdmin">
-	<a href="#" title="Eliminar Subasta"><span class="icon-trash"> </span></a>
+	<a href="#" title="Eliminar Subasta"><span class="far fa-trash-alt"> </span></a>
 	
 	</div>
     <li class="grey">$ 9.99 / year</li>
     <li> <span class="icon-calendar"> semana </span> </li>
-    <li> <span class="icon-home"> propiedad </span></li>
-    <li><span class="icon-location-pin"> ubicacion</span></li>
+    <li> <span class="fas fa-home"> propiedad </span></li>
+    <li><span class="fas fa-map-marker-alt"> ubicacion</span></li>
     <li><span class="icon-stopwatch"> termina</span></li>
     <button onclick="document.getElementById('id01').style.display='block'" >¡ PUJAR !</button>
 

@@ -14,126 +14,51 @@
 <script src="/js/menu.js"></script>
 <h2 style="text-align:center;">Propiedades</h2>
 <div class="row">
-  <div class="column">
-    <div class="card">
-      
-	   <div class="nav-item dropdown">
-            <a href="#" class="nav-link"><span></i><i class= "icon-menu"></i></span></a>
-            <nav class="submenu">
-                <ul class="submenu-items">
-                    <li class="submenu-item"><a href="modificarPropiedad.html" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
-                   
-				</ul>
-			</nav>
-			<script src="/js/menu.js"></script>
-	   </div>
+<?php Include("submenu.php") ?>
 	   <h3>Propiedad 1</h3>
 	  <div class="datos">
-      <p><span class="icon-location"></span> Villa La Angustura, Argentina </p>
-      <p><span class="icon-info-with-circle "></span> una casa muy linda con 3 ambientes, 2 banios , hermosa vista xd </p>
+      <p><span class="fas fa-map-marker-alt"></span> Villa La Angustura, Argentina </p>
+      <p><span class="fas fa-info-circle"></span> una casa muy linda con 3 ambientes, 2 banios , hermosa vista xd </p>
 		</div>
 	 <img src="/css/imagenes/propiedad4.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	</div>
   </div>
 
-  <div class="column">
-    <div class="card">
-	 <div class="nav-item dropdown">
-            <a href="#" class="nav-link"><span></i><i class= "icon-menu"></i></span></a>
-            <nav class="submenu">
-                <ul class="submenu-items">
-                    <li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
-                   
-				</ul>
-			</nav>
-			<script src="/js/menu.js"></script>
-	   </div>
+  <?php Include("submenu.php") ?>
       <h3>Propiedad 2</h3>
 	  <div class="datos">
-       <p><span class="icon-location"></span> Ubicacion</p>
-      <p><span class="icon-info-with-circle "></span> Descripcion</p>
+       <p><span class="fas fa-map-marker-alt"></span> Ubicacion</p>
+      <p><span class="fas fa-info-circle"></span> Descripcion</p>
 		 </div>
 		 <img src="/css/imagenes/propiedad1.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
    </div>
   </div>
   
-  <div class="column">
-    <div class="card">
-	 <div class="nav-item dropdown">
-            <a href="#" class="nav-link"><span></i><i class= "icon-menu"></i></span></a>
-            <nav class="submenu">
-                <ul class="submenu-items">
-                    <li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
-                   
-				</ul>
-			</nav>
-			<script src="/js/menu.js"></script>
-	   </div>
+    <?php Include("submenu.php") ?>
       <h3>Propiedad 3</h3>
 	   <div class="datos">
-       <p><span class="icon-location"></span> Ubicacion</p>
-      <p><span class="icon-info-with-circle "></span> Descripcion</p>
+       <p><span class="fas fa-map-marker-alt"></span> Ubicacion</p>
+      <p><span class="fas fa-info-circle"></span> Descripcion</p>
 		</div>
 	<img src="/css/imagenes/propiedad2.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	</div>
   </div>
   
-  <div class="column">
-    <div class="card">
-	 <div class="nav-item dropdown">
-            <a href="#" class="nav-link"><span></i><i class= "icon-menu"></i></span></a>
-            <nav class="submenu">
-                <ul class="submenu-items">
-                    <li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
-                   
-				</ul>
-			</nav>
-			<script src="/js/menu.js"></script>
-	   </div>
+  <?php Include("submenu.php") ?>
       <h3>Propiedad 4</h3>
 	   <div class="datos">
-      <p><span class="icon-location"></span> Ubicacion</p>
-      <p><span class="icon-info-with-circle "></span> Descripcion</p>
+     <p><span class="fas fa-map-marker-alt"></span> Ubicacion</p>
+      <p><span class="fas fa-info-circle"></span> Descripcion</p>
     </div>
 	 <img src="/css/imagenes/propiedad3.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 	 </div>
   </div>
-   <div class="column">
-    <div class="card">
-	 <div class="nav-item dropdown">
-            <a href="#" class="nav-link"><span></i><i class= "icon-menu"></i></span></a>
-            <nav class="submenu">
-                <ul class="submenu-items">
-                    <li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-brush"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-cross"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="icon-pin"></span> Hot Sale </a></li>
-                   
-				</ul>
-			</nav>
-			<script src="/js/menu.js"></script>
-	   </div>
+
+    <?php Include("submenu.php") ?>
       <h3>Propiedad 4</h3>
 	   <div class="datos">
-      <p><span class="icon-location"></span> Ubicacion</p>
-      <p><span class="icon-info-with-circle "></span> Descripcion</p>
+    <p><span class="fas fa-map-marker-alt"></span> Ubicacion</p>
+      <p><span class="fas fa-info-circle"></span> Descripcion</p>
     </div>
 	 <img src="/css/imagenes/propiedad3.jpg"onclick="openModal();currentSlide(1)" class="hover-shadow cursor"></div>
   </div>
