@@ -3,12 +3,15 @@
 namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
+use sisWeb\Propiedad;
+use sisWeb\Semana;
+use sisWeb\Subasta;
 
 class Subasta extends Model
 {
     protected $talbe='subastas';
 
-    protected $fillable=['user_id','semana_id','minPrice','finalPrice','user_idWinner'];
+    protected $fillable=['semana_id','minPrice','finalPrice','user_idWinner'];
 
      public function user()
     {
@@ -19,10 +22,23 @@ class Subasta extends Model
     {
     	return $this->hasMany('app\Puja');
     }
-
-
      public function semana()
      {
-     	return $this->hasOne('app\Semana');
+     	return $this->hasOne('sisWeb\Semana');
      }
+     public function name(Subasta $subasta){
+        $semana = new Semana;
+        $semana = Semana::where('id','=',$subasta->semana_id)->first();
+        $propiedad = new Propiedad;
+        $propiedad = Propiedad:: where ('id', '=', $semana->propiedad_id)->first();
+        return($propiedad);
+     }
+
+
+      public function date(Subasta $subasta){
+        $semana = new Semana;
+        $semana = Semana::where('id','=',$subasta->semana_id)->first();
+        return($semana->date);
+     }
+
 }

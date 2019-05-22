@@ -8,7 +8,7 @@ class Hotsale extends Model
 {
     protected $table ='hotsales';
 
-    protected fillable = ['price','user_id','semana_id'];
+    protected $fillable = ['price','user_id','semana_id'];
 
     public function user()
     {

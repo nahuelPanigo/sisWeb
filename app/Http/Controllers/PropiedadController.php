@@ -2,22 +2,19 @@
 
 namespace sisWeb\Http\Controllers;
 
-use sisWeb\propiedad;
+use sisWeb\Propiedad;
 use Illuminate\Http\Request;
+use sisWeb\Image;
 
 class PropiedadController extends Controller
 {
     
 
 
-
-    public function registrarUnaPropiedad() {
-  }
-
-
     public function index()
     {
-
+		$propiedades = Propiedad::all();
+        return view('listarPropiedades')->with('propiedades',$propiedades);
     }
 
     /**
@@ -38,16 +35,27 @@ class PropiedadController extends Controller
      */
     public function store(Request $request)
     {   
-        $locateiedad = new prolocatead;
-        $image= new image;
-        $propiedad->name = Input::get('name');
-        $propiedad->description = Input::get('description');
-        $propiedad->locate = Input::get('locate'); 
-        $image->archiveName = Input::get('name');
+        $validatedData = $request -> validate([
+            'description'=>'required|max:150',
+            'name'=>'required|min:2|unique:propiedades',
+            'locate'=>'required|min:5',
+            'archiveName'=>'|image|required',
+        ]);
+        if($validatedData>0){
+        $image= new Image; 
+        $image->archiveName= $request ->file('archiveName')->store('public');   
+        $propiedad =new Propiedad;
+        $propiedad->name =$request->Input('name');
+        $propiedad->description= $request->Input('description');
+        $propiedad->locate = $request->Input('locate'); 
+        $propiedad->save(); 
+        $propiedad = Propiedad::where('name','=',$propiedad->name)->first();
         $image->propiedad_id = $propiedad->id;
-        $propiedad->save();
-        $image->save();
-        $propiedades->images()->associate($image);
+        $image->save();   
+        $collection = $propiedad->images()->getEager();
+        $collection->add($image);
+        return view('listarPropiedades');
+        }
     }
 
     /**
@@ -56,9 +64,12 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-    public function show(propiedad $propiedad)
+    public function show(Propiedad $propiedad)
     {
-        //
+		dd($propiedad);
+		$imagen = Image:: where('propiedad_id','=',$propiedad->id );
+		return $imagen;
+
     }
 
     /**
@@ -67,9 +78,24 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-    public function edit(propiedad $propiedad)
-    {
-         return view('modificarPropiedad');
+
+    public function edit(Request $request)
+    {   
+        $validatedData = $request -> validate([
+            'description'=>'required|max:150',
+            'name'=>'required|min:2|unique:propiedades',
+            'locate'=>'required|min:5',
+            
+        ]);
+      if($validatedData>0){
+         
+        $propiedad =new Propiedad;
+        $propiedad->name =$request->Input('name');
+        $propiedad->description= $request->Input('description');
+        $propiedad->locate = $request->Input('locate'); 
+        $propiedad->save(); 
+        return view('listarPropiedades');
+        }
     }
 
     /**
@@ -94,4 +120,5 @@ class PropiedadController extends Controller
     {
         //
     }
+	
 }

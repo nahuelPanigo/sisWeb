@@ -4,6 +4,8 @@ namespace sisWeb\Http\Controllers;
 
 use sisWeb\Subasta;
 use Illuminate\Http\Request;
+use sisWeb\Propiedad;
+use sisWeb\Semana;
 
 class SubastaController extends Controller
 {
@@ -14,7 +16,9 @@ class SubastaController extends Controller
      */
     public function index()
     {
-        //
+        $subastas= Subasta::all();
+
+        return view('subastas')->with('subastas',$subastas);
     }
 
     /**
@@ -24,7 +28,7 @@ class SubastaController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -46,7 +50,7 @@ class SubastaController extends Controller
      */
     public function show(Subasta $subasta)
     {
-        //
+        
     }
 
     /**

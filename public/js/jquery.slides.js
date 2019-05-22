@@ -6,7 +6,7 @@
     pluginName = "slidesjs";
     defaults = {
       width: 940,
-      height: 528,
+      height: 450,
       start: 1,
       navigation: {
         active: true,
@@ -115,13 +115,13 @@
       });
       if (this.options.navigation.active) {
         prevButton = $("<a>", {
-          "class": "slidesjs-next slidesjs-navigation icon-chevron-thin-right",
+          "class": "slidesjs-next slidesjs-navigation fas fa-chevron-right",
           href: "#",
           title: "",
           text: ""
         }).appendTo($element);
         nextButton = $("<a>", {
-          "class": "slidesjs-previous slidesjs-navigation icon-chevron-thin-left",
+          "class": "slidesjs-previous slidesjs-navigation fas fa-chevron-left",
           href: "#",
           title: "",
           text: ""
@@ -139,13 +139,13 @@
       });
       if (this.options.play.active) {
         playButton = $("<a>", {
-          "class": "slidesjs-play slidesjs-navigation icon-controller-play",
+          "class": "slidesjs-play slidesjs-navigation fas fa-play",
           href: "#",
           title: "",
           text: ""
         }).appendTo($element);
         stopButton = $("<a>", {
-          "class": "slidesjs-stop slidesjs-navigation icon-controller-paus",
+          "class": "slidesjs-stop slidesjs-navigation fas fa-pause",
           href: "#",
           title: "",
           text: ""

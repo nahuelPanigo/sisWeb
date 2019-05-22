@@ -16,7 +16,6 @@ class CreateSubastasTable extends Migration
         Schema::create('subastas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('semana_id');
             $table->double('minPrice');
             $table->double('finalPrice');
@@ -24,10 +23,13 @@ class CreateSubastasTable extends Migration
         });
 
         schema::table('subastas',function($table){
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
               $table->foreign('user_idWinner')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('semana_id')->references('id')->on('semanas')->onDelete('cascade');            
         });
+        schema::table('subastas',function($table){
+            $table->boolean('finish');
+          });  
+
     }
 
     /**

@@ -112,7 +112,11 @@ display:table;
     transition: all .3s ease;
 }
  
-.menu > ul > li > a span .icon {
+.menu > ul > li > a span .fas {
+    display:block;
+    line-height:60px;
+}
+.menu > ul > li > a span .far {
     display:block;
     line-height:60px;
 }

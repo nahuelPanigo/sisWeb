@@ -8,7 +8,7 @@ class Semana extends Model
 {
     protected $table='semanas';
 
-    protected fillable=['date','propiedad_id'];
+    protected $fillable=['date','propiedad_id'];
 
     public function propiedad()
     {
@@ -21,7 +21,7 @@ class Semana extends Model
      }
      public function subasta()
      {
-     	return $this->belongsTo('app\Subasta');
+     	return $this->belongsTo('sisWeb\Subasta');
      }
      public function reserva()
      {

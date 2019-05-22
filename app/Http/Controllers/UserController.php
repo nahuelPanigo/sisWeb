@@ -45,7 +45,7 @@ class UserController extends Controller
         ]);
         if($validatedData){
         $user = new User($request->all());
-        $user->password = bcrypt($request->password);  
+        $user->password = $request->password;  
         $user->creditCard = 'visa';
         $user->userType='comun';      }
         $user->save();

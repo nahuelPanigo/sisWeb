@@ -13,29 +13,31 @@
 
 
 
-
-Route::get('/',function(){
-	return view('indexIngenieria');
-});
 */
-Route::get('/',function(){
+
+Route::get('/inicio',function(){
 	return view('indexIngenieria');
 });
 
-Route::get('/iniciarSesion',function(){
-	return view('IniciarSesion');
+Route::get('/',function(){
+	return view('index');
 });
+
 
 Route::group(['prefix'=>'categorias'],function() {
 	Route::resource('subastas','SubastaController');
 	Route::resource('hotsales','HotsaleController');
 });
+ 
+ Route::get('/subastas/participar', 'PujaController@create');
+
 
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
 	Route::resource('propiedades','PropiedadController');
-	Route::resource('session','sessionController');
+	Route::resource('sesion','sesionController');
+
 });
 
 

@@ -15,10 +15,10 @@ class CreatePropiedadesTable extends Migration
     {
         Schema::create('propiedades', function (Blueprint $table) {
                  $table->bigIncrements('id');
-            $table->string('name',20);
-            $table->string('description',100)->nullable();
+            $table->string('name')->unique();
+            $table->string('description')->nullable();
             $table->timestamps();
-            $table->string('locate',50);
+            $table->string('locate');
                     });
     }
 
