@@ -19,7 +19,7 @@
 				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
 				<nav class="submenu">
 					<ul class="submenu-items">
-                    <li class="submenu-item"><a href="modificarPropiedad.html" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
+                    <li class="submenu-item"><a href="propiedades/$propiedad/edit" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
 					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>

@@ -83,9 +83,9 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-    public function edit(propiedad $propiedad)
+    public function edit(Propiedad $propiedad)
     {
-        /* return view('modificarPropiedad');*/
+        return view('modificarPropiedad') ->with('propiedad' ,$propiedad);
     }
 
     /**
