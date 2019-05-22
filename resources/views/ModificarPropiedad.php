@@ -17,10 +17,12 @@
 				<div id="error_descripcion"> </div>
 				<input type="text" id="localidad" name="localidad" placeholder="Localidad"><br> <br>
 				<div id="error_localidad"> </div>
-				Foto: <input type="file" id="foto" name="foto"><br> <br>
-				<div id="error_foto"> </div>
 				</div>
 				<input type="submit" value="Modificar propiedad" class="boton_registrar">
+			</form>
+			<form>
+			Foto: <input type="file" id="foto" name="foto"><br> <br>
+				<div id="error_foto"> </div>
 			</form>
 		</div>
 		<footer> <p>Gran grupo de programadores</p> </footer>

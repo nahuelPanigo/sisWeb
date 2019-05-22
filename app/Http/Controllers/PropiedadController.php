@@ -18,7 +18,8 @@ class PropiedadController extends Controller
 
     public function index()
     {
-        return view('listarPropiedades');
+		$propiedades = Propiedad::all();
+        return view('listarPropiedades')->with('propiedades',$propiedades);
     }
 
     /**
@@ -68,9 +69,12 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-    public function show(propiedad $propiedad)
+    public function show(Propiedad $propiedad)
     {
-        //
+		dd($propiedad);
+		$imagen = Image:: where('propiedad_id','=',$propiedad->id );
+		return $imagen;
+
     }
 
     /**
@@ -81,7 +85,7 @@ class PropiedadController extends Controller
      */
     public function edit(propiedad $propiedad)
     {
-         return view('modificarPropiedad');
+        /* return view('modificarPropiedad');*/
     }
 
     /**
@@ -106,4 +110,5 @@ class PropiedadController extends Controller
     {
         //
     }
+	
 }

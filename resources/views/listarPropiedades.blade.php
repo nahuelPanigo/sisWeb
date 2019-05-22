@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title> Propiedades </title>
+	@include ('estilos')
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/css/nuevo.css">
+	<link rel="stylesheet" type="text/css" href="/css/zoom.css">
+</head>
+<body>
+	@Include('Header') 
+	<script src="/js/menu.js"></script>
+	<h2 style="text-align:center;">Propiedades</h2>
+	<div class="row">
+		@foreach ($propiedades as $propiedad)
+		<div class="column">
+			<div class="card">
+			<div class="nav-item dropdown">
+				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
+				<nav class="submenu">
+					<ul class="submenu-items">
+                    <li class="submenu-item"><a href="modificarPropiedad.html" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
+					<li class="submenu-item"><a href="#" class="submenu-link"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
+					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
+					<li class="submenu-item"><a href="#" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
+					<li class="submenu-item"><a href="#" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>
+					</ul>
+				</nav>
+				<script src="/js/menu.js"></script>
+			</div>
+			<h3>{{$propiedad->name}}</h3>
+			<div class="datos">
+				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
+				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
+			</div>
+			<img src="{{str_replace('public/', '/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+		</div>
+	</div>
+	@endforeach
+	</div>
+	@include('galeriaDeFotos')
+</body>
+</html>

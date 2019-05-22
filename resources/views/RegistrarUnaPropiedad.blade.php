@@ -25,16 +25,12 @@
 		<div class="caja">
 		<h1 class="registrar_propiedad_h1"> Registrar Propiedad </h1> <br> <br>
 			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action="/admin/propiedades" enctype="multipart/form-data">
-				@csrf
+			@csrf
 			<div class="registrar_propiedad">
 				<input type="text" id="nombre" name="name" placeholder="Nombre de propiedad"> <br> <br>
-				<div id="error_nombre"> </div>
 				<input type="text" id="descripcion" name="description"placeholder="Descripción"><br> <br>
-				<div id="error_descripcion"> </div>
 				<input type="text" id="localidad" name="locate" placeholder="Localidad"><br> <br>
-				<div id="error_localidad"> </div>
-				Foto: <input type="file" id="foto" name="images[]"multiple>
-				<div id="error_foto"> </div>
+				Foto: <input type="file" id="foto" name="archiveName">
 				</div>
 				<input type="submit" value="Registrar propiedad" class="boton_registrar">
 			</form>	
