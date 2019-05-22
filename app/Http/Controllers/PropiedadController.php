@@ -70,11 +70,7 @@ class PropiedadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Propiedad $propiedad)
-    {
-		dd($propiedad);
-		$imagen = Image:: where('propiedad_id','=',$propiedad->id );
-		return $imagen;
-
+	{
     }
 
     /**
