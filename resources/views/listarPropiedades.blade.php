@@ -32,7 +32,7 @@
 				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
 				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
 			</div>
-			<img src="{{str_replace('public/', '/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 		</div>
 	</div>
 	@endforeach
