@@ -1,3 +1,4 @@
+<?php session_start()?>
 <div class="barra">
    <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
    <div class="busqueda"><span  class="fas fa-search"> <input type="text" placeholder=" Que desea buscar" ></span></div>
@@ -14,7 +15,7 @@
 					<li class="submenu-item"><a  href="/admin/propiedades/create"  class="submenu-link"><span <i class="far fa-plus-square"></i></span> Agregar Propiedad</a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span <i class="far fa-plus-square"></i></span> Crear Subasta </a></li>
 					<li class="submenu-item"><hr class="submenu-seperator" /></li>
-                    <li class="submenu-item"><a href="#" class="submenu-link"><span <i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a></li>
+                    <li class="submenu-item"><a href="/" class="submenu-link"><span <i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a></li>
                 </ul>
             </nav>
         </li>  
@@ -24,7 +25,7 @@
    <header>
 		<nav class="menu">
 			<ul>
-				<li><a href="/" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>
+				<li><a href="/inicio" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>
 				<li><a href="#" class="servicios"><span class="segundo"><i class="fas fa-suitcase"></i></span> Servicios</a>
 					<ul>
 						<li><a href="/admin/propiedades"><span class="xx"><i class="fas fa-list-ul"></i></span> Propiedades</a></li>

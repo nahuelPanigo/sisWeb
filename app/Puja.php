@@ -20,5 +20,12 @@ class Puja extends Model
     	return $this->belongsTo('App\Subasta');
     }
 
+    public function crearPuja(Subasta $subasta)
+    {
+
+        $puja= new Puja;
+        
+
+    } 
 
 }

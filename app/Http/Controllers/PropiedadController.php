@@ -11,11 +11,6 @@ class PropiedadController extends Controller
     
 
 
-
-    public function registrarUnaPropiedad() {
-  }
-
-
     public function index()
     {
         return view('listarPropiedades');
@@ -58,7 +53,7 @@ class PropiedadController extends Controller
         $image->save();   
         $collection = $propiedad->images()->getEager();
         $collection->add($image);
-        return view('indexIngenieria');
+        return view('listarPropiedades');
         }
     }
 
@@ -79,9 +74,23 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-    public function edit(propiedad $propiedad)
-    {
-         return view('modificarPropiedad');
+    public function edit(Request $request)
+    {   
+        $validatedData = $request -> validate([
+            'description'=>'required|max:150',
+            'name'=>'required|min:2|unique:propiedades',
+            'locate'=>'required|min:5',
+            
+        ]);
+      if($validatedData>0){
+         
+        $propiedad =new Propiedad;
+        $propiedad->name =$request->Input('name');
+        $propiedad->description= $request->Input('description');
+        $propiedad->locate = $request->Input('locate'); 
+        $propiedad->save(); 
+        return view('listarPropiedades');
+        }
     }
 
     /**

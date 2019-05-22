@@ -22,9 +22,17 @@ class PujaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+         $validatedData = $request -> validate([
+            'monto'=>'required|',
+        ]);
+        if($validatedData>0){
+        $subasta= new Subasta; 
+        $subasta->finalPrice= $request->Input('monto');
+        $puja =new Puja;
+        $puja->user_id= 
+        $puja->subasta_id= $subasta->id;
     }
 
     /**
