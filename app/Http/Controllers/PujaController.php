@@ -22,17 +22,9 @@ class PujaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-         $validatedData = $request -> validate([
-            'monto'=>'required|',
-        ]);
-        if($validatedData>0){
-        $subasta= new Subasta; 
-        $subasta->finalPrice= $request->Input('monto');
-        $puja =new Puja;
-        $puja->user_id= 
-        $puja->subasta_id= $subasta->id;
+        
     }
 
     /**
@@ -43,9 +35,16 @@ class PujaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request -> validate([
+            'monto'=>'required|',
+        ]);
+        if($validatedData>0){
+        $subasta= new Subasta; 
+        $subasta->finalPrice= $request->Input('monto');
+        $puja =new Puja; 
+        $puja->subasta_id= $subasta->id;
     }
-
+    }
     /**
      * Display the specified resource.
      *

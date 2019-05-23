@@ -22,7 +22,8 @@ Route::get('/inicio',function(){
 Route::get('/',function(){
 	return view('index');
 });
-
+ 
+Route::get('/propiedades/search', 'PropiedadController@search');
 
 Route::group(['prefix'=>'categorias'],function() {
 	Route::resource('subastas','SubastaController');
@@ -31,7 +32,10 @@ Route::group(['prefix'=>'categorias'],function() {
  
  Route::get('/subastas/participar', 'PujaController@create');
 
+Route::put('/propiedades/{propiedad}',      ['as' => 'propiedad.update2',     'uses' => 'PropiedadController@update2'   ]);
 
+route::resource('propiedades','PropiedadController');
+Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete'   ]);
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
