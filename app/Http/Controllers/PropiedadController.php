@@ -9,11 +9,13 @@ use sisWeb\Image;
 class PropiedadController extends Controller
 {
     
+   public function search(Request $request){
 
+    $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
+    return view('listarPropiedades')->with('propiedades',$propiedades);
 
+   } 
 
-    public function registrarUnaPropiedad() {
-  }
 
 
     public function index()
@@ -59,7 +61,7 @@ class PropiedadController extends Controller
         $image->save();   
         $collection = $propiedad->images()->getEager();
         $collection->add($image);
-        return view('indexIngenieria');
+        return view('listarPropiedades')->with('propiedades',Propiedad::all());
         }
     }
 
@@ -73,27 +75,20 @@ class PropiedadController extends Controller
 	{
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \sisWeb\propiedad  $propiedad
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Propiedad $propiedad)
-    {
-        return view('modificarPropiedad') ->with('propiedad' ,$propiedad);
-    }
+    public function edit($id)
+    {   
+        $propiedad= new Propiedad;
+        $propiedad = Propiedad::where('id','=',$id)->first();
+        return view('ModificarPropiedad')->with('propiedad',$propiedad);
+     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \sisWeb\propiedad  $propiedad
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, propiedad $propiedad)
-    {
-        //
+  public function update2(Request $request,$id)
+    { 
+        dd($id);
+    }
+    public function update(Request $request,Propiedad $propiedad)
+    { 
+        dd($request);
     }
 
     /**
@@ -102,6 +97,14 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
+
+    public function delete($id)
+    {
+        $propiedad= Propiedad::find($id);
+        $propiedad->delete();
+        return view('listarPropiedades')->with('propiedades',Propiedad::all());
+    }
+
     public function destroy(propiedad $propiedad)
     {
         //

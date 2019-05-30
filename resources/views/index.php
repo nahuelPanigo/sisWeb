@@ -1,13 +1,12 @@
 <html>
 <head>
-<title> HSH Inicio </title>
-<?php Include("estilos.php") ?>
-
+<title> HSH  </title>
+ <?php Include("estilos.php") ?>
    <link rel="stylesheet" type="text/css" href="/css/imags.css">
-
-   </head>
-<?php Include("Header.php"); ?>
-  <body>  
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+  <?php Include("headerIndex.php") ?>
+   <body>
 		<div class="main">
 		<div class="slides">
 			<img src="http://lorempixel.com/output/city-q-c-460-300-5.jpg" alt="">
@@ -41,6 +40,11 @@
     }
   });
 });
-	</script>
+  </script>
+
+
+
+</body>
+	
 	</body>
 	</html>

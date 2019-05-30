@@ -24,7 +24,7 @@ class PujaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,9 +35,16 @@ class PujaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request -> validate([
+            'monto'=>'required|',
+        ]);
+        if($validatedData>0){
+        $subasta= new Subasta; 
+        $subasta->finalPrice= $request->Input('monto');
+        $puja =new Puja; 
+        $puja->subasta_id= $subasta->id;
     }
-
+    }
     /**
      * Display the specified resource.
      *

@@ -13,29 +13,41 @@
 
 
 
-
-Route::get('/',function(){
-	return view('indexIngenieria');
-});
 */
-Route::get('/',function(){
+
+Route::get('/inicio',function(){
 	return view('indexIngenieria');
 });
 
-Route::get('/iniciarSesion',function(){
-	return view('IniciarSesion');
+Route::get('/',function(){
+	return view('index');
 });
+Route::get('logout','Auth\LoginController@logout');
+
+ 
+Route::get('/propiedades/search', 'PropiedadController@search');
 
 Route::group(['prefix'=>'categorias'],function() {
 	Route::resource('subastas','SubastaController');
 	Route::resource('hotsales','HotsaleController');
 });
+ 
+ Route::get('/subastas/participar', 'PujaController@create');
+
+Route::put('/propiedades/{propiedad}',      ['as' => 'propiedad.update2',     'uses' => 'PropiedadController@update2'   ]);
+
+route::resource('propiedades','PropiedadController');
+Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete'   ]);
+
+route::resource('subastas','SubastaController');
+Route::get('/subastas/{id}/crear',      ['uses' => 'SubastaController@crear',     'as' => 'categorias.subastas.crear']);
 
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
 	Route::resource('propiedades','PropiedadController');
-	Route::resource('session','sessionController');
+	Route::resource('sesion','sesionController');
+
 });
 
 

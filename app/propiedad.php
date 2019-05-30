@@ -1,7 +1,7 @@
 <?php
 
 namespace sisWeb;
-
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class Propiedad extends Model
@@ -20,4 +20,5 @@ class Propiedad extends Model
     {
     	return $this->hasMany('sisWeb\Image');
     }
+    
 }

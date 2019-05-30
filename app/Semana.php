@@ -21,7 +21,7 @@ class Semana extends Model
      }
      public function subasta()
      {
-     	return $this->belongsTo('app\Subasta');
+     	return $this->belongsTo('sisWeb\Subasta');
      }
      public function reserva()
      {
