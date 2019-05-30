@@ -22,6 +22,8 @@ Route::get('/inicio',function(){
 Route::get('/',function(){
 	return view('index');
 });
+Route::get('logout','Auth\LoginController@logout');
+
  
 Route::get('/propiedades/search', 'PropiedadController@search');
 
@@ -36,6 +38,10 @@ Route::put('/propiedades/{propiedad}',      ['as' => 'propiedad.update2',     'u
 
 route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete'   ]);
+
+route::resource('subastas','SubastaController');
+Route::get('/subastas/{id}/crear',      ['uses' => 'SubastaController@crear',     'as' => 'categorias.subastas.crear']);
+
 
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');

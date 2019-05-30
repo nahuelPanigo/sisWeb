@@ -6,6 +6,7 @@ use sisWeb\Subasta;
 use Illuminate\Http\Request;
 use sisWeb\Propiedad;
 use sisWeb\Semana;
+use DateTime;
 
 class SubastaController extends Controller
 {
@@ -26,9 +27,15 @@ class SubastaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function crear($id)
+    {
+        return view('crearSubasta')->with($id);
+    }
+
     public function create()
     {
-
+        return view('crearSubasta');
     }
 
     /**
@@ -39,7 +46,24 @@ class SubastaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $now = new DateTime();
+        $newformat= DateTime::createFromFormat('Y-m-d',$request->date); 
+        dd($newformat);
+        $interval = date_diff($now, $time_input);
+        if($interval<180){  
+        $semana= new Semana;
+        $semana->date=$request->Input('date');    
+        $semana->propiedad_id=$request->Input('propiedad_id');  
+        $semana->save();
+        $semana=Semana::where('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
+        $subasta =new Subasta;
+        $subasta->semana_id =$semana->id;
+        $subasta->minPrice=$request->Input('minPrice');
+        $subasta->user_idWinner="";
+        $subasta->finish=0;
+        $subasta->finalPrice=0;
+        return view('Subastas')->with('subastas',Subasta::all());
+        }
     }
 
     /**

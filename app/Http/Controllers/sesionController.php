@@ -35,18 +35,20 @@ class sesionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $user = new User ($request->all());
         $user2 = new User;
-        $user2 = User::where('mail','=', $user->mail)->first();
-        $password= $user2->password;
-        if(($user2->password == $user->password) and ( $user2->mail == $user->mail)){
-            $_SESSION['user'] = $user;
+        $user2 = User::where('mail','=', $request->mail)->first();
+        if(is_null($user2)){
+             $_SESSION['errorSesion'] = "Email y contraseña invalidos";
+        return view('IniciarSesion');
+      }else{
+        if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
+            $_SESSION['user'] = $user2;
             return view('indexIngenieria');
         }
         $_SESSION['errorSesion'] = "Email y contraseña invalidos";
         return view('IniciarSesion');
+      }
     }
-
     /**
      * Display the specified resource.
      *
