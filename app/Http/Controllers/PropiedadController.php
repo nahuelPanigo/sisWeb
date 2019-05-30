@@ -72,9 +72,7 @@ class PropiedadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Propiedad $propiedad)
-    {
-		
-
+	{
     }
 
     public function edit($id)

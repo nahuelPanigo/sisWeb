@@ -29,21 +29,7 @@
   </ul>
 </div>
 @endforeach
-<div class="columns">
-  <ul class="price">
-    <li class="header" style="background-color:#4CAF50">Pro</li>
-	<div class="opcAdmin">
-	<a href="#" title="Eliminar Subasta"><span class="icon-trash"> </span></a>
-	
-	</div>
-    <li class="grey">$ 24.99 </li>
-      <li> <span class="icon-calendar"> semana </span> </li>
-    <li> <span class="icon-home"> propiedad </span></li>
-    <li><span class="icon-location-pin"> ubicacion</span></li>
-    <li><span class="icon-stopwatch"> termina</span></li>
-    <li class="grey"><a href="#" class="button">¡ PUJAR !</a></li>
-  </ul>
-</div>
+
 
 </body>
 </html>

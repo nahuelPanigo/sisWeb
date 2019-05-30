@@ -16,6 +16,16 @@
 		@Include ('headerIndex')
 	</head>
 	<body>
+		<div class="alert alert-danger">
+		<ul>	
+				<li><strong>Danger!</strong> 
+					<?php if(isset($_SESSION['errorSesion'])){
+						echo $_SESSION['errorSesion'];
+						unset($_SESSION['errorSesion']);
+					}?>
+				</li>
+		</ul>
+		</div>
 	@if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	

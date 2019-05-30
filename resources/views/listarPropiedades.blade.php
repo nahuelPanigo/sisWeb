@@ -4,6 +4,7 @@
 	@include ('estilos')
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
+	<link rel="stylesheet" type="text/css" href="/css/eliminar.css">
 	<link rel="stylesheet" type="text/css" href="/css/nuevo.css">
 	<link rel="stylesheet" type="text/css" href="/css/zoom.css">
 	<meta charset="utf-8">
@@ -16,8 +17,9 @@
 		@foreach ($propiedades as $propiedad)
 		<div class="column">
 			<div class="card">
+				 <button onclick="document.getElementById('id01').style.display='block'"> <span class="far fa-trash-alt"></span> </button>
 			<div class="nav-item dropdown">
-				 <button onclick="document.getElementById('id01').style.display='block'" >¡ eliminar !</button>
+				
 				 @include('eliminar')
 				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
 				<nav class="submenu">
@@ -25,7 +27,7 @@
                     <li class="submenu-item"><a href="{{ route('propiedades.edit',$propiedad->id)}}" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
 					<li class="submenu-item"><a href="{{route('admin.propiedades.delete',$propiedad->id)}}" class="submenu-link"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
 					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
+					<li class="submenu-item"><a href="{{route('categorias.subastas.crear',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>
 					</ul>
 				</nav>

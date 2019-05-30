@@ -23,7 +23,7 @@
 					<li class="submenu-item"><a  href="/admin/propiedades/create"  class="submenu-link"><span> <i class="far fa-plus-square"></i></span> Agregar Propiedad</a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span ><i class="far fa-plus-square"></i></span> Crear Subasta </a></li>
 					<li class="submenu-item"><hr class="submenu-seperator" /></li>
-                    <li class="submenu-item"><a href="/" class="submenu-link"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a></li>
+                    <li class="submenu-item"><a href="/logout" class="submenu-link"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a></li>
                 </ul>
             </nav>
         </li>  

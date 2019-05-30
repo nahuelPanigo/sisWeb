@@ -48,7 +48,7 @@
 					<div id="error_contrasenia2"> </div>
 					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni"><br> <br>
 					<div id="error_dni"></div>
-					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-12-31" ><br><br>
+					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" ><br><br>
 					<div id="error_fecha"> </div>
 					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta"><br> <br>
 					<div id="error_numero_tarjeta"> </div>
