@@ -48,9 +48,8 @@ class SubastaController extends Controller
     {
         $now = new DateTime();
         $newformat= DateTime::createFromFormat('Y-m-d',$request->date); 
-        dd($newformat);
-        $interval = date_diff($now, $time_input);
-        if($interval<180){  
+        $interval = date_diff($now, $newformat)->days;
+        if(($interval>180)&&($interval<360)){  
         $semana= new Semana;
         $semana->date=$request->Input('date');    
         $semana->propiedad_id=$request->Input('propiedad_id');  
@@ -64,6 +63,10 @@ class SubastaController extends Controller
         $subasta->finalPrice=0;
         return view('Subastas')->with('subastas',Subasta::all());
         }
+        if($interval>360){
+        return back()->withErrors (['el plazo de tiempo maximo para subastar es a lo sumo 1 año anterior de la semana']);
+        }
+        return back()->withErrors(['el plazo de tiempo minimo para subastar es de al menos 6 meses antes de la semana']);
     }
 
     /**
