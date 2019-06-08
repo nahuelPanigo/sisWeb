@@ -44,23 +44,23 @@ class PropiedadController extends Controller
     {   
         $validatedData = $request -> validate([
             'description'=>'required|max:150',
-            'name'=>'required|min:2|unique:propiedades',
+            'name'=>'required|min:2|max:20|unique:propiedades',
             'locate'=>'required|min:5',
             'archiveName'=>'|image|required',
         ]);
         if($validatedData>0){
-        $image= new Image; 
-        $image->archiveName= $request ->file('archiveName')->store('public');   
-        $propiedad =new Propiedad;
-        $propiedad->name =$request->Input('name');
-        $propiedad->description= $request->Input('description');
-        $propiedad->locate = $request->Input('locate'); 
-        $propiedad->save(); 
-        $propiedad = Propiedad::where('name','=',$propiedad->name)->first();
-        $image->propiedad_id = $propiedad->id;
-        $image->save();   
-        $collection = $propiedad->images()->getEager();
-        $collection->add($image);
+			$image= new Image; 
+			$image->archiveName= $request ->file('archiveName')->store('public');   
+			$propiedad =new Propiedad;
+			$propiedad->name =$request->Input('name');
+			$propiedad->description= $request->Input('description');
+			$propiedad->locate = $request->Input('locate'); 
+			$propiedad->save(); 
+			$propiedad = Propiedad::where('name','=',$propiedad->name)->first();
+			$image->propiedad_id = $propiedad->id;
+			$image->save();   
+			$collection = $propiedad->images()->getEager();
+			$collection->add($image);
         return view('listarPropiedades')->with('propiedades',Propiedad::all());
         }
     }
@@ -81,14 +81,21 @@ class PropiedadController extends Controller
         $propiedad = Propiedad::where('id','=',$id)->first();
         return view('ModificarPropiedad')->with('propiedad',$propiedad);
      }
-
-  public function update2(Request $request,$id)
-    { 
-        dd($id);
-    }
-    public function update(Request $request,Propiedad $propiedad)
-    { 
-        dd($request);
+    public function update(Request $request, $id)
+    {  
+        $validatedData= $request -> validate([
+            'description'=>'required|max:150',
+            'name'=>'required|min:2|max:20|unique:propiedades',
+            'locate'=>'required|min:5',
+        ]);
+        if($validatedData>0){ 
+			$propiedad = Propiedad::where('id','=',$id)->first();
+			$propiedad->name =$request->Input('name');
+			$propiedad->description= $request->Input('description');
+			$propiedad->locate = $request->Input('locate'); 
+			$propiedad->save(); 
+			return view('listarPropiedades')->with('propiedades',Propiedad::all());
+        }
     }
 
     /**
