@@ -19,7 +19,6 @@
 			<div class="card">
 				 <button onclick="document.getElementById('id01').style.display='block'"> <span class="far fa-trash-alt"></span> </button>
 			<div class="nav-item dropdown">
-				
 				 @include('eliminar')
 				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
 				<nav class="submenu">
