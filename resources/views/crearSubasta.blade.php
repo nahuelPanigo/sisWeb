@@ -12,17 +12,18 @@
       <div class="alert alert-danger">
     <ul>  
       @foreach ($errors->all() as $error)
-        <li><strong>Danger!</strong> {{ $error }}</li>
+        <li><strong>Atencion!</strong> {{ $error }}</li>
       @endforeach
     </ul>
     </div>
     @endif
+    {{$propiedad_id}}
     <div class="caja">
     <h1 class="registrar_propiedad_h1"> Crear subasta </h1> <br> <br>
       <form  onsubmit="" method="post" action='/categorias/subastas' enctype="multipart/form-data">
           {{ csrf_field() }}
       <div class="registrar_propiedad">
-        <input id="prodId" name="propiedad_id" type="hidden" value="$id">
+        <input id="prodId" name="propiedad_id" type="hidden" value='{{$propiedad_id}}'>
         <input type="text" id="precio" name="minPrice" placeholder="Precio inicial"><br> <br>
         Fecha: <br>  <input type="date" name="date" step="1" min="2013-01-01" max="3000-12-31">
         </div>

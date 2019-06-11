@@ -42,15 +42,28 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
+            'userName'=>'required',
+            'dni'=>'required',
+            'creditCardNumber'=>'required',
+            'creditCardCode'=>'required',
+            'birthDay'=>'required',
         ]);
-        if($validatedData){
+
+        /*if($validatedData->fails()){
+            return back()->withInput()->with([
+                'field_errors' => $validatedData->errors()
+            ]);   
+        }
+        */
+        if(!is_null($validatedData)){
         $user = new User($request->all());
         $user->password = $request->password;  
         $user->creditCard = 'visa';
-        $user->userType='comun';      }
+        $user->userType='comun';      
         $user->save();
         return view('indexIngenieria');
         }
+    }
     /**
      * Display the specified resource.
      *

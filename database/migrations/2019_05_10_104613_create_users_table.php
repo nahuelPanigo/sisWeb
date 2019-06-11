@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('creditCard');
             $table->integer('creditCardNumber');
+            $table->integer('dni');
             $table->integer('creditCardCode');
             $table->date('birthDay');
             $table->date('creditCardDate');
