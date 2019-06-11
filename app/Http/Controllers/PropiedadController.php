@@ -85,11 +85,16 @@ class PropiedadController extends Controller
     {  
         $validatedData= $request -> validate([
             'description'=>'required|max:150',
-            'name'=>'required|min:2|max:20|unique:propiedades',
+            'name'=>'required|min:2|max:20',
             'locate'=>'required|min:5',
         ]);
         if($validatedData>0){ 
 			$propiedad = Propiedad::where('id','=',$id)->first();
+			if($propiedad->name != $request->name){
+				$validarName = $request -> validate([ 'name' => 'unique:propiedades']);
+				if($validarName){
+				}
+			}
 			$propiedad->name =$request->Input('name');
 			$propiedad->description= $request->Input('description');
 			$propiedad->locate = $request->Input('locate'); 

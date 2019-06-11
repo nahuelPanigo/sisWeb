@@ -6,12 +6,6 @@ use sisWeb\User;
 use Illuminate\Http\Request;
 class UserController extends Controller
 {
-   
-
-
-   
-
-
     public function index()
     {
         //
@@ -44,12 +38,12 @@ class UserController extends Controller
             'password'=>'required|min:6',
         ]);
         if($validatedData){
-        $user = new User($request->all());
-        $user->password = $request->password;  
-        $user->creditCard = 'visa';
-        $user->userType='comun';      }
+			$user = new User($request->all());  
+			$user->creditCard = 'visa';
+			$user->userType='comun';
+		}
         $user->save();
-        return view('indexIngenieria');
+        return view('IniciarSesion')-> with ('user', $user);
         }
     /**
      * Display the specified resource.
@@ -68,9 +62,11 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user= new User;
+        $user = User::where('id','=',$id)->first();
+        return view('ModificarUsuario')->with('user',$user);
     }
 
     /**
@@ -80,9 +76,32 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+     $validatedData = $request -> validate([
+            'mail'=>'required',
+            'userName'=>'required|min:6|max:20',
+            'secondName'=>'required|min:2|max:20',
+            'name'=>'required|min:2',
+            'password'=>'required|min:6',
+        ]);
+        if($validatedData){
+			$user = User::where('id','=',$id)->first();
+			if($user->mail != $request->mail){
+				$validarMail = $request -> validate([ 'mail' => 'unique:users']);
+				if($validarMail){
+				}
+			}
+		    $user->mail = $request->mail; 
+			$user->userName = $request->userName; 
+			$user->secondName = $request->secondName; 
+			$user->name = $request->name; 	
+			$user->password = $request->password;  
+			$user->creditCard = 'visa';
+			$user->userType='comun';      
+		}
+        $user->save();
+        return view('indexIngenieria')-> with ('user', $user);   
     }
 
     /**

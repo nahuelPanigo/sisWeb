@@ -19,12 +19,12 @@
     @endif
     <div class="caja">
     <h1 class="registrar_propiedad_h1"> Crear subasta </h1> <br> <br>
-      <form  onsubmit="" method="post" action='/categorias/subastas' enctype="multipart/form-data">
+      <form  onsubmit="" method="POST" action="{{route('subastas.store')}}" enctype="multipart/form-data">
           {{ csrf_field() }}
-      <div class="registrar_propiedad">
-        <input id="prodId" name="propiedad_id" type="hidden" value="$id">
+       <div class="registrar_propiedad">
+	   <input type="hidden" name="propiedad_id" value="{{$id}}">
         <input type="text" id="precio" name="minPrice" placeholder="Precio inicial"><br> <br>
-        Fecha: <br>  <input type="date" name="date" step="1" min="2013-01-01" max="3000-12-31">
+        Fecha: <br>  <input type="date" name="date" step="1" >
         </div>
         <br><br>
         <input type="submit" value="Crear subasta" class="boton_registrar">
