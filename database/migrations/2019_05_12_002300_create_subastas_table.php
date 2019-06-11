@@ -19,7 +19,7 @@ class CreateSubastasTable extends Migration
             $table->unsignedBigInteger('semana_id');
             $table->double('minPrice');
             $table->double('finalPrice');
-            $table->unsignedBigInteger('user_idWinner');
+            $table->unsignedBigInteger('user_idWinner')->nullable();
         });
 
         schema::table('subastas',function($table){
