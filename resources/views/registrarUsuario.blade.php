@@ -22,7 +22,7 @@
 
 		<ul>	
 			@foreach ($errors->all() as $error)
-				<li><strong>Danger!</strong> {{ $error }}</li>
+				<li><strong>Atencion!</strong> {{ $error }}</li>
 			@endforeach
 		</ul>
 		</div>
@@ -34,27 +34,27 @@
 			@csrf
 			<fieldset>
 				<div class="input">
-					<input type="text" id="nombre" name="name" laceholder="Nombre"><br> <br>
+					<input type="text" id="nombre" name="name" placeholder="Nombre"value={{old('name')}}><br> <br>
 					<div id="error_nombre"> </div>
-					<input type="text" id="apellido" name="secondName" placeholder="Apellido"><br> <br>
+					<input type="text" id="apellido" name="secondName" placeholder="Apellido"value={{old('secondName')}}><br> <br>
 					<div id="error_apellido"> </div>
-					<input type="text" id="nombre_usuario" name="userName" placeholder="Nombre de usuario"><br> <br>
+					<input type="text" id="nombre_usuario" name="userName" placeholder="Nombre de usuario"value={{old('username')}}><br> <br>
 					<div id="error_nombre_usuario"> </div>
-					<input type="email" id="email" name="mail" placeholder="Email"><br> <br>
+					<input type="email" id="email" name="mail" placeholder="Email"value={{old('mail')}}><br> <br>
 					<div id="error_email"> </div>
-					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"><br> <br>
+					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"value={{old('password')}}><br> <br>
 					<div id="error_contrasenia"> </div>
 					<input type="password" id="contrasenia2"placeholder="Repita la contraseña"><br> <br>
 					<div id="error_contrasenia2"> </div>
 					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni"><br> <br>
 					<div id="error_dni"></div>
-					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" ><br><br>
+					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" value={{old('birthday')}} ><br><br>
 					<div id="error_fecha"> </div>
-					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta"><br> <br>
+					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta"value={{old('creditcardNumber')}}><br> <br>
 					<div id="error_numero_tarjeta"> </div>
-					<input type="number" id="codigo" name="creditCardCode"placeholder="Ingrese codigo de la tarjeta"><br> <br>
+					<input type="number" id="codigo" name="creditCardCode"placeholder="Ingrese codigo de la tarjeta"value={{old('creditCardCode')}}><br> <br>
 					<div id="error_codigo"> </div>
-					Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" min="2019-12-12"><br> <br>
+					Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" min="2019-12-12"value={{old('creditCardDate')}}><br> <br>
 				</div>
 				<input type="submit" value="registrarse" class="boton_registrarse">
 			</fieldset>

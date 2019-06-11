@@ -65,6 +65,7 @@ class SubastaController extends Controller
         }else{
 			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo']);
 		}
+
     }
 
     /**

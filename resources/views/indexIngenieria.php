@@ -6,8 +6,9 @@
    <link rel="stylesheet" type="text/css" href="/css/imags.css">
 
    </head>
-<?php Include("Header.php"); ?>
+
   <body>  
+    <?php Include("Header.blade.php"); ?>
 		<div class="main">
 		<div class="slides">
 			<img src="http://lorempixel.com/output/city-q-c-460-300-5.jpg" alt="">

@@ -3,6 +3,7 @@
 namespace sisWeb\Http\Controllers;
 use sisWeb\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class sesionController extends Controller
 {
@@ -38,15 +39,13 @@ class sesionController extends Controller
         $user2 = new User;
         $user2 = User::where('mail','=', $request->mail)->first();
         if(is_null($user2)){
-             $_SESSION['errorSesion'] = "Email y contraseña invalidos";
-        return view('IniciarSesion');
+        return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);           ;
       }else{
         if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
             $_SESSION['user'] = $user2;
             return view('indexIngenieria');
         }
-        $_SESSION['errorSesion'] = "Email y contraseña invalidos";
-        return view('IniciarSesion');
+        return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);
       }
     }
     /**

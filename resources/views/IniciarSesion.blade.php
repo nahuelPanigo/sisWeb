@@ -16,23 +16,15 @@
 		@Include ('headerIndex')
 	</head>
 	<body>
-		<div class="alert alert-danger">
-		<ul>	
-				<li><strong>Danger!</strong> 
-					<?php if(isset($_SESSION['errorSesion'])){
-						echo $_SESSION['errorSesion'];
-						unset($_SESSION['errorSesion']);
-					}?>
-				</li>
-		</ul>
-		</div>
 	@if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
-				<li><strong>Danger!</strong> {{ $_SESSION['errorSesion'] }}</li>
+			@foreach ($errors->all() as $error)
+			<li><strong>Atencion!</strong> {{ $error }}</li>
+			@endforeach
 		</ul>
 		</div>
-	@endif	
+		@endif
 	<h1 class="IS_h1"> Iniciar Sesion </h1>
 	<div class="IS_caja">
 		<img src="/css/imagenes/hsh.png">

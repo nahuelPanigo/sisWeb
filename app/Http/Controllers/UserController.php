@@ -36,15 +36,23 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
+            'userName'=>'required',
+            'dni'=>'required',
+            'creditCardNumber'=>'required',
+            'creditCardCode'=>'required',
+            'birthDay'=>'required',
         ]);
+
         if($validatedData){
 			$user = new User($request->all());  
 			$user->creditCard = 'visa';
 			$user->userType='comun';
 		}
+
         $user->save();
         return view('IniciarSesion')-> with ('user', $user);
         }
+    }
     /**
      * Display the specified resource.
      *
