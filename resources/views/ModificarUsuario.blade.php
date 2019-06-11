@@ -30,7 +30,7 @@
 					<input type="email" id="email" name="mail" placeholder="Email" value="{{$user->mail}}"><br> <br>	
 					<input type="password" id="contrasenia" name="password" placeholder="Contraseña" ><br> <br>
 					<input type="password" id="contrasenia2"placeholder="Repita la contraseña"><br> <br>
-					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni" value="{{$user->name}}"><br> <br>
+					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni" value="{{$user->dni}}"><br> <br>
 					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" value="{{$user->birthDay}}" ><br><br>
 					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta" value="{{$user->creditCardNumber}}"><br> <br>
 					<input type="number" id="codigo" name="creditCardCode"placeholder="Ingrese codigo de la tarjeta" value="{{$user->creditCardCode}}"><br> <br>
