@@ -43,6 +43,7 @@ class PujaController extends Controller
         $subasta->finalPrice= $request->Input('monto');
         $puja =new Puja; 
         $puja->subasta_id= $subasta->id;
+        
     }
     }
     /**
