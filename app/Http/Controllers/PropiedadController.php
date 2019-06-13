@@ -16,12 +16,16 @@ class PropiedadController extends Controller
 
    } 
 
-
-
     public function index()
     {
 		$propiedades = Propiedad::all();
         return view('listarPropiedades')->with('propiedades',$propiedades);
+    }
+    
+    public function indexAdmin()
+    {
+        $propiedades = Propiedad::all();
+        return view('adminListarPropiedades')->with('propiedades',$propiedades);
     }
 
     /**

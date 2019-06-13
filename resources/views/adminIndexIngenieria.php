@@ -8,7 +8,7 @@
    </head>
 
   <body>  
-    <?php Include("Header.blade.php"); ?>
+    <?php Include("adminHeader.blade.php"); ?>
 		<div class="main">
 		<div class="slides">
 	 <img src="/css/imagenes/propiedad3.jpg" alt="">

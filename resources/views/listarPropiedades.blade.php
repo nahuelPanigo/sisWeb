@@ -3,22 +3,13 @@
 	<title> Propiedades </title>
 	@include ('estilos')
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
-	<link rel="stylesheet" type="text/css" href="/css/eliminar.css">
 	<link rel="stylesheet" type="text/css" href="/css/nuevo.css">
 	<link rel="stylesheet" type="text/css" href="/css/zoom.css">
 	<meta charset="utf-8">
 </head>
 <body>
 	@Include('Header') 
-
-	<script src="/js/menu.js"></script>
-		<form action="{{ route('reservas.store')}}" method="post" >
-			fecha: <input type="date" name="date" >
-			<input type="hidden" name="propiedad_id" value="1">
-			<input type="submit" value="Reservar">
-		</form>
-	<h2 style="text-align:center;">Propiedades</h2>
+	<h2 style="text-align:center; font-size: 30px;">Propiedades</h2>
 	<div class="row">
 		@foreach ($propiedades as $propiedad)
 		<div class="column">
@@ -44,8 +35,11 @@
 				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
 				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
 			</div>
+
 			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+				<button class="reserva"  onclick="document.getElementById('id01').style.display='block'">Reservar</button>
 		</div>
+
 	</div>
 	@endforeach
 	</div>
