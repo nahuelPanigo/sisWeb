@@ -17,7 +17,6 @@
     </ul>
     </div>
     @endif
-    {{$propiedad_id}}
     <div class="caja">
     <h1 class="registrar_propiedad_h1"> Crear subasta </h1> <br> <br>
       <form  onsubmit="" method="POST" action="{{route('subastas.store')}}" enctype="multipart/form-data">
@@ -25,7 +24,6 @@
 
        <div class="registrar_propiedad">
 	   <input type="hidden" name="propiedad_id" value="{{$id}}">
-
         <input type="text" id="precio" name="minPrice" placeholder="Precio inicial"><br> <br>
         Fecha: <br>  <input type="date" name="date" step="1" >
         </div>
