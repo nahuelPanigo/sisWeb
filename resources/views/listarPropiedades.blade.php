@@ -11,27 +11,14 @@
 </head>
 <body>
 	@Include('Header') 
-	<script src="/js/menu.js"></script>
+	
 	<h2 style="text-align:center;">Propiedades</h2>
 	<div class="row">
 		@foreach ($propiedades as $propiedad)
 		<div class="column">
 			<div class="card">
-				 <button onclick="document.getElementById('id01').style.display='block'"> <span class="far fa-trash-alt"></span> </button>
-			<div class="nav-item dropdown">
-				 @include('eliminar')
-				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
-				<nav class="submenu">
-					<ul class="submenu-items">
-                    <li class="submenu-item"><a href="{{ route('propiedades.edit',$propiedad->id)}}" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="{{route('admin.propiedades.delete',$propiedad->id)}}" class="submenu-link"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
-					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
-					<li class="submenu-item"><a href="{{route('categorias.subastas.create',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
-					<li class="submenu-item"><a href="#" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>
-					</ul>
-				</nav>
-				<script src="/js/menu.js"></script>
-			</div>
+				@Include('submenuPropiedad')
+				 @Include('eliminar')
 			<h3>{{$propiedad->name}}</h3>
 			<div class="datos">
 				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>

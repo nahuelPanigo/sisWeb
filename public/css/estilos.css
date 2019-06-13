@@ -66,7 +66,7 @@ display:table;
 }
  
 .menu > ul li a {
-	width:160px;
+	width:203px;
     color:#fff;
     display:block;
     line-height:20px;
@@ -79,10 +79,11 @@ display:table;
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
+    font-size: 16px;
 }
  
 .menu > ul li > ul li a {
-	width:160px;
+	width:203px;
     color:#fff;
     display:block;
     line-height:20px;
@@ -149,7 +150,7 @@ display:table;
 	margin:10px 10px 0px 10px;
 	padding:10px;
 	background:#4242424d;
-	height:50px;
+	height:70px;
 }
 .barra .logo {
 	float:left;
@@ -164,7 +165,7 @@ display:table;
 	padding:5px;
 	width:350px;
 	height:36px;
-	margin-top:7px;
+	
 	
 }
 .barra .perfil {
@@ -176,8 +177,19 @@ display:table;
 .barra .perfil a {
 	text-decoration:none;
 }
-
-
+.container .fa-user-circle {
+    height: 20px;
+    width: 20px;
+    font-size: 16px;
+    padding: 2px;
+}
+.container .dropdown{
+    bottom: 45px;
+}
+.container {
+    float: right;
+    margin-right:8px;
+}
 
 
 

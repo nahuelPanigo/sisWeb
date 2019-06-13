@@ -9,9 +9,9 @@
    <body>
 		<div class="main">
 		<div class="slides">
-			<img src="http://lorempixel.com/output/city-q-c-460-300-5.jpg" alt="">
-	<img src="http://lorempixel.com/output/city-q-c-460-300-2.jpg" alt="">
-	<img src="http://lorempixel.com/output/city-q-c-460-300-9.jpg" alt="">
+	<img src="/css/imagenes/propiedad3.jpg" alt="">
+	<img src="/css/imagenes/propiedad2.jpg" alt="">
+	<img src="/css/imagenes/propiedad1.jpg" alt="">
 		</div>
 	</div>
 

@@ -51,7 +51,6 @@ class UserController extends Controller
 
         $user->save();
         return view('IniciarSesion')-> with ('user', $user);
-        }
     }
     /**
      * Display the specified resource.
@@ -60,8 +59,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
-    {
-        //
+    { //
     }
 
     /**

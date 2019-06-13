@@ -4,9 +4,7 @@
     <div class="container">
       <h1 style="text-align:center;"> Eliminar Propiedad  </h1>
       <p>Desea eliminar esta propiedad ?</p>
-      <hr>
-   
-     
+      <hr>     
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
         <button type="submit" class="signupbtn"> Aceptar</button>
