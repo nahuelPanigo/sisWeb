@@ -36,6 +36,7 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
+			'secondPasword' => 'required',
             'userName'=>'required',
             'dni'=>'required',
             'creditCardNumber'=>'required',
@@ -51,8 +52,7 @@ class UserController extends Controller
 
         $user->save();
         return view('IniciarSesion')-> with ('user', $user);
-        }
-    }
+      }
     /**
      * Display the specified resource.
      *
@@ -92,6 +92,7 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
+			'secondPasword' => 'required',
         ]);
         if($validatedData){
 			$user = User::where('id','=',$id)->first();
