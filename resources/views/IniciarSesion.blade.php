@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <html>
 	<head>
 		<title> Inicio de Sesion </title>
@@ -33,15 +33,10 @@
 			<fieldset>
 			{{ csrf_field() }}
 				<div class="input">
-					<input type="email" id="email" name="mail" placeholder="Email" value="<?php echo (isset($_SESSION['nombreUsuario']))?  $_SESSION['nombreUsuario']:''?>"><br> <br>
+					<input type="email" id="email" name="mail" placeholder="Email"><br> <br>
 					<div id="error_email"> </div>
 					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"><br> <br>
 					<div id="error_contrasenia"> </div>
-					<?php if(isset($_SESSION['error'])){
-					echo $_SESSION['error'];
-					unset($_SESSION['error']);
-					}
-					?>  
 				</div>
 				<input type="submit" value="Iniciar sesion" class="boton_Iniciar">
 			</fieldset>
