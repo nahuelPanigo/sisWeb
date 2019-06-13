@@ -12,6 +12,11 @@
 <body>
 	@Include('Header') 
 	<script src="/js/menu.js"></script>
+		<form action="{{ route('reservas.store')}}" method="post" >
+			fecha: <input type="date" name="date" >
+			<input type="hidden" name="propiedad_id" value="1">
+			<input type="submit" value="Reservar">
+		</form>
 	<h2 style="text-align:center;">Propiedades</h2>
 	<div class="row">
 		@foreach ($propiedades as $propiedad)
@@ -19,7 +24,6 @@
 			<div class="card">
 				 <button onclick="document.getElementById('id01').style.display='block'"> <span class="far fa-trash-alt"></span> </button>
 			<div class="nav-item dropdown">
-				 @include('eliminar')
 				<a href="#" class="nav-link"><span><i class="fas fa-bars"></i></span></a>
 				<nav class="submenu">
 					<ul class="submenu-items">

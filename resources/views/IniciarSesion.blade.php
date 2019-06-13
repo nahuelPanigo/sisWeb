@@ -33,7 +33,7 @@
 			<fieldset>
 			{{ csrf_field() }}
 				<div class="input">
-					<input type="email" id="email" name="mail" placeholder="Email"><br> <br>
+					<input type="email" id="email" name="mail" placeholder="Email" value="{{old('mail')}}"><br> <br>
 					<div id="error_email"> </div>
 					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"><br> <br>
 					<div id="error_contrasenia"> </div>
