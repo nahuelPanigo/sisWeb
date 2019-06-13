@@ -20,9 +20,21 @@
 		<h1 class="registrar_propiedad_h1"> Modificar Propiedad </h1> <br> <br>
 			<form action="{{route('propiedades.update',$propiedad->id)}}" onsubmit="return validarModificacionDePropiedad()" method="POST"> 
 				<div class="registrar_propiedad">
-				<input type="text" id="nombre" name="name" placeholder="nombre de la propiedad"value="{{$propiedad->name}}"> <br> <br>
-				<input type="text" id="descripcion" name="description"placeholder="descripcion" value="{{$propiedad->description}}"><br> <br>
-				<input type="text" id="localidad" name="locate" placeholder="localidad" value="{{$propiedad->locate}}"><br> <br>
+				@if((old('name'))==null)
+					<input type="text" id="nombre" name="name" placeholder="nombre de la propiedad" value="{{$propiedad->name}}"> <br> <br>
+				@else
+					<input type="text" id="nombre" name="name" placeholder="nombre de la propiedad" value="{{old('name')}}"> <br> <br>
+				@endif
+				@if((old('description'))==null)
+					<input type="text" id="description" name="description" placeholder="descripcion de la propiedad" value="{{$propiedad->description}}"> <br> <br>
+				@else
+					<input type="text" id="description" name="description" placeholder="descripcion de la propiedad" value="{{old('description')}}"> <br> <br>
+				@endif
+				@if((old('locate'))==null)
+					<input type="text" id="locate" name="locate" placeholder="localidad" value="{{$propiedad->locate}}"> <br> <br>
+				@else
+					<input type="text" id="locate" name="locate" placeholder="localidad" value="{{old('locate')}}"> <br> <br>
+				@endif
 				</div>
 				<input type="submit" value="Modificar propiedad" class="boton_registrar">
 			<input type="hidden" name="_method" value="PUT">

@@ -9,8 +9,6 @@
 </form>
 </div>
 </div>
- @include('sub')
-
    <header>
 		<nav class="menu">
 			<ul>
