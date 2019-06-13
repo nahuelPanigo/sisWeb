@@ -42,7 +42,12 @@ class sesionController extends Controller
         return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);           ;
       }else{
         if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
-            $_SESSION['user'] = $user2;
+            if($user2->userType=="admin"){
+                 $request->session()->put('id',$user2->id);
+                return view('adminIndexIngenieria');
+            }
+            $request->session()->put('id',$user2->id);
+             $request->session()->put('id',$user2->id);
             return view('indexIngenieria');
         }
         return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);

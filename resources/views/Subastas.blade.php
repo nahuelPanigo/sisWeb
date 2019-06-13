@@ -11,7 +11,7 @@
 
 <body>
 @Include('Header')
-<h2 style="text-align:center">Subastas</h2>
+<h2 style="text-align:center;font-size: 30px;">Subastas</h2>
 @foreach ($subastas as $subasta)
 <div class="columns">
   <ul class="price">
