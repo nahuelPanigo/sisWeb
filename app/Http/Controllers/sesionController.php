@@ -39,14 +39,14 @@ class sesionController extends Controller
         $user2 = new User;
         $user2 = User::where('mail','=', $request->mail)->first();
         if(is_null($user2)){
-        return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);           ;
-      }else{
-        if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
-            $request->session()->put('id', $user2->id);
-            return view('indexIngenieria');
-        }
-        return view('IniciarSesion')->withErrors(['el email y/o la contraseña son invalidos']);
-      }
+			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
+		}else{
+			if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
+				$request->session()->put('id', $user2->id);
+				return view('indexIngenieria');
+			}
+			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
+		}
     }
     /**
      * Display the specified resource.
