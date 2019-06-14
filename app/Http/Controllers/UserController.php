@@ -46,17 +46,15 @@ class UserController extends Controller
         if($validatedData){
             $newformat= DateTime::createFromFormat('Y-m-d',$request->birthDay); 
             $interval = date_diff(new DateTime(),$newformat);
-            dd (($interval->explode("Y")));
-            if( $interval){
-                dd("hola");
-                if(($request->password==$request->secondPasword)and(!is_null($request->secondPasword))){
-			 $user = new User($request->all());  
-			 $user->creditCard = 'visa';
-			 $user->userType='comun';
-            }else{
-                return back()->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
-            }
-		  }else{
+            if( $interval->days > 6570){
+                if($request->password == $request->secondPassword){
+					$user = new User($request->all());  
+					$user->creditCard = 'visa';
+					$user->userType='comun';
+				}else{
+					return back()->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
+				}
+			}else{
             return back()->withInput()->withErrors('Debe ser mayor de 18 anios');
           }
         }

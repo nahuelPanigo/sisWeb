@@ -2,8 +2,10 @@
 
 namespace sisWeb\Http\Controllers;
 
-use sisWeb\reserva;
+use sisWeb\Reserva;
 use Illuminate\Http\Request;
+use sisWeb\User;
+use sisWeb\Semana;
 
 class ReservaController extends Controller
 {
@@ -41,7 +43,13 @@ class ReservaController extends Controller
 		if($validatedData){
 			$user= new User;
 			$user = User::where('id','=',$id)->first();
-			if($user->credit < 2){
+			foreach ($user->subastas as $subasta) {
+				
+			}
+			foreach ($user->reservas as $reservas) {
+				
+			}
+			if( < 2){
 				$semana = new Semana;
 				$semana = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
 				if($semana==null){
