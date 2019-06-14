@@ -35,11 +35,10 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-		dd("hola");
 		 $validatedData = $request -> validate([
             'date'=>'required',]);
 		$id = session('id');
-		if($validarData){
+		if($validatedData){
 			$user= new User;
 			$user = User::where('id','=',$id)->first();
 			if($user->credit < 2){
