@@ -20,6 +20,12 @@ class User extends Model
     	return $this->hasMany('app\Hotsale');
     }
 
+    public function reservas()
+    {
+        return $this->hasMany('app\Reserva');
+    }
+
+
       public function pujas()
     {
         return $this->hasMany('app\Puja');

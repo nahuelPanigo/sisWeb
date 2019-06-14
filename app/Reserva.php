@@ -8,11 +8,11 @@ class Reserva extends Model
 {
     protected $table = 'reservas';
 
-    protected $fillable=['userVip_id','semana_id'];
+    protected $fillable=['user_id','semana_id'];
 
-     public function userVip()
+     public function user()
     {
-    	return $this->belongsTo('App\UserVip');
+    	return $this->belongsTo('app\User');
     }
 
      public function semana()

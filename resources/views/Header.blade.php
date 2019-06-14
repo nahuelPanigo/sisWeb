@@ -20,7 +20,7 @@
 				</li>
 				<li><a href="#" class="tercero"><span class="tercero "><i class="fas fa-th"></i></span> Categorias</a>
 				<ul>
-				<li><a href="/categorias/subastas" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
+				<li><a href="/subastas" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
 				<li><a href="#"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
 				</ul>
 				</li>
