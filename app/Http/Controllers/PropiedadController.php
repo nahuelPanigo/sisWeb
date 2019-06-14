@@ -47,9 +47,9 @@ class PropiedadController extends Controller
     public function store(Request $request)
     {   
         $validatedData = $request -> validate([
-            'description'=>'required|max:150',
-            'name'=>'required|min:2|max:20|unique:propiedades',
-            'locate'=>'required|min:5',
+            'description'=>'required',
+            'name'=>'required|unique:propiedades',
+            'locate'=>'required',
             'archiveName'=>'|image|required',
         ]);
         if($validatedData>0){
