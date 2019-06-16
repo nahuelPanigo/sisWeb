@@ -1,10 +1,9 @@
-
 <div class="barra">
    <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
    <div class="busqueda"><form action="/propiedades/search" onsubmit=""method="GET">
    <div class="input-group mb-3"></div>
    <div class="input-group-prepend"></div>
-   <span  id="basic-addon1"></span></span>
+   <span  id="basic-addon1"></span>
   <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
 </form>
 </div>
@@ -14,8 +13,9 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-circle"></i>
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href=""><span><i class="fas fa-user-cog"></i></span> Modificar Cuenta</a>
-      <a class="dropdown-item" href=""><span><i class="far fa-star"></i></span> Solicitar premium</a>
+      <a class="dropdown-item" href="#"><span><i class="fas fa-user-cog"></i></span> Agregar Propiedad </a>
+      <a class="dropdown-item" href="#"><span><i class="far fa-star"></i></span> Solicitudes premium</a>
+      <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Dar de alta admin</a>
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
   </div>
@@ -30,12 +30,12 @@
 				<li><a href="/inicio" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>
 				<li><a href="#" class="servicios"><span class="segundo"><i class="fas fa-suitcase"></i></span> Servicios</a>
 					<ul>
-						<li><a href="/admin/propiedades"><span class="xx"><i class="fas fa-list-ul"></i></span> Propiedades</a></li>
+						<li><a href="/propiedades/listar"><span class="xx"><i class="fas fa-list-ul"></i></span> Propiedades</a></li>
 					</ul>
 				</li>
 				<li><a href="#" class="tercero"><span class="tercero "><i class="fas fa-th"></i></span> Categorias</a>
 				<ul>
-				<li><a href="/subastas" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
+				<li><a href="#" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
 				<li><a href="#"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
 				</ul>
 				</li>

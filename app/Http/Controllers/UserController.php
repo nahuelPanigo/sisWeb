@@ -4,6 +4,7 @@ namespace sisWeb\Http\Controllers;
 use validator;
 use sisWeb\User;
 use Illuminate\Http\Request;
+use DateTime;
 class UserController extends Controller
 {
     public function index()
@@ -36,19 +37,27 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
-			'secondPasword' => 'required',
             'userName'=>'required',
             'dni'=>'required',
             'creditCardNumber'=>'required',
             'creditCardCode'=>'required',
             'birthDay'=>'required',
         ]);
-
         if($validatedData){
-			$user = new User($request->all());  
-			$user->creditCard = 'visa';
-			$user->userType='comun';
-		}
+            $newformat= DateTime::createFromFormat('Y-m-d',$request->birthDay); 
+            $interval = date_diff(new DateTime(),$newformat);
+            if( $interval->days > 6570){
+                if($request->password == $request->secondPassword){
+					$user = new User($request->all());  
+					$user->creditCard = 'visa';
+					$user->userType='comun';
+				}else{
+					return back()->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
+				}
+			}else{
+            return back()->withInput()->withErrors('Debe ser mayor de 18 anios');
+          }
+        }
 
         $user->save();
         return view('IniciarSesion')-> with ('user', $user);

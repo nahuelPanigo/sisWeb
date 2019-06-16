@@ -31,18 +31,18 @@
 	<div class="RU_caja">
 		<img src="/css/imagenes/hsh.png">
 		<form class="RU_formulario" method="post" accept-charset="UTF-8" onsubmit="return validar()" action='/admin/users'>
-			@csrf
+			{{ csrf_field() }}
 			<fieldset>
 				<div class="input">
 					<input type="text" id="nombre" name="name" placeholder="Nombre"value={{old('name')}}><br> <br>
 					<input type="text" id="apellido" name="secondName" placeholder="Apellido"value={{old('secondName')}}><br> <br>
-					<input type="text" id="nombre_usuario" name="userName" placeholder="Nombre de usuario"value={{old('username')}}><br> <br>
+					<input type="text" id="nombre_usuario" name="userName" placeholder="Nombre de usuario"value={{old('userName')}}><br> <br>
 					<input type="email" id="email" name="mail" placeholder="Email"value={{old('mail')}}><br> <br>
-					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"value={{old('password')}}><br> <br>
+					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"><br> <br>
 					<input type="password" id="contrasenia2" name="secondPassword"placeholder="Repita la contraseña"><br> <br>
-					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni"><br> <br>
-					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" value={{old('birthday')}} ><br><br>
-					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta"value={{old('creditcardNumber')}}><br> <br>
+					<input type="number" id="dni" name="dni" placeholder="Ingrese su dni"value={{old('dni')}}><br> <br>
+					Fecha de nacimiento: <input type="date" name="birthDay" id="fecha" step="1" min="1900-01-01" max="2001-5-23" value={{old('birthDay')}} ><br><br>
+					<input type="number" id="numero_tarjeta" name="creditCardNumber" placeholder="Ingrese numero de tarjeta"value={{old('creditCardNumber')}}><br> <br>
 					<input type="number" id="codigo" name="creditCardCode"placeholder="Ingrese codigo de la tarjeta"value={{old('creditCardCode')}}><br> <br>
 					Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" min="2019-12-12"value={{old('creditCardDate')}}><br> <br>
 				</div>

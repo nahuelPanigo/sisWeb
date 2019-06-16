@@ -12,12 +12,12 @@ class Semana extends Model
 
     public function propiedad()
     {
-    	return $this->belongsTo('app\Propiedad');
+    	return $this->belongsTo('sisWeb\Propiedad');
     }
 
      public function hotsale()
      {
-     	return $this->belongsTo('app\Hotsale');
+     	return $this->belongsTo('sisWeb\Hotsale');
      }
      public function subasta()
      {

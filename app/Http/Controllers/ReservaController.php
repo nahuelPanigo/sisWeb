@@ -2,8 +2,10 @@
 
 namespace sisWeb\Http\Controllers;
 
-use sisWeb\reserva;
+use sisWeb\Reserva;
 use Illuminate\Http\Request;
+use sisWeb\User;
+use sisWeb\Semana;
 
 class ReservaController extends Controller
 {
@@ -24,7 +26,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+       return view('indexIngenieria');
     }
 
     /**
@@ -35,9 +37,47 @@ class ReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
+		 $validatedData = $request -> validate([
+            'date'=>'required',]);
+		$id = session('id');
+		if($validatedData){
+			$user= new User;
+			$user = User::where('id','=',$id)->first();
+			foreach ($user->subastas as $subasta) {
+				
+			}
+			foreach ($user->reservas as $reservas) {
+				
+			}
+			if( < 2){
+				$semana = new Semana;
+				$semana = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
+				if($semana==null){
+					$now = new DateTime();
+					$newformat= DateTime::createFromFormat('Y-m-d',$request->date); 
+					$interval = date_diff($now, $newformat);
+					if(($interval >160 ) and ($interval < 360)){
+						$semanaNueva = new Semana; 
+						$semanaNueva->date = $request -> date;
+						$semanaNueva->propiedad_id = $request-> propiedad_id;
+						$semanaNueva-> save();
+						$semanaNueva = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
+						$reserva = new Reserva;
+						$reserva-> userVip_id = $id;
+						$reserva-> semana_id = $semanaNueva -> id;
+						$reserva->save();
+						return back();
+					}else{
+						return back()->withErrors(['La fecha ingresada es invalida']);
+					}
+				}else{
+				   return back()->withErrors(['La propiedad se encuentra ocupada en esa semana']);
+				}
+			}else{
+				return back()->withErrors(['El usuario no posee creditos']);
+			}
+		}
+	}
     /**
      * Display the specified resource.
      *
