@@ -3,7 +3,8 @@
 namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
-
+use sisWeb\Reserva;
+use sisWeb\Semana;
 class User extends Model
 {
     protected $table ='users';
@@ -22,7 +23,7 @@ class User extends Model
 
     public function reservas()
     {
-        return $this->hasMany('app\Reserva');
+        return $this->hasMany('sisWeb\Reserva');
     }
 
 
@@ -30,4 +31,18 @@ class User extends Model
     {
         return $this->hasMany('app\Puja');
     }
+
+    public function cantReservas($id){
+    $user=User::find($id);
+    $cant=0;
+    $reservas=Reserva::where('user_id','=',$id)->get();
+    foreach ($reservas as $reserva => $value) {
+         $semana=Semana::where('semana_id','=',)
+         $cant=$cant+1;
+    }
+    return $cant;
+    }
 }
+
+
+
