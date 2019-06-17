@@ -19,4 +19,6 @@ class Reserva extends Model
      {
      	return $this->hasOne('app\Semana');
      }
-}
+}$fecha=$request->birthDay;
+$entero=strtotime($fecha);
+$anio=date("Y",$entero);

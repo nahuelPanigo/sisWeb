@@ -5,6 +5,8 @@
       <h1 style="text-align:center;"> ¡ PUJAR !  </h1>
       <p>Por favor para participar en la subasta complete los siguientes datos.</p>
       <hr>
+      
+      <inpu type="hidden" name="user_id" value="$session{{id}}">
       <label for="email"><b> Monto </b></label>
       <input type="text" placeholder="monto" name="monto" required>
       <div class="clearfix">
@@ -14,7 +16,6 @@
     </div>
   </form>
 </div>
-
 <script>
 // Get the modal
 var modal = document.getElementById('id01');

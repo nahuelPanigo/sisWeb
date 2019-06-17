@@ -46,7 +46,7 @@ class AdministratorUserController extends Controller
      */
     public function show(AdministratorUser $administratorUser)
     {
-        //
+        
     }
 
     /**
@@ -81,5 +81,14 @@ class AdministratorUserController extends Controller
     public function destroy(AdministratorUser $administratorUser)
     {
         //
+    }
+   
+    public function solicitudes($id){
+        $solicitudes=array(['id'=>$id]);
+        dd($solicitudes);
+    }
+   
+    public function listarSolicitudes($solicitudes){
+        return view('listarSolicitudes')->with($solicitudes);
     }
 }

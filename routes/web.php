@@ -13,6 +13,10 @@ Route::get('/propiedades/search', 'PropiedadController@search');
 
 Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');
 
+Route::get('/solicitudes/listar', 'UserController@index');
+
+Route::get('/enviarSolicitud/{id}' , 'AdministratorUserController@solicitudes');
+
  Route::resource('pujas','PujaController');
  Route::get('/subastas/participar', 'PujaController@create');
 

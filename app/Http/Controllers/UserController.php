@@ -9,7 +9,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        //
+        $usuarios = User::all();
+        return view('listarSolicitudes')->with('usuarios',$usuarios);
     }
 
     /**
@@ -44,9 +45,10 @@ class UserController extends Controller
             'birthDay'=>'required',
         ]);
         if($validatedData){
-            $newformat= DateTime::createFromFormat('Y-m-d',$request->birthDay); 
-            $interval = date_diff(new DateTime(),$newformat);
-            if( $interval->days > 6570){
+            $cumpleanos = DateTime::createFromFormat('Y-m-d',$request->birthDay); 
+            $hoy = new DateTime();
+            $annos = $hoy->diff($cumpleanos);
+            if( ($annos->format('%Y'))> 18){
                 if($request->password == $request->secondPassword){
 					$user = new User($request->all());  
 					$user->creditCard = 'visa';

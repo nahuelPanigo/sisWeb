@@ -49,7 +49,7 @@ class ReservaController extends Controller
 			foreach ($user->reservas as $reservas) {
 				
 			}
-			if( < 2){
+			if( 3 < 2){
 				$semana = new Semana;
 				$semana = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
 				if($semana==null){
