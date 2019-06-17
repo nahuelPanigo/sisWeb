@@ -3,6 +3,7 @@
 namespace sisWeb\Http\Controllers;
 
 use sisWeb\Puja;
+use sisWeb\Subasta;
 use Illuminate\Http\Request;
 
 class PujaController extends Controller
@@ -36,15 +37,24 @@ class PujaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request -> validate([
-            'monto'=>'required|',
+            'monto'=>'required',
         ]);
-        if($validatedData>0){
-        $subasta= new Subasta; 
-        $subasta->finalPrice= $request->Input('monto');
-        $puja =new Puja; 
-        $puja->subasta_id= $subasta->id;
-        
-    }
+        if($validatedData){
+            $subasta = new Subasta;
+            $subasta=Subasta::where('id','=',$request->subasta_id)->first();
+            if($subasta->finalPrice < $request->Input('monto')){ 
+                $subasta->finalPrice= $request->Input('monto');
+                $subasta->save();
+                $puja =new Puja; 
+                $puja->subasta_id= $subasta->id;
+                $puja->monto = $request->Input('monto');
+                $puja->user_id = session('id');
+                $puja->save();
+                return back();
+            }else{
+                return back()->withErrors(['el monto ingresado debe ser mayor al monto actual']);
+            }
+        }
     }
     /**
      * Display the specified resource.

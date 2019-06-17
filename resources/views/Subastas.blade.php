@@ -11,6 +11,15 @@
 
 <body>
 @Include('Header')
+     @if($errors->any())
+      <div class="alert alert-danger">
+    <ul>  
+      @foreach ($errors->all() as $error)
+        <li><strong>Danger!</strong> {{ $error }}</li>
+      @endforeach
+    </ul>
+    </div>
+    @endif
 <h2 style="text-align:center;font-size: 30px;">Subastas</h2>
 @foreach ($subastas as $subasta)
 <div class="columns">
@@ -24,7 +33,7 @@
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>
     <li><span class="fas fa-map-marker-alt"> {{$subasta->name($subasta)->locate}}</span></li>
     <li><span class="far fa-clock"></span></li>
-    <button onclick="document.getElementById('id01').style.display='block'" >¡ PUJAR !</button>
+    <button onclick="mostrarModal({{$subasta->id}})" >¡ PUJAR !</button>
 @Include('Pujar')
   </ul>
 </div>
