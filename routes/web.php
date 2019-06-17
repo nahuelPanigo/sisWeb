@@ -11,15 +11,21 @@ Route::get('logout','Auth\LoginController@logout');
 
 Route::get('/propiedades/search', 'PropiedadController@search');
 
+/*Cosas de administrador*/
 Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');
+Route::get('/subastas/listar', 'SubastaController@indexAdmin');
+Route::resource('administrador', 'AdministratorUserController');
+Route::get('/sesion/adminLogout', 'Auth\LoginController@adminLogOut');
+Route::get('administrator/logIn','sesionController@indexAdmin');
+/* fin de cosas de administrador*/
 
- Route::resource('pujas','PujaController');
- Route::get('/subastas/participar', 'PujaController@create');
+Route::resource('pujas','PujaController');
+Route::get('/subastas/participar', 'PujaController@create');
 
 route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete']);
 
-Route::get('/subastas/listar', 'SubastaController@indexAdmin');
+
 
 route::resource('subastas','SubastaController');
 Route::get('/subastas/{id}/create',      ['uses' => 'SubastaController@create',     'as' => 'categorias.subastas.create']);
@@ -30,7 +36,6 @@ Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
 	Route::resource('propiedades','PropiedadController');
 	Route::resource('sesion','sesionController');
-
 });
 
 

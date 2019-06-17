@@ -3,6 +3,7 @@
 namespace sisWeb\Http\Controllers\Auth;
 
 use sisWeb\User;
+use sisWeb\AdministratorUser;
 use sisWeb\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
