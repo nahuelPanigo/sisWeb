@@ -19,6 +19,8 @@ Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');
 route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete']);
 
+Route::get('/subastas/listar', 'SubastaController@indexAdmin');
+
 route::resource('subastas','SubastaController');
 Route::get('/subastas/{id}/create',      ['uses' => 'SubastaController@create',     'as' => 'categorias.subastas.create']);
 

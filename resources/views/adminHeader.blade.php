@@ -13,7 +13,7 @@
     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-circle"></i>
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#"><span><i class="fas fa-user-cog"></i></span> Agregar Propiedad </a>
+      <a class="dropdown-item" href="/propiedades/create"><span><i class="fas fa-user-cog"></i></span> Agregar Propiedad </a>
       <a class="dropdown-item" href="#"><span><i class="far fa-star"></i></span> Solicitudes premium</a>
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Dar de alta admin</a>
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
@@ -35,7 +35,7 @@
 				</li>
 				<li><a href="#" class="tercero"><span class="tercero "><i class="fas fa-th"></i></span> Categorias</a>
 				<ul>
-				<li><a href="#" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
+				<li><a href="/subastas/listar" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
 				<li><a href="#"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
 				</ul>
 				</li>

@@ -21,6 +21,10 @@ class SubastaController extends Controller
 
         return view('subastas')->with('subastas',$subastas);
     }
+	public function indexAdmin(){
+		$subastas = Subasta::all();
+		return view('adminSubastas')->with('subastas',$subastas);
+	}
 
     /**
      * Show the form for creating a new resource.

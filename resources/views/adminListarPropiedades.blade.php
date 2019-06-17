@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	@Include('Header') 
+	@Include('adminHeader') 
 	
 	<h2 style="text-align:center; font-size: 30px;">Propiedades</h2>
 	<div class="row">
