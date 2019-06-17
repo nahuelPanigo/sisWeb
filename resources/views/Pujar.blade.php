@@ -1,12 +1,14 @@
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="{{route('pujas.store')}}">
+  <form class="modal-content" action="{{route('pujas.store')}}" method="POST">
+    {{csrf_field()}}
     <div class="container">
       <h1 style="text-align:center;"> ¡ PUJAR !  </h1>
       <p>Por favor para participar en la subasta complete los siguientes datos.</p>
       <hr>
       <label for="email"><b> Monto </b></label>
-      <input type="text" placeholder="monto" name="monto" required>
+      <input type="number" placeholder="monto" name="monto" required>
+      <input type="hidden" value="" id="subastaID" name="subasta_id">
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
         <button type="submit" class="signupbtn">? PUJAR !</button>
@@ -16,6 +18,10 @@
 </div>
 
 <script>
+  function mostrarModal(id){
+    document.getElementById('subastaID').value=id;
+    document.getElementById('id01').style.display='block';
+  }
 // Get the modal
 var modal = document.getElementById('id01');
 
