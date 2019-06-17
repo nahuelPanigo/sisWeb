@@ -39,17 +39,11 @@ class ReservaController extends Controller
     {
 		 $validatedData = $request -> validate([
             'date'=>'required',]);
-		$id = session('id');
-		if($validatedData){
+		    $id = session('id');
 			$user= new User;
-			$user = User::where('id','=',$id)->first();
-			foreach ($user->subastas as $subasta) {
-				
-			}
-			foreach ($user->reservas as $reservas) {
-				
-			}
-			if( < 2){
+            $cant=$user->cantReservas($id);
+            dd($cant);
+			if($cant < 2){
 				$semana = new Semana;
 				$semana = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
 				if($semana==null){
@@ -63,20 +57,16 @@ class ReservaController extends Controller
 						$semanaNueva-> save();
 						$semanaNueva = Semana::where('date','='. $request->date)->where('propiedad_id','=', $request-> propiedad_id);
 						$reserva = new Reserva;
-						$reserva-> userVip_id = $id;
+						$reserva-> user_id = $id;
 						$reserva-> semana_id = $semanaNueva -> id;
 						$reserva->save();
 						return back();
-					}else{
+					}else
 						return back()->withErrors(['La fecha ingresada es invalida']);
-					}
-				}else{
+				}else
 				   return back()->withErrors(['La propiedad se encuentra ocupada en esa semana']);
-				}
-			}else{
+			}else
 				return back()->withErrors(['El usuario no posee creditos']);
-			}
-		}
 	}
     /**
      * Display the specified resource.
@@ -123,3 +113,4 @@ class ReservaController extends Controller
         //
     }
 }
+    
