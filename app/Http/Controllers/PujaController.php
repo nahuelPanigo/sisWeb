@@ -40,12 +40,10 @@ class PujaController extends Controller
             'monto'=>'required',
         ]);
         if($validatedData){
-            $subasta = new Subasta;
             $subasta=Subasta::where('id','=',$request->subasta_id)->first();
             if($subasta->finalPrice < $request->Input('monto')){ 
                 $subasta->finalPrice= $request->Input('monto');
                 $subasta->save();
-                $puja =new Puja; 
                 $puja->subasta_id= $subasta->id;
                 $puja->monto = $request->Input('monto');
                 $puja->user_id = session('id');

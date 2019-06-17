@@ -6,6 +6,8 @@ use sisWeb\Subasta;
 use Illuminate\Http\Request;
 use sisWeb\Propiedad;
 use sisWeb\Semana;
+use sisWeb\User;
+use sisWeb\Puja;
 use DateTime;
 
 class SubastaController extends Controller
@@ -17,8 +19,7 @@ class SubastaController extends Controller
      */
     public function index()
     {
-        $subastas= Subasta::all();
-
+        $subastas= Subasta::where("finish", "=" , 0)->get();
         return view('subastas')->with('subastas',$subastas);
     }
 	public function indexAdmin(){
@@ -62,7 +63,7 @@ class SubastaController extends Controller
 				$subasta->finish=0;
 				$subasta->finalPrice=$subasta->minPrice;
 				$subasta->save();
-				return view('Subastas')->with('subastas',Subasta::all());
+				return view('adminSubastas')->with('subastas',Subasta::all());
 			}else{
 				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta para esta semana']);
 			}
@@ -114,6 +115,18 @@ class SubastaController extends Controller
      */
     public function destroy(Subasta $subasta)
     {
-        //
+        
     }
+	public function finalizarSubasta(Request $request){
+		$subasta= new Subasta;
+		$subasta = Subasta::where('id', '=' ,$request->subasta_id)->first();
+		if($subasta->finalPrice >= $subasta->minPrice ){
+			$puja = new Puja;
+			$puja = Puja::where('monto', '=', $subasta->finalPrice)->where('subasta_id','=',$subasta->id)->first();
+			$user = new User;
+			$user = User::where('id','=', $puja->user_id)->first();
+			$subasta->user_idWinner = $user->id;
+		}
+		$subasta->finish = 1;	
+	}
 }

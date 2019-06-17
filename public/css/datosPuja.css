@@ -22,14 +22,15 @@ button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 0px;
- 
   border: none;
   cursor: pointer;
   width: 135px;
   opacity: 0.9;
   font-size:18px;
 }
-
+.boton{
+ margin-left:135px;	
+}
 button:hover {
   opacity:1;
 }

@@ -25,15 +25,12 @@
 <div class="columns">
   <ul class="price">
     <li class="header">{{$subasta->name($subasta)->name}}</li>
-	 <div class="opcAdmin">
-	   <a href="#" title="Eliminar Subasta"><span class="far fa-trash-alt"> </span></a>
-	 </div>
     <li class="grey">{{"$".$subasta->finalPrice}}</li>
     <li> <span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span> </li>
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>
     <li><span class="fas fa-map-marker-alt"> {{$subasta->name($subasta)->locate}}</span></li>
     <li><span class="far fa-clock"></span></li>
-    <button onclick="mostrarModal({{$subasta->id}})" >¡ PUJAR !</button>
+    <button onclick="mostrarModal({{$subasta->id}})" class="boton" > PUJAR </button>
 @Include('Pujar')
   </ul>
 </div>

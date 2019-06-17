@@ -7,7 +7,7 @@
     <meta charset="utf-8">
   </head>
   <body>
-     @Include('Header')
+     @Include('adminHeader')
          @if($errors->any())
       <div class="alert alert-danger">
     <ul>  

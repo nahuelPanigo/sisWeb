@@ -16,7 +16,7 @@ class CreatePujasTable extends Migration
         Schema::create('pujas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->double('monto', 9, 3);
+            $table->integer('monto');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('subasta_id');
         });
