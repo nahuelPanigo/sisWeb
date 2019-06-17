@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePujasTable extends Migration
+class CreateSolicitudesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,26 +13,21 @@ class CreatePujasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pujas', function (Blueprint $table) {
+        Schema::create('solicitudes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->double('monto', 9, 3);
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('subasta_id');
+            $table->boolean('view');
         });
-        schema::table('pujas',function($table){
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('subasta_id')->references('id')->on('subastas')->onDelete('cascade'); 
-        });
-    }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    schema::table('solicitudes',function($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+      });
+    }
+    
+
     public function down()
     {
-        Schema::dropIfExists('pujas');
+        Schema::dropIfExists('solicitudes');
     }
 }

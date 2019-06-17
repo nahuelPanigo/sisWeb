@@ -2,7 +2,7 @@
 
 namespace sisWeb\Http\Controllers;
 
-use sisWeb\UserVip;
+use sisWeb\User;
 use Illuminate\Http\Request;
 
 class UserVipController extends Controller

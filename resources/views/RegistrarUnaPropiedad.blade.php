@@ -12,7 +12,7 @@
 		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	</head>
 	<body>
-	  @include ('Header')
+	  @include ('adminHeader')
 	  @if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
