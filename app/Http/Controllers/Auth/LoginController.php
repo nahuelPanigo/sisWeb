@@ -41,4 +41,8 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+		public function adminLogOut(){
+		Auth::logout();
+		return view('adminInicioSesion');
+	}
 }

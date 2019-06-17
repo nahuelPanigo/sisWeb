@@ -5,6 +5,7 @@ namespace sisWeb\Http\Controllers;
 use sisWeb\AdministratorUser;
 use Illuminate\Http\Request;
 
+
 class AdministratorUserController extends Controller
 {
     /**
@@ -33,10 +34,19 @@ class AdministratorUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function store(Request $request){
+        $user2 = new AdministratorUser;
+        $user2 = AdministratorUser::where('mail','=', $request->mail)->first();
+        if(is_null($user2)){
+			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
+		}else{
+			if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
+				$request->session()->put('id', $user2->id);
+				return view('adminindexIngenieria');
+			}
+			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
+		}
+	}
 
     /**
      * Display the specified resource.

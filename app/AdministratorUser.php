@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdministratorUser extends Model
 {
-   protected $table = 'administratorsUser'
+   protected $table = 'administratorsUser';
 
-   protected $filable =[''];
+protected $filable =['userName','password','mail'];
 }

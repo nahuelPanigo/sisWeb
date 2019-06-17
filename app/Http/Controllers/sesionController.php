@@ -2,6 +2,7 @@
 
 namespace sisWeb\Http\Controllers;
 use sisWeb\User;
+use sisWeb\AdministratorUser;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -16,8 +17,9 @@ class sesionController extends Controller
     {
         return view('IniciarSesion');
     }
-
-
+	public function indexAdmin(){
+		return view('adminInicioSesion');
+	}
 
     /**
      * Show the form for creating a new resource.
