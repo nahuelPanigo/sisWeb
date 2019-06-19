@@ -16,7 +16,7 @@ class Subasta extends Model
      public function user()
     {
     	return $this->belongsTo('App\User');
-    }
+    } 
 
       public function pujas()
     {
@@ -40,5 +40,14 @@ class Subasta extends Model
         $semana = Semana::where('id','=',$subasta->semana_id)->first();
         return($semana->date);
      }
+
+    public function hayUnaSubasta(DateTime $date,$propiedad_id){
+        $semana=Semana::whereDate('date','=',$date)->where('propiedad_id','=',$propiedad_id)->first();
+        if($semana!=null){
+              $semana->delete();
+              return 1;
+        }
+        return 0;
+    }
 
 }
