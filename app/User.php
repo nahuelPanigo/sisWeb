@@ -32,16 +32,45 @@ class User extends Model
         return $this->hasMany('app\Puja');
     }
 
-    public function cantReservas($id){
+    public function cantReservas($id,$anio){
     $user=User::find($id);
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();
     foreach ($reservas as $reserva => $value) {
-         $semana=Semana::where('semana_id','=',);
-         $cant=$cant+1;
+         $semana=Semana::where('semana_id','=',$reserva->semana_id);
+         if(($semana_date->format('%Y'))==$anio){
+            $cant=$cant+1;
+          }
+    }
+     $subastas=Subasta::where('user_idWinner','=',$id)->get();
+     foreach ($subastas as $subasta => $value) {
+         $semana=Semana::where('semana_id','=',$subasta->semana_id);
+         if(($semana_date->format('%Y'))==$anio){
+            $cant=$cant+1;
+          }
     }
     return $cant;
     }
+
+    public function verificarSemana($id,$date){
+    $cant=0;
+    $reservas=Reserva::where('user_id','=',$id)->get();
+    foreach ($reservas as $reserva => $value) {
+         $semana=Semana::where('semana_id','=',$reserva->semana_id);
+         if($semana_date==$date){
+            $cant=$cant+1;
+          }
+    }
+     $subastas=Subasta::where('user_idWinner','=',$id)->get();
+     foreach ($subastas as $subasta => $value) {
+         $semana=Semana::where('semana_id','=',$subasta->semana_id);
+         if($semana_date==$date){
+            $cant=$cant+1;
+          }
+    }
+        return ($cant== 0);
+    }
+
 }
 
 
