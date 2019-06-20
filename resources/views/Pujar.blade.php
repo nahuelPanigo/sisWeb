@@ -3,16 +3,16 @@
   <form class="modal-content" action="{{route('pujas.store')}}" method="POST">
     {{csrf_field()}}
     <div class="container">
-      <h1 style="text-align:center;"> ¡ PUJAR !  </h1>
+      <h1 style="text-align:center;">  PUJAR   </h1>
       <p>Por favor para participar en la subasta complete los siguientes datos.</p>
       <hr>
       <input type="hidden" name="user_id" value="$session('id')">
       <label for="email"><b> Monto </b></label>
-      <input type="number" placeholder="monto" name="monto" required>
+      <input type="number" placeholder="monto" name="monto" autocomplete="off" required>
       <input type="hidden" value="" id="subastaID" name="subasta_id">
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
-        <button type="submit" class="signupbtn">? PUJAR !</button>
+        <button type="submit" class="signupbtn"> PUJAR </button>
       </div>
     </div>
   </form>
