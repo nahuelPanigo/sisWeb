@@ -5,6 +5,7 @@ namespace sisWeb;
 use Illuminate\Database\Eloquent\Model;
 use sisWeb\Reserva;
 use sisWeb\Semana;
+use DateTime;
 class User extends Model
 {
     protected $table ='users';
@@ -82,5 +83,9 @@ class User extends Model
         return ($cant== 0);
     }
 
+	public function puedeGanar($id,$date){
+		$user=User::find($id);
+		$dateFormat = DateTime::createFromFormat('Y-m-d',$date);
+		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantReservas($id,$dateFormat->format('%Y'))));
+	}	
 }
-

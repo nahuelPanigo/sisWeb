@@ -8,7 +8,7 @@ class Puja extends Model
 {
     protected $table = 'pujas';
 
-    protected $fillable = ['user_id','subasta_id'];
+    protected $fillable = ['user_id','subasta_id','monto'];
     
      public function user()
     {

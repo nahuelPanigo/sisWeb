@@ -32,13 +32,13 @@ class Reserva extends Model
         $reserva= Reserva::find($id);
         $now = new DateTime();
         $interval = date_diff($now,$reserva->date);
-        if(($interval->format('Y'))>2)
-            $reserva->date
+        if(($interval->format('%m'))>2){
             $semana=Semana::find($reserva->semana_id);
             $semana->delete();
             $reserva->delete();
-            return 1
-     }
-     return 0;
+            return 1;
+		}
+		return 0;
+		}
 }
 

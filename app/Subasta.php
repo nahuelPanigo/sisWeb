@@ -57,5 +57,14 @@ class Subasta extends Model
 		$interval = date_diff($now, $date);
 		return (($interval->format('%m')<6) and (($interval->format('%m')>=5)and($interval->format('%d')>24)));
 	}
+	public function puedeFinalizar(Subasta $subasta){
+		$now = new DateTime();
+		$date= DateTime::createFromFormat('Y-m-d',$subasta->date($subasta));
+        $interval = date_diff($now,$date);
+		if(($interval->format('%m')>=5)and($interval->format('%d')>24)){
+			return true;
+		}
+		return false;
+	}
 
 }

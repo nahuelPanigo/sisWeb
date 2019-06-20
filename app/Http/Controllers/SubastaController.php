@@ -121,15 +121,30 @@ class SubastaController extends Controller
         
     }
 	public function finalizarSubasta(Request $request){
-		$subasta= new Subasta;
-		$subasta = Subasta::where('id', '=' ,$request->subasta_id)->first();
-		if($subasta->finalPrice >= $subasta->minPrice ){
-			$puja = new Puja;
-			$puja = Puja::where('monto', '=', $subasta->finalPrice)->where('subasta_id','=',$subasta->id)->first();
-			$user = new User;
-			$user = User::where('id','=', $puja->user_id)->first();
+		$subasta=Subasta::find($request->subasta_id);
+		$semana=Semana::find($subasta->semana_id);
+		$pujas = Puja::where('subasta_id','=',$subasta->id)->get();
+		$ok=0;
+		$user=new User;
+		$mensaje= "";
+		foreach ($pujas as $puja) {
+			if(!$ok){
+				if($subasta->minPrice <= $puja->monto ){
+					if($user->puedeGanar($puja->user_id,$semana->date)){
+						$ok=1;
+						$usser->id = $puja->user_id;
+						$mensaje ="se registro ganador con exito";
+					}
+				}
+			}
+		}
+		if($ok){
 			$subasta->user_idWinner = $user->id;
+		}else{
+			$mensaje = "no se pudo registrar ganador";
 		}
 		$subasta->finish = 1;	
+		$subasta->save();
+		return redirect('/subastas/listar')->withErrors ([$mensaje]);
 	}
 }

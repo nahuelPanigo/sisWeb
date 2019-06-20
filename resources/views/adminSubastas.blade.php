@@ -21,8 +21,14 @@
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>
     <li><span class="fas fa-map-marker-alt"> {{$subasta->name($subasta)->locate}}</span></li>
     <li><span class="far fa-clock"></span></li>
-	@if ($subasta->finish==0)
-    <button onclick="mostrarModal({{$subasta->id}})" class="boton"> Finalizar</button>
+	@if($subasta->finish == 1)
+		<div class="boton inactiva finalizada"> Finalizada </div>
+	@else
+		@if($subasta->puedeFinalizar($subasta))
+			<button onclick="mostrarModal({{$subasta->id}})" class="boton"> Finalizar</button>
+		@else	
+			<div class="boton inactiva" > Incactiva </div>
+		@endif
 	@endif
   </ul>
   @Include('FinalizarSubasta')
