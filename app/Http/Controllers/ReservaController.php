@@ -55,7 +55,7 @@ class ReservaController extends Controller
                 if(($interval->days > 180 ) and ($interval->days < 365)){
 				    $semana = Semana::whereDate('date','=', $date)->where('propiedad_id','=', $request->propiedad_id)->first();
                  $subasta=new Subasta;
-				if(($semana == null)||($subasta->esDeSubasta($date,$request->propiedad_id))){);
+				if(($semana == null)||($subasta->esDeSubasta($date,$request->propiedad_id))){
 						$semana= new semana;
                         $semana= $semana->hacerSemana($date,$request->propiedad_id);
                         $reserva = new Reserva;
@@ -109,9 +109,12 @@ class ReservaController extends Controller
      * @param  \sisWeb\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy(reserva $reserva)
-    {
-        //
+    public function destroy($id)
+    {   $reserva = new Reserva;
+        if($reserva->eliminarReservas($id)){
+            return redirect('/inicio');
+        }else
+            return redirect('/inicio')->withErrors('no se pudo eliminar la reserva porque no se tiene 2 o mas meses de anticipacion');
     }
 }
     

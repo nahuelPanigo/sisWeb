@@ -17,7 +17,8 @@ class sesionController extends Controller
     {
         return view('IniciarSesion');
     }
-	public function indexAdmin(){
+	
+    public function indexAdmin(){
 		return view('adminInicioSesion');
 	}
 

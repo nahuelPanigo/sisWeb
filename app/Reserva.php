@@ -3,7 +3,8 @@
 namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
-
+use sisWeb\Semana;
+use DateTime;
 class Reserva extends Model
 {
     protected $table = 'reservas';
@@ -25,4 +26,17 @@ class Reserva extends Model
         $reserva->semana_id = $semana_id;
         $reserva->save();
      }
+
+     public function eliminarReserva($id){
+        $reserva= Reserva::find($id);
+        $now = new DateTime();
+        $interval = date_diff($now,$reserva->date);
+        if(($interval->format('Y'))>2)
+            $reserva->date
+            $semana=Semana::find($reserva->semana_id);
+            $semana->delete();
+            $reserva->delete();
+            return 1
+     }
+     return 0;
 }

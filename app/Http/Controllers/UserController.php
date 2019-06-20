@@ -127,8 +127,13 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        if($user->puedoEliminarme($id)){
+            $user->delete();
+            return redirect('/');
+        }else{
+            return back()->withErrors('no pudo eliminarse su cuenta tiene reservas y/o subastas y/o hotsales pendientes');
+        }
     }
 }
