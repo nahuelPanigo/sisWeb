@@ -9,6 +9,7 @@
       <label for="email"><b> fecha </b></label>
       <input type="hidden" name="propiedad_id" value="{{$propiedad->id}}">
       @include ('calendarpicker')
+
       <div class="clearfix reservarBoton">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
         <button type="submit" class="signupbtn"> Aceptar </button>

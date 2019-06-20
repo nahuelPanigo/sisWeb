@@ -21,12 +21,22 @@ Route::get('administrator/logIn','sesionController@indexAdmin');
 
 Route::resource('pujas','PujaController');
 Route::get('/subastas/participar', 'PujaController@create');
+Route::get('/enviarSolicitud/{id}' , 'AdministratorUserController@solicitudes');
+Route::get('/solicitudes/listar' , 'AdministratorUserController@listarSolicitudes');
+Route::get('/indexAdmin' , 'AdministratorUserController@index');
+Route::get('/aceptarSolicitud/{user}' , 'AdministratorUserController@aceptarSolicitud');
+Route::get('/rechazarSolicitud/{user}' , 'AdministratorUserController@rechazarSolicitud');
+
+
+ Route::resource('pujas','PujaController');
+ Route::get('/subastas/participar', 'PujaController@create');
 
 route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete']);
 
 
 /* rutas de subastas*/
+
 route::resource('subastas','SubastaController');
 Route::get('/subastas/{id}/create',      ['uses' => 'SubastaController@create',     'as' => 'categorias.subastas.create']);
 Route::post('/subastas/finalizar', 'SubastaController@finalizarSubasta');

@@ -31,6 +31,10 @@ class User extends Model
     {
         return $this->hasMany('app\Puja');
     }
+        public function solicitudes()
+    {
+        return $this->hasOne('app\Solicitud');
+    }
 
     public function cantReservas($id,$anio){
     $user=User::find($id);
@@ -74,4 +78,5 @@ class User extends Model
 }
 
 
+}
 

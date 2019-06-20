@@ -1,14 +1,14 @@
 <html>
 <head>
 <title> HSH Inicio </title>
-<?php Include("estilos.php") ?>
+@Include('estilos')
 
    <link rel="stylesheet" type="text/css" href="/css/imags.css">
 
    </head>
 
   <body>  
-    <?php Include("Header.blade.php"); ?>
+    @Include('adminHeader')
 		<div class="main">
 		<div class="slides">
 	 <img src="/css/imagenes/propiedad3.jpg" alt="">
