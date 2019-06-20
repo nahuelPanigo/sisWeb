@@ -103,7 +103,7 @@ class PropiedadController extends Controller
 			$propiedad->description= $request->Input('description');
 			$propiedad->locate = $request->Input('locate'); 
 			$propiedad->save(); 
-			return view('listarPropiedades')->with('propiedades',Propiedad::all());
+			return view('adminlistarPropiedades')->with('propiedades',Propiedad::all());
         }
     }
 

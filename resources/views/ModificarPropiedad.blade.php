@@ -6,7 +6,7 @@
 		<script src="/js/registrarPropiedad.js" type="text/javascript"> </script>
 	</head>
 	<body>
-	  @Include('Header')
+	  @Include('adminHeader')
 	   @if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
