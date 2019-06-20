@@ -6,6 +6,7 @@ use sisWeb\Reserva;
 use Illuminate\Http\Request;
 use sisWeb\User;
 use sisWeb\Semana;
+use sisWeb\Subasta;
 use DateTime;
 
 class ReservaController extends Controller
@@ -59,14 +60,15 @@ class ReservaController extends Controller
 						$semana= new semana;
                         $semana= $semana->hacerSemana($date,$request->propiedad_id);
                         $reserva = new Reserva;
-						$reserva->hacerReserva($semana->id);
+						$reserva->hacerReserva($semana->id,$id);
 					    return back();
-					}else
+					}else{
 					return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
-				}else
+				}}else{
                 return back()->withErrors(['La fecha ingresada debe ser con mas de 6 meses de anticipacion y menor a 1 año']);
-			}else
+			}}else{
 				return back()->withErrors(['El usuario no posee creditos']);
+            }
 	       }
     }
     /**

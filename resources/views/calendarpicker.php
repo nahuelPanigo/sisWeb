@@ -21,6 +21,10 @@ function DisableSpecificDates(date) {
       $(function () {                
         $("#datepicker").datepicker({
           firstDay: 1,
+           showOn: "button",
+          buttonImage: "images/calendar.gif",
+          buttonImageOnly: true,
+          buttonText: "Select date",
           monthNames: ['Enero', 'Febreo', 'Marzo',
           'Abril', 'Mayo', 'Junio',
           'Julio', 'Agosto', 'Septiembre',
