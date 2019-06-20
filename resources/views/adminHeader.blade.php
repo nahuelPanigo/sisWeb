@@ -16,7 +16,7 @@
       <a class="dropdown-item" href="#"><span><i class="fas fa-user-cog"></i></span> Agregar Propiedad </a>
       <a class="dropdown-item" href="/solicitudes/listar"><span><i class="far fa-star"></i></span> Solicitudes premium</a>
       <a class="dropdown-item" href="#"><span ><i class="fas fa-sign-out-alt"></i></span> Dar de alta admin</a>
-      <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
+      <a class="dropdown-item" href="/sesion/adminLogout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
   </div>
 </div>
