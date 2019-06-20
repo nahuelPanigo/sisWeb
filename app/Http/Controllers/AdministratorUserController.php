@@ -4,8 +4,8 @@ namespace sisWeb\Http\Controllers;
 
 use sisWeb\AdministratorUser;
 use Illuminate\Http\Request;
-
-
+use sisWeb\Solicitud;
+use sisWeb\User;
 class AdministratorUserController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class AdministratorUserController extends Controller
      */
     public function index()
     {
-        return view('adminHeader');
+        return view('adminIndexIngenieria');
     }
 
     /**
@@ -56,7 +56,7 @@ class AdministratorUserController extends Controller
      */
     public function show(AdministratorUser $administratorUser)
     {
-        //
+        
     }
 
     /**
@@ -91,5 +91,52 @@ class AdministratorUserController extends Controller
     public function destroy(AdministratorUser $administratorUser)
     {
         //
+    }
+   
+    public function solicitudes($id){
+      $solicitud=Solicitud::where('user_id','=',$id)->first();
+      if($solicitud != null){
+        return back()->withErrors('Su solicitud ya ha sido enviada previamente');
+    }else{
+      $user= User::find($id);
+      if($user->userType == 'comun'){
+      $solicitud= new Solicitud;
+      $solicitud->user_id=$id;
+      $solicitud->view=false;
+      $solicitud->save();
+      return redirect('/inicio');
+    }
+    else{ return back()->withErrors('Usted ya es usuario premium ');} 
+}
+}
+   
+    public function listarSolicitudes(){
+        $solicitudes = Solicitud::where('view','=',0)->get();
+        $usuarios=collect([]);
+        
+        foreach ($solicitudes as $solicitud) {
+            $usuario = User::where('id','=',$solicitud->user_id)->first();
+            $usuarios->push($usuario);
+    }   
+        
+         return view('listarSolicitudes')->with('usuarios',$usuarios);
+    }
+
+    public function aceptarSolicitud($id){
+         $user= User::find($id);
+        $user->userType= 'vip';
+        $user->save();
+        $solicitud=Solicitud::where('user_id','=',$user->id)->first();
+        $solicitud->view='1';
+        $solicitud->save();
+        return back();
+    }
+    
+    public function rechazarSolicitud($id){
+         $user= User::find($id);
+        $solicitud=Solicitud::where('user_id','=',$user->id)->first();
+        $solicitud->view='1';
+        $solicitud->save();
+        return back();
     }
 }

@@ -1,0 +1,7 @@
+.ui-datepicker table {
+    cursor: no-drop;
+    width: 100%;
+    font-size: .9em;
+    border-collapse: collapse;
+    margin: 0 0 .4em;
+}

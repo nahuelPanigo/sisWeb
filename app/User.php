@@ -31,6 +31,10 @@ class User extends Model
     {
         return $this->hasMany('app\Puja');
     }
+        public function solicitudes()
+    {
+        return $this->hasOne('app\Solicitud');
+    }
 
     public function puedoEliminarme($id){
         $hotsales=Hotsale::where('user_id','=',$id);
@@ -81,4 +85,5 @@ class User extends Model
 }
 
 
+}
 

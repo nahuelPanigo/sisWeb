@@ -21,6 +21,7 @@ class Reserva extends Model
      	return $this->hasOne('app\Semana');
      }
 
+
      public function hacerReserva($semana_id){
         $reserva->user_id =session('id');
         $reserva->semana_id = $semana_id;
@@ -40,3 +41,4 @@ class Reserva extends Model
      }
      return 0;
 }
+
