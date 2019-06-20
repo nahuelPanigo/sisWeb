@@ -168,6 +168,11 @@
         margin-top: 10px;
         font-size: 13px;
     }
+    .error {
+        margin: 2 0 10px;
+    font-size: 25px;
+    text-align: center;
+    }
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -201,23 +206,29 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
+                @if ($usuarios->first()==null)
+                    <p class="error"> No hay solicitudes nuevas </p>
+                    @else
                   @foreach ($usuarios as $user)
                     <tr>
-                        <td>1</td>
+                        <td>{{$user->id}}</td>
                         <td><a href="#">{{$user->name}}{{" "}}{{$user->secondName}}</a></td>
                         <td>{{$user->birthDay}}</td>                        
                         <td>{{$user->userName}}</td>
             <td><span class="status text-success">&bull;</span> {{$user->mail}}</td>
             <td>
-              <a href="#" class="settings" title="Aceptar" data-toggle="tooltip"><i class="material-icons">
+              <a href="/aceptarSolicitud/{{$user->id}}" class="settings" title="Aceptar" data-toggle="tooltip"><i class="material-icons">
 how_to_reg
 </i></a>
-              <a href="#" class="delete" title="Rechazar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+              <a href="/rechazarSolicitud/{{$user->id}}" class="delete" title="Rechazar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
                     </tr>
-         @endforeach 
+         @endforeach
+         
                 </tbody>
+
             </table>
+
       <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
@@ -233,4 +244,5 @@ how_to_reg
         </div>
     </div>     
 </body>
+@endif
 </html>                                                               

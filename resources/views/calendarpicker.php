@@ -11,7 +11,9 @@
   <script src="jime.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
  <script>
-  var disableddates = ["15-12-2019", "16-12-2019", "17-12-2019", "18-12-2019"];
+  <?php 
+  $tmp=\sisWeb\Semana::where('propiedad_id','=',$propiedad->id)->get();?>
+  var disableddates = [<?php $tmp->date ?>];
 
 
 function DisableSpecificDates(date) {
@@ -38,7 +40,7 @@ function DisableSpecificDates(date) {
 </head>
 <body>
  
-<p>Date: <input type="text" id="datepicker"></p>
+<p>Date: <input type="text" id="datepicker" name="date"></p>
  
  
 </body>

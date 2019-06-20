@@ -31,18 +31,21 @@ class User extends Model
     {
         return $this->hasMany('app\Puja');
     }
+        public function solicitudes()
+    {
+        return $this->hasOne('app\Solicitud');
+    }
 
     public function cantReservas($id){
     $user=User::find($id);
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();
     foreach ($reservas as $reserva => $value) {
-         $semana=Semana::where('semana_id','=',)
+         $semana=Semana::where('semana_id','=',);
          $cant=$cant+1;
     }
     return $cant;
     }
+
 }
-
-
 

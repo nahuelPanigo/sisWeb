@@ -48,7 +48,7 @@ class UserController extends Controller
             $cumpleanos = DateTime::createFromFormat('Y-m-d',$request->birthDay); 
             $hoy = new DateTime();
             $annos = $hoy->diff($cumpleanos);
-            if( ($annos->format('%Y'))> 18){
+            if( ($annos->format('%Y'))>= 18){
                 if($request->password == $request->secondPassword){
 					$user = new User($request->all());  
 					$user->creditCard = 'visa';

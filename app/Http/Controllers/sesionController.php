@@ -43,7 +43,7 @@ class sesionController extends Controller
 		}else{
 			if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
 				$request->session()->put('id', $user2->id);
-				return view('indexIngenieria');
+				return redirect('/inicio');
 			}
 			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
 		}

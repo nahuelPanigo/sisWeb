@@ -12,6 +12,9 @@
 	@Include('Header') 
 	<h2 style="text-align:center; font-size: 30px;">Propiedades</h2>
 	<div class="row">
+		@if($propiedades->first()== null)
+		<p class="error"> Lo sentimos! En este momento no hay propiedades </p>
+		@endif
 		@foreach ($propiedades as $propiedad)
 		<div class="column">
 			<div class="card">

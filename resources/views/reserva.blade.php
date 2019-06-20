@@ -6,8 +6,8 @@
       <h1 style="text-align:center;"> Reservar  </h1>
       <p>Ingrese la semana de la fecha que quiere reservar.</p>
       <hr>
-      <label for="email"><b> Monto </b></label>
-      <input type="date" placeholder="date" name="date" required  step="1" value={{old('date')}}>
+      <label for="email"><b> Fecha </b></label>
+     @include('calendarpicker')
       <div class="clearfix reservarBoton">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
         <button type="submit" class="signupbtn"> Aceptar </button>

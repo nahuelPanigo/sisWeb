@@ -15,7 +15,7 @@
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href=""><span><i class="fas fa-user-cog"></i></span> Modificar Cuenta</a>
-      <a class="dropdown-item" href="/enviarSolicitud/{{session('id')}}"><span><i class="far fa-star"></i></span> Solicitar premium</a>
+      	<a class="dropdown-item" href="/enviarSolicitud/{{session('id')}}"><span><i class="far fa-star"></i></span> Solicitar premium</a>
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
   </div>
@@ -44,3 +44,4 @@
 			</ul>
 		</nav>
 		</header>
+		
