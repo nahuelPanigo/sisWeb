@@ -22,8 +22,9 @@ class Reserva extends Model
      }
 
 
-     public function hacerReserva($semana_id){
-        $reserva->user_id =session('id');
+     public function hacerReserva($semana_id,$id){
+        $reserva= new Reserva;
+        $reserva->user_id =$id;
         $reserva->semana_id = $semana_id;
         $reserva->save();
      }
@@ -32,13 +33,14 @@ class Reserva extends Model
         $reserva= Reserva::find($id);
         $now = new DateTime();
         $interval = date_diff($now,$reserva->date);
-        if(($interval->format('Y'))>2)
-            $reserva->date
+        if(($interval->format('Y'))>2){
+            $reserva->date;
             $semana=Semana::find($reserva->semana_id);
             $semana->delete();
             $reserva->delete();
-            return 1
+            return 1;
      }
      return 0;
+ }
 }
 

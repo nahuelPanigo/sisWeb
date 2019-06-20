@@ -49,5 +49,17 @@ class Subasta extends Model
         }
         return 0;
     }
+    public function esDeSubasta ($date ,$propiedad_id){
+        $semana=new Semana;
+        $semana= Semana::whereDate('date','=', $date)->where('propiedad_id','=', $propiedad_id)->first();
+        $subasta=new Subasta;
+        $subasta=Subasta::whereDate('semana_id','=', $semana->id)->first();
+        if($subasta == null){
+            return false;
+        }
+        else{
+            return true;
+        }
+     }
 
 }

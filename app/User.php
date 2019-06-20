@@ -5,6 +5,7 @@ namespace sisWeb;
 use Illuminate\Database\Eloquent\Model;
 use sisWeb\Reserva;
 use sisWeb\Semana;
+use DateTime;
 class User extends Model
 {
     protected $table ='users';
@@ -47,16 +48,17 @@ class User extends Model
     $user=User::find($id);
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();
-    foreach ($reservas as $reserva => $value) {
-         $semana=Semana::where('semana_id','=',$reserva->semana_id);
-         if(($semana_date->format('%Y'))==$anio){
+    foreach ($reservas as $reserva) {
+         $semana=Semana::find($reserva->semana_id);
+         $date= DateTime::createFromFormat('Y-m-d',$semana->date); 
+         if(($date->format('%Y'))==$anio){
             $cant=$cant+1;
           }
     }
      $subastas=Subasta::where('user_idWinner','=',$id)->get();
-     foreach ($subastas as $subasta => $value) {
-         $semana=Semana::where('semana_id','=',$subasta->semana_id);
-         if(($semana_date->format('%Y'))==$anio){
+     foreach ($subastas as $subasta ) {
+         $semana=Semana::find($subasta->semana_id);
+         if(($semana->date->format('%Y'))==$anio){
             $cant=$cant+1;
           }
     }
@@ -66,22 +68,30 @@ class User extends Model
     public function verificarSemana($id,$date){
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();
-    foreach ($reservas as $reserva => $value) {
-         $semana=Semana::where('semana_id','=',$reserva->semana_id);
-         if($semana_date==$date){
+    foreach ($reservas as $reserva) {
+         $semana=Semana::find($reserva->semana_id);
+         if($semana->date==$date){
             $cant=$cant+1;
           }
     }
      $subastas=Subasta::where('user_idWinner','=',$id)->get();
-     foreach ($subastas as $subasta => $value) {
-         $semana=Semana::where('semana_id','=',$subasta->semana_id);
-         if($semana_date==$date){
+     foreach ($subastas as $subasta) {
+         $semana=Semana::find($subasta->semana_id);
+         if($semana->date==$date){
             $cant=$cant+1;
           }
     }
         return ($cant== 0);
     }
-
+    public function misReservas($id){
+      $reservas=Reserva::where('user_id','=',$id)->get();
+      return $reservas;
+      }
+   public function misSubastas($id){
+      $subastas=Subasta::where('user_idWinner','=',$id)->get();
+      return $subastas;
+      }
+     
 }
 
 

@@ -7,7 +7,7 @@
       <p>Por favor para participar en la subasta complete los siguientes datos.</p>
       <hr>
       
-      <inpu type="hidden" name="user_id" value="$session{{id}}">
+      <inpu type="hidden" name="user_id" value="session(id)">
       <label for="email"><b> Monto </b></label>
       <input type="number" placeholder="monto" name="monto" required>
       <input type="hidden" value="" id="subastaID" name="subasta_id">

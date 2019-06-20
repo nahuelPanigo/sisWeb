@@ -70,8 +70,11 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
-    { //
+    public function show($id)
+    { 
+        $user = new User;
+        $user = User::where('id','=',$id)->first();
+        return view('perfil')->with('reservas',$user->misReservas($id))->with('subastas',$user->misSubastas($id))->with('user',$user);
     }
 
     /**

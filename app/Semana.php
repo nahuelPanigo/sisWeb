@@ -27,12 +27,13 @@ class Semana extends Model
      {
      	return $this->belongsTo('app\Reserva');
      }
-     public function hacerSemana(DateTime $date,$propiedad_id){
+     public function hacerSemana( $date,$propiedad_id){
             $semanaNueva = new Semana; 
             $semanaNueva->date = $date;
-            $semanaNueva->propiedad_id = $request->propiedad_id;
+            $semanaNueva->propiedad_id = $propiedad_id;
             $semanaNueva->save();
-            $semanaNueva=Semana::whereDate('date','=', $date)->where('propiedad_id','=', $request->propiedad_id)->first();
-            return $semana;
+            $semanaNueva=Semana::whereDate('date','=', $date)->where('propiedad_id','=', $semanaNueva->propiedad_id)->first();
+            return $semanaNueva;
      }
+
 }
