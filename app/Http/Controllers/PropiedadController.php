@@ -69,7 +69,7 @@ class PropiedadController extends Controller
 			$image->save();   
 			$collection = $propiedad->images()->getEager();
 			$collection->add($image);
-        return view('adminlistarPropiedades')->with('propiedades',Propiedad::all());
+        return redirect('/propiedades/listar')->with('propiedades',Propiedad::all());
         }
     }
 
