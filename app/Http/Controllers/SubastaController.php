@@ -46,8 +46,11 @@ class SubastaController extends Controller
      */
     public function store(Request $request)
     {
+		$validatedData = $request -> validate([
+            'date'=>'required',
+			'monto' =>'required']);
         $now = new DateTime();
-        $newformat= DateTime::createFromFormat('Y-m-d',$request->date); 
+        $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
         if($interval->days>180){
 			$buscarSemana=Semana::where ('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();

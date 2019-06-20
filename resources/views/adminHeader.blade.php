@@ -27,7 +27,7 @@
 
 		<nav class="menu">
 			<ul>
-				<li><a href="/inicio" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>
+				<li><a href="/administrador" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>
 				<li><a href="#" class="servicios"><span class="segundo"><i class="fas fa-suitcase"></i></span> Servicios</a>
 					<ul>
 						<li><a href="/propiedades/listar"><span class="xx"><i class="fas fa-list-ul"></i></span> Propiedades</a></li>
