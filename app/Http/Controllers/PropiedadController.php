@@ -15,6 +15,10 @@ class PropiedadController extends Controller
     return view('listarPropiedades')->with('propiedades',$propiedades);
 
    } 
+   public function adminSearch(Request $request){
+	 $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
+    return view('adminlistarPropiedades')->with('propiedades',$propiedades);  
+   }
 
     public function index()
     {

@@ -17,6 +17,7 @@ Route::get('/subastas/listar', 'SubastaController@indexAdmin');
 Route::resource('administrador', 'AdministratorUserController');
 Route::get('/sesion/adminLogout', 'Auth\LoginController@adminLogOut');
 Route::get('administrator/logIn','sesionController@indexAdmin');
+Route::get ('/propiedades/adminSearch','PropiedadController@adminSearch');
 /* fin de cosas de administrador*/
 
 Route::resource('pujas','PujaController');
