@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use sisWeb\Propiedad;
 use sisWeb\Semana;
 use sisWeb\Subasta;
+use DateTime;
 
 class Subasta extends Model
 {
@@ -49,5 +50,12 @@ class Subasta extends Model
         }
         return 0;
     }
+	public function estaActiva(Subasta $subasta){
+		$semana = Semana::find($subasta->semana_id);
+		$now = new DateTime();
+		$date= DateTime::createFromFormat('Y-m-d',$semana->date);
+		$interval = date_diff($now, $date);
+		return (($interval->format('%m')<6) and (($interval->format('%m')>=5)and($interval->format('%d')>24)));
+	}
 
 }

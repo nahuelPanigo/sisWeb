@@ -48,7 +48,7 @@ class SubastaController extends Controller
     {
 		$validatedData = $request -> validate([
             'date'=>'required',
-			'monto' =>'required']);
+			'minPrice' =>'required']);
         $now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);

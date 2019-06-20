@@ -30,7 +30,11 @@
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>
     <li><span class="fas fa-map-marker-alt"> {{$subasta->name($subasta)->locate}}</span></li>
     <li><span class="far fa-clock"></span></li>
+	@if($subasta->estaActiva($subasta))
     <button onclick="mostrarModal({{$subasta->id}})" class="boton" > PUJAR </button>
+	@else
+	<div class="boton inactiva"> Incactiva </div>
+	@endif
 @Include('Pujar')
   </ul>
 </div>

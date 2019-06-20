@@ -55,3 +55,14 @@
 .opcAdmin a {
 	text-decoration:none;
 }
+.inactiva{
+	background-color: red;
+    color: white;
+    padding: 14px 0px;
+    border: none;
+    cursor: pointer;
+    width: 135px;
+    opacity: 0.9;
+    font-size: 18px;
+	text-align:center;
+}

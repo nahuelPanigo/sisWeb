@@ -102,7 +102,6 @@ class UserController extends Controller
             'secondName'=>'required|min:2|max:20',
             'name'=>'required|min:2',
             'password'=>'required|min:6',
-			'secondPasword' => 'required',
         ]);
         if($validatedData){
 			$user = User::where('id','=',$id)->first();
@@ -111,17 +110,21 @@ class UserController extends Controller
 				if($validarMail){
 				}
 			}
-		    $user->mail = $request->mail; 
-			$user->userName = $request->userName; 
-			$user->secondName = $request->secondName; 
-			$user->name = $request->name; 	
-			$user->password = $request->password;  
-			$user->creditCard = 'visa';
-			$user->userType='comun';      
+			if($request->password == $request->secondPassword){
+				$user->mail = $request->mail; 
+				$user->userName = $request->userName; 
+				$user->secondName = $request->secondName; 
+				$user->name = $request->name; 	
+				$user->password = $request->password;  
+				$user->creditCard = 'visa';
+				$user->userType='comun';  
+				$user->save();
+				return redirect ('/inicio')-> with('user', $user); 
+			}else{
+				return redirect ('/admin/users/'.$id.'/edit')->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
+			}  
 		}
-        $user->save();
-        return view('indexIngenieria')-> with ('user', $user);   
-    }
+	}
 
     /**
      * Remove the specified resource from storage.

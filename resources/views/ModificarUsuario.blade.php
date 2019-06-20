@@ -67,9 +67,9 @@
 						<input type="number" id="codigo" name="creditCardCode"placeholder="Ingrese codigo de la tarjeta" value="{{old('creditCardCode')}}"><br> <br>
 					@endif
 					@if(old('creditCardDate')==null)
-					Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" min="2019-12-12" value="{{$user->creditCardDate}}"><br> <br>
+					Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" value="{{$user->creditCardDate}}"><br> <br>
 					@else
-						Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1" min="2019-12-12" value="{{old('creditCardDate')}}"><br> <br>
+						Vencimiento: <input type="date" id="vencimiento" name="creditCardDate" step="1"  value="{{old('creditCardDate')}}"><br> <br>
 					@endif
 				</div>
 				<input type="submit" value="Modificar" class="boton_registrarse">
