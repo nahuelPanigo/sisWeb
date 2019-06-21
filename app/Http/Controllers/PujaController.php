@@ -49,10 +49,10 @@ class PujaController extends Controller
                 $puja->monto = $request->Input('monto');
                 $puja->user_id = session('id');
                 $puja->save();
-                return back();
             }else{
                 return back()->withErrors(['el monto ingresado debe ser mayor al monto actual']);
             }
+			return back();
         }
     }
     /**
