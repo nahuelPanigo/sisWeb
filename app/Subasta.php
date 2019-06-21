@@ -78,5 +78,11 @@ class Subasta extends Model
             return true;
         }
      }
+      public function devolverSemana($id){
+            $semana=new Semana;
+            $semana= Semana::find($id);
+            return $semana;
+
+        }
 
 }

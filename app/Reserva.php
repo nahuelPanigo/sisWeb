@@ -30,9 +30,12 @@ class Reserva extends Model
      }
 
      public function eliminarReserva($id){
+
         $reserva= Reserva::find($id);
+        $semana=Semana::find($reserva->semana_id);
+        $date=DateTime::createFromFormat('Y-m-d',$semana->date);
         $now = new DateTime();
-        $interval = date_diff($now,$reserva->date);
+        $interval = date_diff($now,$date);
         if(($interval->format('%m'))>2){
             $semana=Semana::find($reserva->semana_id);
             $semana->delete();
@@ -41,5 +44,12 @@ class Reserva extends Model
 		}
 		return 0;
 		}
+
+        public function devolverSemana($id){
+            $semana=new Semana;
+            $semana= Semana::find($id);
+            return $semana;
+
+        }
 }
 

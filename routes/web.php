@@ -27,7 +27,7 @@ Route::get('/solicitudes/listar' , 'AdministratorUserController@listarSolicitude
 Route::get('/indexAdmin' , 'AdministratorUserController@index');
 Route::get('/aceptarSolicitud/{user}' , 'AdministratorUserController@aceptarSolicitud');
 Route::get('/rechazarSolicitud/{user}' , 'AdministratorUserController@rechazarSolicitud');
-
+Route::get('/users/{id}/delete',      ['uses' => 'UserController@delete',     'as' => 'admin.users.delete']);
 
  Route::resource('pujas','PujaController');
  Route::get('/subastas/participar', 'PujaController@create');
@@ -44,7 +44,7 @@ Route::post('/subastas/finalizar', 'SubastaController@finalizarSubasta');
 /* fin de rutas de subastas*/
 
 route::resource('reservas','ReservaController');
-
+Route::get('/reservas/{id}/delete',      ['uses' => 'ReservaController@delete',     'as' => 'admin.reservas.delete']);
 Route::group(['prefix'=>'admin'],function() {
 	Route::resource('users','UserController');
 	Route::resource('propiedades','PropiedadController');

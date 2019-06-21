@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+<title> Mi Perfil </title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 * {box-sizing: border-box}
 body {font-family: "Lato", sans-serif;}
@@ -49,20 +51,43 @@ body {font-family: "Lato", sans-serif;}
   border-left: none;
   height: 300px;
 }
+a {
+    color:black;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
+.fa-times {
+  color: red;
+}
 </style>
 @Include('estilos')
+<link rel="stylesheet" type="text/css" href="/css/listaReservas.css">
 </head>
 <body>
 @Include('Header')
-<h2>Mi Perfil </h2>
-<p>Nombre de usuario</p>
+<h2 style="font-size: 25px; margin-left: 30px;">Mi Perfil </h2>
+<p style="font-size: 25px; margin-left: 30px;">{{$user->name}} {{$user->secondName}}</p>
 
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'datos')" id="defaultOpen">Mis Datos</button>
   <button class="tablinks" onclick="openCity(event, 'reservas')" id="defaultOpen">Mis Reservas</button>
   <button class="tablinks" onclick="openCity(event, 'subastas')">Mis Subastas</button>
   <button class="tablinks" onclick="openCity(event, 'hotsales')">Mis Hot Sales</button>
-  <a class="tablinks" href="admin/users/{{session('id')}}/edit" id="defaultOpen">Modificar mis Datos</a>
+  <button class="modificar"> <a href="/admin/users/{{session('id')}}/edit" id="defaultOpen">Modificar mis Datos</a></button>
+   <button class="modificar"> <a href="/admin/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
 </div>
 <div id="datos" class="tabcontent">
   <h3>Mis Datos</h3>
@@ -82,31 +107,54 @@ body {font-family: "Lato", sans-serif;}
 </div>
 
 <div id="reservas" class="tabcontent">
-  <h3>Mis Reservas</h3>
+  <h3 style="font-size: 22px;">Mis Reservas</h3>
+  <table style="margin:30px 0px 30px 0px;">
+  <tr style="font-size: 20px;">
+    <th>Propiedad</th>
+    <th>Semana</th>
+    <th>Ubicacion</th>
+  </tr>
+
   <p>
     @if($reservas->first()== null)
         <p class="error"> Lo sentimos! En este momento no posee reservas  </p>
         @endif
-
-
         @foreach ($reservas as $reserva)
-        <h3>{{$reserva->semana_id}}</h3>
+       <tr style="font-size: 15px;">
+    
+    @php $semana=$reserva->devolverSemana($reserva->semana_id) @endphp
+    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
+    <td>{{$semana->date}}</td>
+    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
+    <td><a href="/reservas/{{$reserva->id}}/delete" > Cancelar  <i class="fas fa-times"></i></a><td>
+  </tr>
+
         @endforeach
-        
+    </table>     
   </p>
 
 </div>
 
 <div id="subastas" class="tabcontent">
-  <h3>Mis Subastas</h3>
+  <h3 style="font-size: 22px;">Mis Subastas</h3>
   <p> @if($subastas->first()== null)
-        <p class="error"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
+        <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
         @endif
-
-
+          <table style="margin:30px 0px 30px 0px;">
+  <tr style="font-size: 20px;">
+    <th>Propiedad</th>
+    <th>Semana</th>
+    <th>Ubicacion</th>
+  </tr>
         @foreach ($subastas as $subasta)
-        <h3>{{$subasta->semana_id}}</h3>
+           @php $semana=$subasta->devolverSemana($subasta->semana_id) @endphp
+     <tr style="font-size: 15px;">      
+    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
+    <td>{{$semana->date}}</td>
+    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
+  </tr>
         @endforeach</p> 
+         </table> 
 </div>
 
 <div id="hotsales" class="tabcontent">

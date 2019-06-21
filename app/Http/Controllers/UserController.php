@@ -71,7 +71,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
+    {  
         $user = new User;
         $user = User::where('id','=',$id)->first();
         return view('perfil')->with('reservas',$user->misReservas($id))->with('subastas',$user->misSubastas($id))->with('user',$user);
@@ -135,13 +135,18 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        if($user->puedoEliminarme($id)){
+public function delete($id)
+{       if($user->puedoEliminarme($id)){
             $user->delete();
             return redirect('/');
         }else{
             return back()->withErrors('no pudo eliminarse su cuenta tiene reservas y/o subastas y/o hotsales pendientes');
         }
+    
     }
+
+    public function destroy($id)
+    {
+       
+}
 }

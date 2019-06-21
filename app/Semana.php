@@ -35,5 +35,10 @@ class Semana extends Model
             $semanaNueva=Semana::whereDate('date','=', $date)->where('propiedad_id','=', $semanaNueva->propiedad_id)->first();
             return $semanaNueva;
      }
+    public function devolverDatosPropiedad($id){
+        $propiedad=new Propiedad;
+        $propiedad= Propiedad::find($id);
+        return $propiedad;
+    }
 
 }
