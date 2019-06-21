@@ -89,7 +89,6 @@ class User extends Model
 		$dateFormat = DateTime::createFromFormat('Y-m-d',$date);
 		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantReservas($id,$dateFormat->format('%Y'))));
 	}	
-}
     public function misReservas($id){
       $reservas=Reserva::where('user_id','=',$id)->get();
       return $reservas;

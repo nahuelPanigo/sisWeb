@@ -53,13 +53,14 @@ class SubastaController extends Controller
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
         if($interval->days>180){
-			$buscarSemana=Semana::where ('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
+			$newDate = date("Y/m/d", strtotime($request->date));
+			$buscarSemana=Semana::where ('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
 				$semana= new Semana;
-				$semana->date=$request->Input('date');    
+				$semana->date = $newDate;
 				$semana->propiedad_id=$request->propiedad_id; 
 				$semana->save();
-				$semana=Semana::where('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
+				$semana=Semana::where('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
 				$subasta =new Subasta;
 				$subasta->semana_id =$semana->id;
 				$subasta->minPrice=$request->Input('minPrice');

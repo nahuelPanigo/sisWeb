@@ -2,7 +2,7 @@
     <span class=""></span></button>
     <ul class="dropdown-menu" >
       <li class="submenu-item"><a href="{{ route('propiedades.edit',$propiedad->id)}}" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
-					<li class="submenu-item"><a href="" class="submenu-link" onclick="document.getElementById('id01').style.display='block'"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
+					<li class="submenu-item"><a href="{{route('admin.propiedades.delete',$propiedad->id)}}" class="submenu-link"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
 					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
 					<li class="submenu-item"><a href="{{route('categorias.subastas.create',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>

@@ -19,7 +19,6 @@
 			<div class="card">
 				<h3>{{$propiedad->name}}</h3>
 				@Include('submenuPropiedad')
-				 @Include('eliminar')
 			<div class="datos">
 				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
 				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>

@@ -27,9 +27,9 @@
 			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action="/admin/propiedades" enctype="multipart/form-data">
 				@csrf
 				<div class="registrar_propiedad">
-				<input type="text" id="nombre" name="name" placeholder="Nombre de propiedad" value={{old('name')}}> <br> <br>
-				<input type="text" id="descripcion" name="description"placeholder="Descripción" value={{old('description')}}><br> <br>
-				<input type="text" id="localidad" name="locate" placeholder="Localidad" value={{old('locate')}}><br> <br>
+				<input type="text" id="nombre" name="name" placeholder="Nombre de propiedad" value="{{old('name')}}" autocomplete="off"> <br> <br>
+				<input type="text" id="descripcion" name="description"placeholder="Descripción" value="{{old('description')}}" autocomplete="off"><br> <br>
+				<input type="text" id="localidad" name="locate" placeholder="Localidad" value="{{old('locate')}}" autocomplete="off"><br> <br>
 				<div id="error_localidad"> </div>
 				Foto: <input type="file" id="foto" name="archiveName">
 				<div id="error_foto"> </div>
