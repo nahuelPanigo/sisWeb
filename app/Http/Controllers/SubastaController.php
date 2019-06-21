@@ -52,7 +52,7 @@ class SubastaController extends Controller
         $now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
-        if($interval->days>180){
+        if(($interval->days>180)and ($interval->days < 365)){
 			$buscarSemana=Semana::where ('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
 				$semana= new Semana;
@@ -71,7 +71,7 @@ class SubastaController extends Controller
 				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta para esta semana']);
 			}
         }else{
-			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo']);
+			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo y 1 año como maximo']);
 		}
 
     }

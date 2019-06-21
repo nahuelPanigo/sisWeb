@@ -51,14 +51,15 @@ class User extends Model
     foreach ($reservas as $reserva) {
          $semana=Semana::find($reserva->semana_id);
          $date= DateTime::createFromFormat('Y-m-d',$semana->date); 
-         if(($date->format('%Y'))==$anio){
+         if(($date->format('Y'))==$anio){
             $cant=$cant+1;
           }
     }
      $subastas=Subasta::where('user_idWinner','=',$id)->get();
      foreach ($subastas as $subasta ) {
          $semana=Semana::find($subasta->semana_id);
-         if(($semana->date->format('%Y'))==$anio){
+         $date= DateTime::createFromFormat('Y-m-d',$semana->date); 
+         if(($date->format('Y'))==$anio){
             $cant=$cant+1;
           }
     }
@@ -89,7 +90,6 @@ class User extends Model
 		$dateFormat = DateTime::createFromFormat('Y-m-d',$date);
 		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantReservas($id,$dateFormat->format('%Y'))));
 	}	
-}
     public function misReservas($id){
       $reservas=Reserva::where('user_id','=',$id)->get();
       return $reservas;
