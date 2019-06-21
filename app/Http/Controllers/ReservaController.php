@@ -111,12 +111,16 @@ class ReservaController extends Controller
      * @param  \sisWeb\reserva  $reserva
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {   $reserva = new Reserva;
-        if($reserva->eliminarReservas($id)){
+public function delete($id){
+{       $reserva= new Reserva;
+        if($reserva->eliminarReserva($id)){
             return redirect('/inicio');
         }else
-            return redirect('/inicio')->withErrors('no se pudo eliminar la reserva porque no se tiene 2 o mas meses de anticipacion');
+            return redirect('/inicio')->withErrors('no se pudo cancelar la reserva porque no se tiene 2 o mas meses de anticipacion');
     }
 }
-    
+
+    public function destroy(Reserva $reserva)
+    {  
+    }
+    }
