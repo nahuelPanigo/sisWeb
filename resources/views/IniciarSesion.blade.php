@@ -28,12 +28,12 @@
 	<h1 class="IS_h1"> Iniciar Sesion </h1>
 	<div class="IS_caja">
 		<img src="/css/imagenes/hsh.png">
-		<form class="IS_formulario" method="POST" accept-charset="UTF-8" onsubmit="return validarInicioDeSesion()" action="/admin/sesion" enctype="multipart/form-data">
+		<form class="IS_formulario" method="POST" accept-charset="UTF-8" onsubmit="return validarInicioDeSesion()" action="/admin/sesion" enctype="multipart/form-data" method="POST">
 			@csrf
 			<fieldset>
 			{{ csrf_field() }}
 				<div class="input">
-					<input type="email" id="email" name="mail" placeholder="Email" value={{old('mail')}}><br> <br>
+					<input type="email" id="email" name="mail" placeholder="Email" value="{{old('mail')}}"><br> <br>
 					<div id="error_email"> </div>
 					<input type="password" id="contrasenia" name="password" placeholder="Contraseña"><br> <br>
 					<div id="error_contrasenia"> </div>

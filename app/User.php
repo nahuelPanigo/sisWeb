@@ -50,8 +50,8 @@ class User extends Model
     $reservas=Reserva::where('user_id','=',$id)->get();
     foreach ($reservas as $reserva) {
          $semana=Semana::find($reserva->semana_id);
-         $date= DateTime::createFromFormat('Y-m-d',$semana->date); 
-         if(($date->format('%Y'))==$anio){
+         $date= DateTime::createFromFormat('Y-m-d',$semana->date);
+         if(($date->format('Y'))==$anio){
             $cant=$cant+1;
           }
     }
@@ -68,6 +68,7 @@ class User extends Model
     public function verificarSemana($id,$date){
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();
+	$date = $date->format('Y-m-d');
     foreach ($reservas as $reserva) {
          $semana=Semana::find($reserva->semana_id);
          if($semana->date==$date){

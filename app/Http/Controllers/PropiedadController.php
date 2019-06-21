@@ -122,7 +122,7 @@ class PropiedadController extends Controller
     {
         $propiedad= Propiedad::find($id);
         $propiedad->delete();
-        return view('listarPropiedades')->with('propiedades',Propiedad::all());
+        return view('adminlistarPropiedades')->with('propiedades',Propiedad::all());
     }
 
     public function destroy(propiedad $propiedad)
