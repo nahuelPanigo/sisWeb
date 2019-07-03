@@ -4,6 +4,10 @@ namespace sisWeb\Http\Controllers;
 
 use sisWeb\Hotsale;
 use Illuminate\Http\Request;
+use sisWeb\Semana;
+use sisWeb\User;
+use sisWeb\Puja;
+use DateTime;
 
 class HotsaleController extends Controller
 {
@@ -22,9 +26,9 @@ class HotsaleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+   public function create($id)
     {
-        //
+        return view('registrarHotsale')->with('id',$id);
     }
 
     /**
@@ -35,7 +39,33 @@ class HotsaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validatedData = $request -> validate([
+            'date'=>'required',
+			'precio' =>'required']);
+		$now = new DateTime();
+        $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
+        $interval = date_diff($now, $newformat);
+		if($interval->days < 180){
+			$newDate = date("Y/m/d", strtotime($request->date));
+			$buscarSemana=Semana::where ('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
+			if(is_null($buscarSemana)){
+				$semana= new Semana;
+				$semana->date = $newDate;
+				$semana->propiedad_id=$request->propiedad_id; 
+				$semana->save();
+				$semana=Semana::where('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
+				$hotsale = new Hotsale;
+				$hotsale ->price =$request->Input('precio');
+				$hotsale->semana_id =$semana->id;
+				$hotsale-> user_id = null;
+				$hotsale->save();
+				return view('adminHotsale')->with('hotsales',Hotsale::all());
+			}else{
+			  return back()->with('id',$request->propiedad_id)->withErrors(['La semana se encuentra ocupada']);	
+			}				
+		}else{
+			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe iniciar dentro de menos de 6 meses']);
+		}
     }
 
     /**

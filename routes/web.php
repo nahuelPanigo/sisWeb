@@ -36,12 +36,17 @@ route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete']);
 
 
-/* rutas de subastas*/
-
+/*Rutas*/
 route::resource('subastas','SubastaController');
 Route::get('/subastas/{id}/create',      ['uses' => 'SubastaController@create',     'as' => 'categorias.subastas.create']);
 Route::post('/subastas/finalizar', 'SubastaController@finalizarSubasta');
 /* fin de rutas de subastas*/
+
+/* Hotsale*/
+route::resource('hotsale','HotsaleController');
+Route::get('/hotsale/{id}/create', ['uses' => 'HotsaleController@create', 'as' =>
+'categorias.hotsale.create']);
+/*Fin Hotsale*/
 
 route::resource('reservas','ReservaController');
 Route::get('/reservas/{id}/delete',      ['uses' => 'ReservaController@delete',     'as' => 'admin.reservas.delete']);

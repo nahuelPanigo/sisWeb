@@ -16,7 +16,7 @@ class CreateHotsalesTable extends Migration
         Schema::create('hotsales', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->double('price');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();;
             $table->unsignedBigInteger('semana_id');
             $table->timestamps();
         });
