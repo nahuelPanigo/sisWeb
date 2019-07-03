@@ -25,7 +25,7 @@ Route::get('/subastas/participar', 'PujaController@create');
 Route::get('/enviarSolicitud/{id}' , 'AdministratorUserController@solicitudes');
 Route::get('/solicitudes/listar' , 'AdministratorUserController@listarSolicitudes');
 Route::get('/indexAdmin' , 'AdministratorUserController@index');
-Route::get('/aceptarSolicitud/{user}' , 'AdministratorUserController@aceptarSolicitud');
+Route::get('/aceptarSolicitud/{user}' , 'Admi0nistratorUserController@aceptarSolicitud');
 Route::get('/rechazarSolicitud/{user}' , 'AdministratorUserController@rechazarSolicitud');
 Route::get('/users/{id}/delete',      ['uses' => 'UserController@delete',     'as' => 'admin.users.delete']);
 

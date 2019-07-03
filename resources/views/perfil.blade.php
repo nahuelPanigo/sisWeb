@@ -87,7 +87,7 @@ tr:nth-child(even) {
   <button class="tablinks" onclick="openCity(event, 'subastas')">Mis Subastas</button>
   <button class="tablinks" onclick="openCity(event, 'hotsales')">Mis Hot Sales</button>
   <button class="modificar"> <a href="/admin/users/{{session('id')}}/edit" id="defaultOpen">Modificar mis Datos</a></button>
-   <button class="modificar"> <a href="/admin/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
+   <button class="modificar"> <a href="/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
 </div>
 <div id="datos" class="tabcontent">
   <h3>Mis Datos</h3>

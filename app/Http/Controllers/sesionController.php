@@ -41,7 +41,7 @@ class sesionController extends Controller
     public function store(Request $request){
         $user2 = new User;
         $user2 = User::where('mail','=', $request->mail)->first();
-        if(is_null($user2)){
+        if((is_null($user2))or($user2->deleted==true)){
 			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
 		}else{
 			if(($user2->password == $request->password) and ( $user2->mail == $request->mail)){
@@ -51,23 +51,11 @@ class sesionController extends Controller
 			return back()->withInput()->withErrors(['el email y/o la contraseña son invalidos']);
 		}
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //

@@ -53,14 +53,14 @@ class SubastaController extends Controller
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
         if(($interval->days>180)and ($interval->days < 365)){
-			$buscarSemana=Semana::where ('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
+			$buscarSemana=Semana::whereDate('date','=',$newformat)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
 				$semana= new Semana;
-				$semana->date=$request->Input('date');    
+				$semana->date=$newformat;    
 				$semana->propiedad_id=$request->propiedad_id; 
 				$semana->save();
-				$semana=Semana::where('date','=',$request->date)->where('propiedad_id','=',$request->propiedad_id)->first();
-				$subasta =new Subasta;
+				$semana=Semana::whereDate('date','=',$newformat)->where('propiedad_id','=',$request->propiedad_id)->first();
+                $subasta =new Subasta;
 				$subasta->semana_id =$semana->id;
 				$subasta->minPrice=$request->Input('minPrice');
 				$subasta->finish=0;
@@ -132,7 +132,7 @@ class SubastaController extends Controller
 				if($subasta->minPrice <= $puja->monto ){
 					if($user->puedeGanar($puja->user_id,$semana->date)){
 						$ok=1;
-						$usser->id = $puja->user_id;
+						$user->id = $puja->user_id;
 						$mensaje ="se registro ganador con exito";
 					}
 				}

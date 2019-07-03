@@ -44,10 +44,13 @@ class PujaController extends Controller
             if($subasta->finalPrice < $request->Input('monto')){ 
                 $subasta->finalPrice= $request->Input('monto');
                 $subasta->save();
-				$puja = new Puja;
-                $puja->subasta_id= $subasta->id;
-                $puja->monto = $request->Input('monto');
-                $puja->user_id = session('id');
+                if($puja=Puja::where('user_id','=',session('id'))->where('subasta_id','=', $request->subasta_id)== null){
+				     $puja = new Puja;
+                     $puja->subasta_id= $subasta->id;
+                     $puja->monto = $request->Input('monto');
+                     $puja->user_id = session('id');    
+                 }else
+                  $puja->monto=$request->monto;
                 $puja->save();
                 return back();
             }else{
