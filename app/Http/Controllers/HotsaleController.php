@@ -18,11 +18,12 @@ class HotsaleController extends Controller
      */
     public function index()
     {
-        //
+        $hotsales = Hotsale::where('user_id','=',NULL)->get();
+		return view('listarHotsales')->with('hotsales',$hotsales);
     }
 	
 	public function indexAdmin(){
-		$hotsales = Hotsale::all();
+		$hotsales = Hotsale::where('user_id','=',NULL)->get();
 		return view('adminHotsale')->with('hotsales',$hotsales);
 	}
     /**
@@ -41,6 +42,21 @@ class HotsaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+	 
+	public function comprar($hotsale_id){
+		$hotsale = Hotsale::find($hotsale_id);
+		$semana = Semana::find($hotsale-> semana_id) ;
+		$user = new User;
+		$date= DateTime::createFromFormat('Y-m-d',$semana->date); 
+		 if(!($user->verificarSemana(session('id'),$date))){
+                return back()->withErrors(['ya posee una reserva para esa fecha']);
+            }else{
+				$hotsale -> user_id = session('id');
+				$hotsale->save();
+				return back()->with('mensaje',"Se a comprado el hotsale con exito");
+			}
+	}
+	
     public function store(Request $request)
     {
        $validatedData = $request -> validate([
@@ -63,7 +79,7 @@ class HotsaleController extends Controller
 				$hotsale->semana_id =$semana->id;
 				$hotsale-> user_id = null;
 				$hotsale->save();
-				return view('adminHotsale')->with('hotsales',Hotsale::all());
+				return redirect('/hotsales/indexAdmin');
 			}else{
 			  return back()->with('id',$request->propiedad_id)->withErrors(['La semana se encuentra ocupada']);	
 			}				
