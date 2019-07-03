@@ -12,6 +12,7 @@ Route::get('logout','Auth\LoginController@logout');
 Route::get('/propiedades/search', 'PropiedadController@search');
 
 /*Cosas de administrador*/
+Route::get('/hotsales/listar', 'HotsaleController@index');
 Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');
 Route::get('/subastas/listar', 'SubastaController@indexAdmin');
 Route::resource('administrador', 'AdministratorUserController');

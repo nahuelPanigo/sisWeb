@@ -37,10 +37,13 @@ class User extends Model
         return $this->hasOne('app\Solicitud');
     }
 
-    public function puedoEliminarme($id){
-        $hotsales=Hotsale::where('user_id','=',$id);
+    public function puedoEliminarme($id){ 
+        $hotsales=Hotsale::where('user_id','=',$id)->get();
         $user=new User;
-        return (($hotsale->isEmpty())and($user->cantReservas=0));
+        $now=new DateTime();
+        $anio1=$now->format('Y');
+        $anio2=$anio1+1;
+        return (($hotsales->isEmpty())and($user->cantReservas($id,$anio1)==0)and($user->cantReservas($id,$anio2)==0));
     }
 
 
@@ -51,14 +54,14 @@ class User extends Model
     foreach ($reservas as $reserva) {
          $semana=Semana::find($reserva->semana_id);
          $date= DateTime::createFromFormat('Y-m-d',$semana->date); 
-         if(($date->format('%Y'))==$anio){
+         if(($date->format('Y'))==$anio){
             $cant=$cant+1;
           }
     }
      $subastas=Subasta::where('user_idWinner','=',$id)->get();
      foreach ($subastas as $subasta ) {
          $semana=Semana::find($subasta->semana_id);
-         if(($semana->date->format('%Y'))==$anio){
+         if(($semana->date->format('Y'))==$anio){
             $cant=$cant+1;
           }
     }
@@ -89,7 +92,7 @@ class User extends Model
 		$dateFormat = DateTime::createFromFormat('Y-m-d',$date);
 		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantReservas($id,$dateFormat->format('%Y'))));
 	}	
-}
+
     public function misReservas($id){
       $reservas=Reserva::where('user_id','=',$id)->get();
       return $reservas;

@@ -136,11 +136,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 public function delete($id)
-{       if($user->puedoEliminarme($id)){
+{   
+    $user= new User;    
+    if($user->puedoEliminarme($id)){
+            $user=User::find($id);
             $user->delete();
             return redirect('/');
         }else{
-            return back()->withErrors('no pudo eliminarse su cuenta tiene reservas y/o subastas y/o hotsales pendientes');
+            return back()->withErrors('no pudo eliminarse su cuenta,tiene reservas y/o subastas y/o hotsales pendientes');
         }
     
     }

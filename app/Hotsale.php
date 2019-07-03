@@ -20,5 +20,11 @@ class Hotsale extends Model
      {
      	return $this->hasOne('app\Semana');
      }
+    public function devolverSemana($id){
+            $semana=new Semana;
+            $semana= Semana::find($id);
+            return $semana;
 
+        }
+    
 }

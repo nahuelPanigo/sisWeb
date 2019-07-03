@@ -3,10 +3,24 @@
     <ul class="dropdown-menu" >
       <li class="submenu-item"><a href="{{ route('propiedades.edit',$propiedad->id)}}" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
 					<li class="submenu-item"><a href="" class="submenu-link" onclick="document.getElementById('id01').style.display='block'"><span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
+
 					 <li class="submenu-item"><hr class="submenu-seperator" /></li>
 					<li class="submenu-item"><a href="{{route('categorias.subastas.create',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
 					<li class="submenu-item"><a href="#" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>
+					<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
     </ul>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 

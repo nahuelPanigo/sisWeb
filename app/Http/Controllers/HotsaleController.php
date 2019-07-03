@@ -14,7 +14,8 @@ class HotsaleController extends Controller
      */
     public function index()
     {
-        //
+        $hotsales = Hotsale::all();
+        return view('listarHotsales')->with('hotsales',$hotsales);
     }
 
     /**
