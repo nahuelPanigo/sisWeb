@@ -20,7 +20,11 @@ class HotsaleController extends Controller
     {
         //
     }
-
+	
+	public function indexAdmin(){
+		$hotsales = Hotsale::all();
+		return view('adminHotsale')->with('hotsales',$hotsales);
+	}
     /**
      * Show the form for creating a new resource.
      *
@@ -110,6 +114,10 @@ class HotsaleController extends Controller
      */
     public function destroy(Hotsale $hotsale)
     {
-        //
     }
+	public function delete($id){
+		$hotsale= Hotsale::find($id);
+        $hotsale->delete();
+        return back()->with('hotsales',Hotsale::all());
+	}
 }

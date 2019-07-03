@@ -36,7 +36,7 @@
 				<li><a href="#" class="tercero"><span class="tercero "><i class="fas fa-th"></i></span> Categorias</a>
 				<ul>
 				<li><a href="/subastas/listar" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
-				<li><a href="#"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
+				<li><a href="/hotsales/indexAdmin"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
 				</ul>
 				</li>
 				<li><a href="#"><span class="cuarto"><i class="fas fa-question"></i></span> Acerca de</a></li>

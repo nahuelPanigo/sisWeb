@@ -20,5 +20,12 @@ class Hotsale extends Model
      {
      	return $this->hasOne('app\Semana');
      }
-
+     
+	public function name(Hotsale $hotsale){
+        $semana = new Semana;
+        $semana = Semana::where('id','=',$hotsale->semana_id)->first();
+        $propiedad = new Propiedad;
+        $propiedad = Propiedad:: where ('id', '=', $semana->propiedad_id)->first();
+        return($propiedad);
+     } 
 }

@@ -18,6 +18,7 @@ Route::resource('administrador', 'AdministratorUserController');
 Route::get('/sesion/adminLogout', 'Auth\LoginController@adminLogOut');
 Route::get('administrator/logIn','sesionController@indexAdmin');
 Route::get ('/propiedades/adminSearch','PropiedadController@adminSearch');
+Route::get ('/hotsales/indexAdmin','HotsaleController@indexAdmin');
 /* fin de cosas de administrador*/
 
 Route::resource('pujas','PujaController');
@@ -46,6 +47,7 @@ Route::post('/subastas/finalizar', 'SubastaController@finalizarSubasta');
 route::resource('hotsale','HotsaleController');
 Route::get('/hotsale/{id}/create', ['uses' => 'HotsaleController@create', 'as' =>
 'categorias.hotsale.create']);
+Route::get('/hotsale/{id}/delete',      ['uses' => 'HotsaleController@delete',     'as' => 'hotsale.delete']);
 /*Fin Hotsale*/
 
 route::resource('reservas','ReservaController');
