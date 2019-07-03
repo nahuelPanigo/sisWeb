@@ -29,21 +29,15 @@ class CreateUsersTable extends Migration
             $table->string('userType');
             $table->timestamps();
         });
+
+        schema::table('users',function($table){
+            $table->boolean('deleted');
+        });
     }
-
-
-    
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
             Schema::drop('users');
-            //
         });
     }
 }

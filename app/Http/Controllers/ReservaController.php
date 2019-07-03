@@ -42,34 +42,36 @@ class ReservaController extends Controller
             $validatedData = $request -> validate([
             'date'=>'required',]);
 		    $id = session('id');
-            $user=new User;
-            $date= DateTime::createFromFormat('m/d/Y',$request->date); 
-            $anio=($date->format('Y'));
-            $date->format('Y-m-d');
-            $cant=$user->cantReservas($id,$anio);
-            if(!($user->verificarSemana($id,$date))){
-                return back()->withErrors(['ya posee una reserva para esa fecha']);
-            }else{
-			if($cant< 2){
-                $now = new DateTime(); 
-                $interval = date_diff($now, $date);
-                if(($interval->days > 180 ) and ($interval->days < 365)){
-				    $semana = Semana::whereDate('date','=', $date)->where('propiedad_id','=', $request->propiedad_id)->first();
-                 $subasta=new Subasta;
-				if(($semana == null)||($subasta->esDeSubasta($date,$request->propiedad_id))){
-						$semana= new semana;
-                        $semana= $semana->hacerSemana($date,$request->propiedad_id);
-                        $reserva = new Reserva;
-						$reserva->hacerReserva($semana->id,$id);
-					    return back();
-					}else{
-					return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
-				}}else{
-                return back()->withErrors(['La fecha ingresada debe ser con mas de 6 meses de anticipacion y menor a 1 año']);
-			}}else{
-				return back()->withErrors(['El usuario no posee creditos']);
-            }
+            $user=User::find($id);
+            if($user->type=='vip'){
+                $date= DateTime::createFromFormat('m/d/Y',$request->date); 
+                $anio=($date->format('Y'));
+                $date->format('Y-m-d');
+                $cant=$user->cantReservas($id,$anio);
+                if(!($user->verificarSemana($id,$date))){
+                    return back()->withErrors(['ya posee una reserva para esa fecha']);
+                }else{
+			    if($cant< 2){
+                    $now = new DateTime(); 
+                    $interval = date_diff($now, $date);
+                    if(($interval->days > 180 ) and ($interval->days < 365)){
+				        $semana = Semana::whereDate('date','=', $date)->where('propiedad_id','=', $request->propiedad_id)->first();
+                        $subasta=new Subasta;
+				        if(($semana == null)||($subasta->esDeSubasta($date,$request->propiedad_id))){
+						      $semana= new semana;
+                              $semana= $semana->hacerSemana($date,$request->propiedad_id);
+                              $reserva = new Reserva;
+						      $reserva->hacerReserva($semana->id,$id);
+					          return back();
+					    }else
+					       return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
+				    }else
+                        return back()->withErrors(['La fecha ingresada debe ser con mas de 6 meses de anticipacion y menor a 1 año']);
+			     }else
+				    return back()->withErrors(['El usuario no posee creditos']);
 	       }
+            }else
+                return back()->withErrors(['debes ser vip para poder reservar']);
     }
     /**
      * Display the specified resource.
@@ -123,4 +125,4 @@ public function delete($id){
     public function destroy(Reserva $reserva)
     {  
     }
-    }
+}

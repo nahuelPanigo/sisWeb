@@ -12,7 +12,7 @@ class Subasta extends Model
 {
     protected $talbe='subastas';
 
-    protected $fillable=['semana_id','minPrice','finalPrice','user_idWinner'];
+    protected $fillable=['semana_id','minPrice','finalPrice','user_idWinner','finish'];
 
      public function user()
     {
@@ -27,16 +27,14 @@ class Subasta extends Model
      {
      	return $this->hasOne('sisWeb\Semana');
      }
-     public function name(Subasta $subasta){
+    public function name(Subasta $subasta){
         $semana = new Semana;
         $semana = Semana::where('id','=',$subasta->semana_id)->first();
         $propiedad = new Propiedad;
         $propiedad = Propiedad:: where ('id', '=', $semana->propiedad_id)->first();
         return($propiedad);
      }
-
-
-      public function date(Subasta $subasta){
+ public function date(Subasta $subasta){
         $semana = new Semana;
         $semana = Semana::where('id','=',$subasta->semana_id)->first();
         return($semana->date);
@@ -54,30 +52,21 @@ class Subasta extends Model
 		$semana = Semana::find($subasta->semana_id);
 		$now = new DateTime();
 		$date= DateTime::createFromFormat('Y-m-d',$semana->date);
-		$interval = date_diff($now, $date);
-		return (($interval->format('%m')<6) and (($interval->format('%m')>=5)and($interval->format('%d')>24)));
-	}
-	public function puedeFinalizar(Subasta $subasta){
-		$now = new DateTime();
-		$date= DateTime::createFromFormat('Y-m-d',$subasta->date($subasta));
-        $interval = date_diff($now,$date);
-		if(($interval->format('%m')>=5)and($interval->format('%d')>24)){
-			return true;
-		}
-		return false;
-	}
-	
-	
+    $date->modify('-6 month');
+    if($now>=$date){
+      $date->modify('+72 hours');
+ 		  return ($now<=$date);
+  	}
+    return false;
+}
+
 	public function puedeFinalizar2(Subasta $subasta){
 		$now = new DateTime();
 		$date= DateTime::createFromFormat('Y-m-d',$subasta->date($subasta));
-        $interval = date_diff($now,$date);
-		if(($interval->format('%m')<=5)and($interval->format('%d')<=24)){
-			return true;
-		}
-		return false;
-	}
-	
+    $dateStart=$date->modify('-6 month');
+    $new_time =$dateStart->modify('+72 hours');
+		return($now>$new_time);
+	}	
 	
     public function esDeSubasta ($date ,$propiedad_id){
         $semana=new Semana;
@@ -91,11 +80,10 @@ class Subasta extends Model
             return true;
         }
      }
-      public function devolverSemana($id){
+  public function devolverSemana($id){
             $semana=new Semana;
             $semana= Semana::find($id);
             return $semana;
-
-        }
+  }
 
 }

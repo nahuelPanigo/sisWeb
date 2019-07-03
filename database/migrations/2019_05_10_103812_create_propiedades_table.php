@@ -20,6 +20,11 @@ class CreatePropiedadesTable extends Migration
             $table->timestamps();
             $table->string('locate');
                     });
+
+
+        schema::table('propiedades',function($table){
+            $table->boolean('deleted');
+        });
     }
 
     /**

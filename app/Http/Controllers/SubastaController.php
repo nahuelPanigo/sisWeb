@@ -52,16 +52,15 @@ class SubastaController extends Controller
         $now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
-        if($interval->days>180){
-			$newDate = date("Y/m/d", strtotime($request->date));
-			$buscarSemana=Semana::where ('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
+        if(($interval->days>180)and ($interval->days < 365)){
+			$buscarSemana=Semana::whereDate('date','=',$newformat)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
 				$semana= new Semana;
-				$semana->date = $newDate;
+				$semana->date=$newformat;    
 				$semana->propiedad_id=$request->propiedad_id; 
 				$semana->save();
-				$semana=Semana::where('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
-				$subasta =new Subasta;
+				$semana=Semana::whereDate('date','=',$newformat)->where('propiedad_id','=',$request->propiedad_id)->first();
+                $subasta =new Subasta;
 				$subasta->semana_id =$semana->id;
 				$subasta->minPrice=$request->Input('minPrice');
 				$subasta->finish=0;
@@ -72,7 +71,7 @@ class SubastaController extends Controller
 				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta/reserva para esta semana']);
 			}
         }else{
-			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo']);
+			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo y 1 año como maximo']);
 		}
 
     }
@@ -133,7 +132,7 @@ class SubastaController extends Controller
 				if($subasta->minPrice <= $puja->monto ){
 					if($user->puedeGanar($puja->user_id,$semana->date)){
 						$ok=1;
-						$usser->id = $puja->user_id;
+						$user->id = $puja->user_id;
 						$mensaje ="se registro ganador con exito";
 					}
 				}

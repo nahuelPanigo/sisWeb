@@ -53,6 +53,8 @@ class UserController extends Controller
 					$user = new User($request->all());  
 					$user->creditCard = 'visa';
 					$user->userType='comun';
+                    $user->deleted=false;
+                    $user->save();
 				}else{
 					return back()->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
 				}
@@ -60,8 +62,6 @@ class UserController extends Controller
             return back()->withInput()->withErrors('Debe ser mayor de 18 anios');
           }
         }
-
-        $user->save();
         return view('IniciarSesion')-> with ('user', $user);
       }
     /**
@@ -120,7 +120,8 @@ class UserController extends Controller
 				$user->name = $request->name; 	
 				$user->password = $request->password;  
 				$user->creditCard = 'visa';
-				$user->userType='comun';  
+				$user->userType='comun'; 
+                $user->deleted=false; 
 				$user->save();
 				return redirect ('/inicio')-> with('user', $user); 
 			}else{
@@ -136,15 +137,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 public function delete($id)
-{ $user = new User;       
-if($user->puedoEliminarme($id)){
-            $user->delete();
+            $user=new User;
+            $user->eliminar($id);
             return redirect('/');
-        }else{
-            return back()->withErrors('no pudo eliminarse su cuenta tiene reservas y/o subastas y/o hotsales pendientes');
-        }
-    
-    }
+}
 
     public function destroy($id)
     {

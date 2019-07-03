@@ -8,7 +8,7 @@ class Propiedad extends Model
 {
     protected $table ='propiedades';
 
-    protected $fillable =['name','description','locate'];
+    protected $fillable =['name','description','locate','deleted'];
 
 
     public function semanas()
