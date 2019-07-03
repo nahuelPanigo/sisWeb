@@ -66,6 +66,19 @@ class Subasta extends Model
 		}
 		return false;
 	}
+	
+	
+	public function puedeFinalizar2(Subasta $subasta){
+		$now = new DateTime();
+		$date= DateTime::createFromFormat('Y-m-d',$subasta->date($subasta));
+        $interval = date_diff($now,$date);
+		if(($interval->format('%m')<=5)and($interval->format('%d')<=24)){
+			return true;
+		}
+		return false;
+	}
+	
+	
     public function esDeSubasta ($date ,$propiedad_id){
         $semana=new Semana;
         $semana= Semana::whereDate('date','=', $date)->where('propiedad_id','=', $propiedad_id)->first();

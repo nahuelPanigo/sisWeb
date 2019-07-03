@@ -38,9 +38,9 @@ class User extends Model
     }
 
     public function puedoEliminarme($id){
-        $hotsales=Hotsale::where('user_id','=',$id);
+        $hotsales=Hotsale::where('user_id','=',$id)->get();
         $user=new User;
-        return (($hotsale->isEmpty())and($user->cantReservas=0));
+        return (($hotsales->isEmpty())and($user->cantReservas=0));
     }
 
 

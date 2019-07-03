@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
 	<link rel="stylesheet" type="text/css" href="/css/zoom.css">
 	<meta charset="utf-8">
+	
 </head>
 <body>
 	@Include('Header') 

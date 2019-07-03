@@ -24,10 +24,10 @@
 	@if($subasta->finish == 1)
 		<div class="boton inactiva finalizada"> Finalizada </div>
 	@else
-		@if($subasta->puedeFinalizar($subasta))
+		@if($subasta->puedeFinalizar2($subasta))
 			<button onclick="mostrarModal({{$subasta->id}})" class="boton"> Finalizar</button>
 		@else	
-			<div class="boton inactiva" > Incactiva </div>
+			<div class="boton inactiva" > Incactiva/subasta </div>
 		@endif
 	@endif
   </ul>

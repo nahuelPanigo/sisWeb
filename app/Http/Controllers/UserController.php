@@ -136,7 +136,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 public function delete($id)
-{       if($user->puedoEliminarme($id)){
+{ $user = new User;       
+if($user->puedoEliminarme($id)){
             $user->delete();
             return redirect('/');
         }else{

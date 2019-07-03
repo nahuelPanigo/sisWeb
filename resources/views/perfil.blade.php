@@ -78,6 +78,15 @@ tr:nth-child(even) {
 </head>
 <body>
 @Include('Header')
+@if($errors->any())
+      <div class="alert alert-danger">
+    <ul>  
+      @foreach ($errors->all() as $error)
+        <li><strong>Danger!</strong> {{ $error }}</li>
+      @endforeach
+    </ul>
+    </div>
+    @endif
 <h2 style="font-size: 25px; margin-left: 30px;">Mi Perfil </h2>
 <p style="font-size: 25px; margin-left: 30px;">{{$user->name}} {{$user->secondName}}</p>
 
@@ -87,7 +96,7 @@ tr:nth-child(even) {
   <button class="tablinks" onclick="openCity(event, 'subastas')">Mis Subastas</button>
   <button class="tablinks" onclick="openCity(event, 'hotsales')">Mis Hot Sales</button>
   <button class="modificar"> <a href="/admin/users/{{session('id')}}/edit" id="defaultOpen">Modificar mis Datos</a></button>
-   <button class="modificar"> <a href="/admin/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
+   <button class="modificar"> <a href="/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
 </div>
 <div id="datos" class="tabcontent">
   <h3>Mis Datos</h3>

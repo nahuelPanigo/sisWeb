@@ -69,7 +69,7 @@ class SubastaController extends Controller
 				$subasta->save();
 				return view('adminSubastas')->with('subastas',Subasta::all());
 			}else{
-				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta para esta semana']);
+				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta/reserva para esta semana']);
 			}
         }else{
 			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe ser dentro de 6 meses minimo']);
