@@ -38,13 +38,6 @@ class User extends Model
         return $this->hasOne('app\Solicitud');
     }
 
-    public function puedoEliminarme($id){
-        $hotsales=Hotsale::where('user_id','=',$id)->get();
-        $user=new User;
-        return (($hotsales->isEmpty())and($user->cantReservas=0));
-    }
-
-
     public function cantReservas($id,$anio){
     $user=User::find($id);
     $cant=0;
