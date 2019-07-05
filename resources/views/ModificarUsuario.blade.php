@@ -7,16 +7,7 @@
 		<script src="/js/validarDatosING2.js" type="text/javascript"> </script>
 </head>
 <body>
-@Include('Header')
-		@if($errors->any())
-			<div class="alert alert-danger">
-		<ul>	
-			@foreach ($errors->all() as $error)
-				<li><strong>Danger!</strong> {{ $error }}</li>
-			@endforeach
-		</ul>
-		</div>
-		@endif	
+@Include('Header')	
 	<h1 class="RU_h1"> Modificar datos del usuario </h1>
 	<div class="RU_caja">
 		<img src="/css/imagenes/hsh.png">

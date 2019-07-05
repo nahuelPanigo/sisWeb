@@ -8,15 +8,6 @@
   </head>
   <body>
      @Include('adminHeader')
-         @if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-        <li><strong>Atencion!</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif
     <div class="caja">
     <h1 class="registrar_propiedad_h1"> Crear hotsale </h1> <br> <br>
       <form  onsubmit="" method="POST" action="{{route('hotsales.store')}}" enctype="multipart/form-data">
