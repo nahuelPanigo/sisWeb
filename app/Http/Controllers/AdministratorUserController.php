@@ -94,21 +94,21 @@ class AdministratorUserController extends Controller
     }
    
     public function solicitudes($id){
-      $solicitud=Solicitud::where('user_id','=',$id)->first();
-      if($solicitud != null){
-        return back()->withErrors('Su solicitud ya ha sido enviada previamente');
-    }else{
-      $user= User::find($id);
-      if($user->userType == 'comun'){
-      $solicitud= new Solicitud;
-      $solicitud->user_id=$id;
-      $solicitud->view=false;
-      $solicitud->save();
-      return redirect('/inicio');
+         $solicitud=Solicitud::where('user_id','=',$id)->first();
+         if(($solicitud != null)and($solicitud->view == 0)){
+            return back()->withErrors('Su solicitud ya ha sido enviada previamente');
+        }else{
+            if($solicitud->view == 1){
+                $solicitud->view == 0; 
+            }else{
+                $solicitud= new Solicitud;
+                $solicitud->user_id=$id;
+                $solicitud->view=false;
+                $solicitud->save();
+            }
+       }
+    return redirect('/inicio');
     }
-    else{ return back()->withErrors('Usted ya es usuario premium ');} 
-}
-}
    
     public function listarSolicitudes(){
         $solicitudes = Solicitud::where('view','=',0)->get();
