@@ -11,15 +11,6 @@
 
 <body>
 @Include('Header')
-     @if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-        <li><strong>Danger!</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif
 <h2 style="text-align:center;font-size: 30px;">Subastas</h2>
 @foreach ($subastas as $subasta)
 <div class="columns">

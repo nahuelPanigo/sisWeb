@@ -3,10 +3,9 @@
 </head>
 <body>	
 <hr>
-	<h1> @php if(isset($mensaje)){
-				echo $mensaje;
-				unset($mensaje);
-				} @endphp</h1>
+	<h1> @if (isset($mensaje))
+	{{$mensaje}}
+	@endif</h1>
 	@foreach ($hotsales as $hotsale)
 	<h1>{{$hotsale->name($hotsale)->name}}</h1>
 	<h2> precio: {{$hotsale->price}} </h2>

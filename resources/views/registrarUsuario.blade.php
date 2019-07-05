@@ -13,20 +13,7 @@
 	<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	@include ('headerIndex')
 </head>
-<body>
-
-		@if($errors->any())
-			<div class="alert alert-danger">
-    
-  		
-
-		<ul>	
-			@foreach ($errors->all() as $error)
-				<li><strong>Atencion!</strong> {{ $error }}</li>
-			@endforeach
-		</ul>
-		</div>
-		@endif	
+<body>	
 	<h1 class="RU_h1"> Registrarse </h1>
 	<div class="RU_caja">
 		<img src="/css/imagenes/hsh.png">

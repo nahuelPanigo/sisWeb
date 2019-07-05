@@ -9,15 +9,6 @@
 
   <body>  
     @Include('Header')
-    @if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-      <li><strong>Solicitud no enviada</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif
 		<div class="main">
 		<div class="slides">
 	 <img src="/css/imagenes/propiedad3.jpg" alt="">

@@ -13,15 +13,6 @@
 	</head>
 	<body>
 	  @include ('adminHeader')
-	  @if($errors->any())
-			<div class="alert alert-danger">
-		<ul>	
-			@foreach ($errors->all() as $error)
-				<li><strong>Atencion!</strong> {{ $error }}</li>
-			@endforeach
-		</ul>
-		</div>
-		@endif
 		<div class="caja">
 		<h1 class="registrar_propiedad_h1"> Registrar Propiedad </h1> <br> <br>
 			<form  onsubmit="return validarRegistroDePropiedad()" method="post" action="/admin/propiedades" enctype="multipart/form-data">

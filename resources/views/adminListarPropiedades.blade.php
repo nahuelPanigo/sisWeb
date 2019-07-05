@@ -11,7 +11,6 @@
 </head>
 <body>
 	@Include('adminHeader') 
-	
 	<h2 style="text-align:center; font-size: 30px;">Propiedades</h2>
 	<div class="row">
 		@foreach ($propiedades as $propiedad)

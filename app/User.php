@@ -66,8 +66,6 @@ class User extends Model
     return $cant;
     }
     
-	/*se fija que el usuario tenga la semana $date libre */
-    public function verificarSemana($id,$date){
     public function eliminar($id){
         $user=User::find($id);
         $user->deleted=true;
@@ -111,6 +109,7 @@ public function eliminarMisHotsales($id){
     }
 }
 
+/*se fija que el usuario tenga la semana $date libre */
 public function verificarSemana($id,$date){
     $cant=0;
     $reservas=Reserva::where('user_id','=',$id)->get();

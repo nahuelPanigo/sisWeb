@@ -11,15 +11,6 @@
 </head>
 <body>
 	@Include('Header') 
-	@if($errors->any())
-			<div class="alert alert-danger">
-		<ul>	
-			@foreach ($errors->all() as $error)
-				<li><strong>Danger!</strong> {{ $error }}</li>
-			@endforeach
-		</ul>
-		</div>
-		@endif	
 	<h2 style="text-align:center; font-size: 30px;">Propiedades</h2>
 	<div class="row">
 		@if($propiedades->first()== null)

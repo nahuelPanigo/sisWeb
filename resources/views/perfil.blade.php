@@ -78,15 +78,6 @@ tr:nth-child(even) {
 </head>
 <body>
 @Include('Header')
-@if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-        <li><strong>Danger!</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif
 <h2 style="font-size: 25px; margin-left: 30px;">Mi Perfil </h2>
 <p style="font-size: 25px; margin-left: 30px;">{{$user->name}} {{$user->secondName}}</p>
 
