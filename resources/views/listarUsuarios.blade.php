@@ -26,44 +26,39 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
-            <h2>Solicitudes  <b>Premium </b></h2>
-          </div>
+						<h2>Lista de <b>Usuarios </b></h2>
+					</div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>           
-						<th>Date </th>
-						<th>UserName</th>
+                        <th>Nombre</th>           
+						<th>Nacimiento </th>
+						<th>Nombre de usuario</th>
                         <th>Email</th>
-						<th>Action</th>
+						<th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
                 @if ($usuarios->first()==null)
                     <p class="error"> No hay solicitudes nuevas </p>
-                    @else
-                  @foreach ($usuarios as $user)
-                    <tr>
-                        <td>{{$user->id}}</td>
-                        <td><a href="#">{{$user->name}}{{" "}}{{$user->secondName}}</a></td>
+                @else
+                @foreach ($usuarios as $user)
+					<tr>
+						<td>{{$user->id}}</td>
+                        <td>{{$user->name}}{{" "}}{{$user->secondName}}</td>
                         <td>{{$user->birthDay}}</td>                        
                         <td>{{$user->userName}}</td>
 						<td><span class="status text-success">&bull;</span> {{$user->mail}}</td>
-						<td>
-						<a href="/aceptarSolicitud/{{$user->id}}" class="settings" title="Aceptar" data-toggle="tooltip"><i class="material-icons">
-						how_to_reg
-						</i></a>
-						<a href="/rechazarSolicitud/{{$user->id}}" class="delete" title="Rechazar" data-toggle="tooltip"><i class="material-icons">		&#xE5C9;</i></a>
-						</td>
+						<td> {{$user->userType}}</td>
                     </tr>
-					@endforeach
+				@endforeach
                 </tbody>
             </table>
         </div>
     </div>     
 </body>
 @endif
-</html>                                                               
+</html>   

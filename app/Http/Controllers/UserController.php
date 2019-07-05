@@ -12,7 +12,10 @@ class UserController extends Controller
         $usuarios = User::all();
         return view('listarSolicitudes')->with('usuarios',$usuarios);
     }
-
+    public function listarUsuarios(){
+		$usuarios = User::all();
+		return view('listarUsuarios')->with('usuarios',$usuarios);
+	}
     /**
      * Show the form for creating a new resource.
      *
@@ -136,8 +139,8 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-public function delete($id)
-{     
+
+public function delete($id){
             $user=new User;
             $user->eliminar($id);
             return redirect('/');
