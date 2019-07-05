@@ -5,7 +5,7 @@
    <link rel="stylesheet" type="text/css" href="/css/imags.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    
-  <?php Include("headerIndex.php") ?>
+  <?php Include("headerIndex.blade.php") ?>
    <body>
 		<div class="main">
 		<div class="slides">

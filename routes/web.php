@@ -50,7 +50,7 @@ route::resource('hotsales','HotsaleController');
 Route::get('/hotsales/{id}/create', ['uses' => 'HotsaleController@create', 'as' =>
 'categorias.hotsales.create']);
 Route::get('/hotsales/{id}/delete',      ['uses' => 'HotsaleController@delete',     'as' => 'hotsales.delete']);
-Route::get('/hotsales/{id}/comprar', ['uses'=>'HotsaleController@comprar', 'as' => 'hotsales.comprar']);
+Route::post('/hotsales/{id}/comprar', ['uses'=>'HotsaleController@comprar', 'as' => 'hotsales.comprar']);
 /*Fin Hotsale*/
 
 route::resource('reservas','ReservaController');

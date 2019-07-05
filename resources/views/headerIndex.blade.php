@@ -12,3 +12,12 @@
 <div style="padding-left:20px">
  
 </div>
+@if($errors->any())
+			<div class="alert alert-danger">
+		<ul>	
+			@foreach ($errors->all() as $error)
+				<li><strong>Atencion!</strong> {{ $error }}</li>
+			@endforeach
+		</ul>
+		</div>
+		@endif
