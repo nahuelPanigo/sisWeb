@@ -95,11 +95,12 @@ class AdministratorUserController extends Controller
    
     public function solicitudes($id){
          $solicitud=Solicitud::where('user_id','=',$id)->first();
-         if(($solicitud != null)and($solicitud->view == 0)){
+         if(($solicitud != NULL)and($solicitud->view == false)){
             return back()->withErrors('Su solicitud ya ha sido enviada previamente');
         }else{
-            if($solicitud->view == 1){
-                $solicitud->view == 0; 
+            if($solicitud != NULL){
+                $solicitud->view = false;
+                $solicitud->save(); 
             }else{
                 $solicitud= new Solicitud;
                 $solicitud->user_id=$id;
@@ -111,7 +112,7 @@ class AdministratorUserController extends Controller
     }
    
     public function listarSolicitudes(){
-        $solicitudes = Solicitud::where('view','=',0)->get();
+        $solicitudes = Solicitud::where('view','=',false)->get();
         $usuarios=collect([]);
         
         foreach ($solicitudes as $solicitud) {
@@ -127,7 +128,7 @@ class AdministratorUserController extends Controller
         $user->userType= 'vip';
         $user->save();
         $solicitud=Solicitud::where('user_id','=',$user->id)->first();
-        $solicitud->view='1';
+        $solicitud->view= true;
         $solicitud->save();
         return back();
     }
@@ -135,7 +136,7 @@ class AdministratorUserController extends Controller
     public function rechazarSolicitud($id){
          $user= User::find($id);
         $solicitud=Solicitud::where('user_id','=',$user->id)->first();
-        $solicitud->view='1';
+        $solicitud->view= true ;
         $solicitud->save();
         return back();
     }
