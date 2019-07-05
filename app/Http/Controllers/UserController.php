@@ -25,8 +25,9 @@ class UserController extends Controller
     {
         return view('registrarUsuario');
     }
-
-    
+ public function search(Request $request){
+    return view('busqueda');
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -139,7 +140,6 @@ class UserController extends Controller
      * @param  \sisWeb\User  $user
      * @return \Illuminate\Http\Response
      */
-
 public function delete($id){
             $user=new User;
             $user->eliminar($id);

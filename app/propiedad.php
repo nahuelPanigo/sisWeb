@@ -21,6 +21,7 @@ class Propiedad extends Model
     {
     	return $this->hasMany('sisWeb\Image');
     }
+
     public function eliminar($id)
     {
         $propiedad= Propiedad::find($id);
@@ -34,5 +35,10 @@ class Propiedad extends Model
         $subasta= new Semana;
         $subasta->eliminarSemanasDeUnaPropiedad($id);
         $propiedad->save();
+}
+    public function scopeLocate($query, $locate){
+
+        $query->where('locate',$locate);
+
     }
 }

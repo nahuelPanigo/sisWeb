@@ -5,11 +5,18 @@ namespace sisWeb\Http\Controllers;
 use sisWeb\Propiedad;
 use Illuminate\Http\Request;
 use sisWeb\Image;
+use sisWeb\Subasta;
+use sisweb\Hotsale;
 
 class PropiedadController extends Controller
 {
     
-   public function search(Request $request){
+    public function search(Request $request){
+
+        $propiedades=Propiedad::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
+        return view('busqueda')->with('propiedades',$propiedades);
+    }
+   public function busqueda(Request $request){
 
     $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
     return view('listarPropiedades')->with('propiedades',$propiedades);
