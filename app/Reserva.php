@@ -49,7 +49,7 @@ class Reserva extends Model
             $semana=new Semana;
             $semana= Semana::find($id);
             return $semana;
-
         }
+
 }
 

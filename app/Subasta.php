@@ -86,4 +86,5 @@ class Subasta extends Model
             return $semana;
   }
 
+
 }

@@ -22,13 +22,13 @@ class PropiedadController extends Controller
 
     public function index()
     {
-		$propiedades = Propiedad::all();
+		$propiedades = Propiedad::where('deleted','=',false)->get();
         return view('listarPropiedades')->with('propiedades',$propiedades);
     }
     
     public function indexAdmin()
     {
-        $propiedades = Propiedad::all();
+        $propiedades = Propiedad::where('deleted','=',false)->get();
         return view('adminListarPropiedades')->with('propiedades',$propiedades);
     }
 
@@ -63,6 +63,7 @@ class PropiedadController extends Controller
 			$propiedad->name =$request->Input('name');
 			$propiedad->description= $request->Input('description');
 			$propiedad->locate = $request->Input('locate'); 
+            $propiedad->deleted=false;
 			$propiedad->save(); 
 			$propiedad = Propiedad::where('name','=',$propiedad->name)->first();
 			$image->propiedad_id = $propiedad->id;
@@ -117,12 +118,18 @@ class PropiedadController extends Controller
      * @param  \sisWeb\propiedad  $propiedad
      * @return \Illuminate\Http\Response
      */
-
     public function delete($id)
     {
-        $propiedad= Propiedad::find($id);
-        $propiedad->delete();
-        return view('adminlistarPropiedades')->with('propiedades',Propiedad::all());
+        $propiedad=new Propiedad;
+        $propiedad->eliminar($id);
+        return redirect('/propiedades/listar');
+    }
+
+    public function deleteAll($id)
+    {
+        $propiedad=new Propiedad;
+        $propiedad->eliminarConSemanas($id);
+        return redirect('/propiedades/listar');
     }
 
     public function destroy(propiedad $propiedad)

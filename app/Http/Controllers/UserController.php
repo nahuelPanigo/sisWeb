@@ -137,6 +137,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 public function delete($id)
+{     
             $user=new User;
             $user->eliminar($id);
             return redirect('/');
@@ -144,6 +145,6 @@ public function delete($id)
 
     public function destroy($id)
     {
-       
-}
+       }
+
 }
