@@ -43,8 +43,8 @@ class HotsaleController extends Controller
      * @return \Illuminate\Http\Response
      */
 	 
-	public function comprar($hotsale_id){
-		$hotsale = Hotsale::find($hotsale_id);
+	public function comprar(Request $request){
+		$hotsale = Hotsale::find($request->hotsale_id);
 		$semana = Semana::find($hotsale-> semana_id) ;
 		$user = new User;
 		$date= DateTime::createFromFormat('Y-m-d',$semana->date); 
@@ -131,9 +131,9 @@ class HotsaleController extends Controller
     public function destroy(Hotsale $hotsale)
     {
     }
-	public function delete($id){
-		$hotsale= Hotsale::find($id);
-        $hotsale->delete();
+	public function delete(Request $request){
+		$semana = $hotsale->devolverSemana($hotsale_id);
+        $semana->delete();
         return back()->with('hotsales',Hotsale::all());
 	}
 }
