@@ -10,8 +10,9 @@ Route::get('/',function(){
 Route::get('logout','Auth\LoginController@logout');
 
 Route::get('/propiedades/search', 'PropiedadController@search');
-
+Route::get('/inicio/busqueda', 'UserController@search');
 /*Cosas de administrador*/
+Route::get('/hotsales/listar', 'HotsaleController@index');
 Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');
 Route::get('/subastas/listar', 'SubastaController@indexAdmin');
 Route::resource('administrador', 'AdministratorUserController');
@@ -49,7 +50,7 @@ route::resource('hotsales','HotsaleController');
 Route::get('/hotsales/{id}/create', ['uses' => 'HotsaleController@create', 'as' =>
 'categorias.hotsales.create']);
 Route::get('/hotsales/{id}/delete',      ['uses' => 'HotsaleController@delete',     'as' => 'hotsales.delete']);
-Route::get('/hotsales/{id}/comprar', ['uses'=>'HotsaleController@comprar', 'as' => 'hotsales.comprar']);
+Route::post('/hotsales/{id}/comprar', ['uses'=>'HotsaleController@comprar', 'as' => 'hotsales.comprar']);
 /*Fin Hotsale*/
 
 route::resource('reservas','ReservaController');

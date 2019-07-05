@@ -15,6 +15,15 @@
 		<meta name="tipo_contenido"  content="text/html;" http-equiv="content-type" charset="utf-8">
 	</head>
 	<body>
+	@if($errors->any())
+			<div class="alert alert-danger">
+		<ul>	
+			@foreach ($errors->all() as $error)
+				<li><strong>Atencion!</strong> {{ $error }}</li>
+			@endforeach
+		</ul>
+		</div>
+		@endif
 	<h1 class="IS_h1"> Iniciar Sesion </h1>
 	<div class="IS_caja">
 		<img src="/css/imagenes/hsh.png">

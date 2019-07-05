@@ -7,6 +7,8 @@
 					<li class="submenu-item"><a href="{{route('categorias.subastas.create',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>
 					<li class="submenu-item"><a href="{{route('categorias.hotsales.create',$propiedad->id)}}" class="submenu-link"><span class="fas fa-thumbtack"></span> Hot Sale </a></li>
     </ul>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 

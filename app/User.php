@@ -37,7 +37,6 @@ class User extends Model
     {
         return $this->hasOne('app\Solicitud');
     }
-
     public function cantReservas($id,$anio){
     $user=User::find($id);
     $cant=0;
