@@ -1,11 +1,16 @@
 
 <div class="barra">
    <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
-   <div class="busqueda"><form action="/propiedades/search" onsubmit=""method="GET">
+   <div class="busqueda"><form action="/propiedades/search"  onsubmit=""method="GET">
    <div class="input-group mb-3"></div>
    <div class="input-group-prepend"></div>
    <span  id="basic-addon1"></span></span>
+   <div>
   <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
+  <div class="datePickerBusqueda">
+			@Include('rangoFechasBusqueda')
+		</div>
+	</div>
 </form>
 </div>
 </div>

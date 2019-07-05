@@ -10,7 +10,7 @@ Route::get('/',function(){
 Route::get('logout','Auth\LoginController@logout');
 
 Route::get('/propiedades/search', 'PropiedadController@search');
-
+Route::get('/inicio/busqueda', 'UserController@search');
 /*Cosas de administrador*/
 Route::get('/hotsales/listar', 'HotsaleController@index');
 Route::get('/propiedades/listar', 'PropiedadController@indexAdmin');

@@ -20,5 +20,8 @@ class Propiedad extends Model
     {
     	return $this->hasMany('sisWeb\Image');
     }
-    
+    public function scopeLocate($query, $locate){
+
+        $query->where('locate',$locate);
+    }
 }

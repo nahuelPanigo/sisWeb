@@ -22,8 +22,9 @@ class UserController extends Controller
     {
         return view('registrarUsuario');
     }
-
-    
+ public function search(Request $request){
+    return view('busqueda');
+}
     /**
      * Store a newly created resource in storage.
      *
