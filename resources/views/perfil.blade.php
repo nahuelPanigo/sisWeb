@@ -76,8 +76,20 @@ tr:nth-child(even) {
 @Include('estilos')
 <link rel="stylesheet" type="text/css" href="/css/listaReservas.css">
 </head>
-<body>
+<body> 
 @Include('Header')
+  @if($errors->any())
+      <div class="alert alert-danger">
+    <ul>  
+      @foreach ($errors->all() as $error)
+        <li style="font-size: 15px;"><strong>Atencion!</strong> {{ $error }}</li>
+      @endforeach
+    </ul>
+    </div>
+    @endif
+
+
+
 <h2 style="font-size: 25px; margin-left: 30px;">Mi Perfil </h2>
 <p style="font-size: 25px; margin-left: 30px;">{{$user->name}} {{$user->secondName}}</p>
 
@@ -120,9 +132,9 @@ tr:nth-child(even) {
         <p class="error"> Lo sentimos! En este momento no posee reservas  </p>
         @endif
         @foreach ($reservas as $reserva)
-       <tr style="font-size: 15px;">
-    
+       
     @php $semana=$reserva->devolverSemana($reserva->semana_id) @endphp
+    <tr style="font-size: 15px;">
     <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
     <td>{{$semana->date}}</td>
     <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>

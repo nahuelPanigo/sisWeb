@@ -28,4 +28,12 @@ class Hotsale extends Model
         $propiedad = Propiedad:: where ('id', '=', $semana->propiedad_id)->first();
         return($propiedad);
      } 
+
+    public function devolverSemana($id){
+            $semana=new Semana;
+            $semana= Semana::find($id);
+            return $semana;
+
+        }
+    
 }
