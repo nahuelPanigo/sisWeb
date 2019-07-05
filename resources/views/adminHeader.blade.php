@@ -15,6 +15,7 @@
     <div class="dropdown-menu">
       <a class="dropdown-item" href="/propiedades/create"><span><i class="fas fa-plus-square"></i></span> Agregar Propiedad </a>
       <a class="dropdown-item" href="/solicitudes/listar"><span><i class="far fa-star"></i></span> Solicitudes premium</a>
+	   <a class="dropdown-item" href="/users/listarUsuarios"><span><i class="fas fa-users"></i></span>Listar usuarios</a>
       <a class="dropdown-item" href="#"><span ><i class="fas fa-address-card"></i></span> Dar de alta admin</a>
       <a class="dropdown-item" href="/sesion/adminLogout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
