@@ -78,7 +78,7 @@ class UserController extends Controller
     {  
         $user = new User;
         $user = User::where('id','=',$id)->first();
-        return view('perfil')->with('reservas',$user->misReservas($id))->with('subastas',$user->misSubastas($id))->with('user',$user);
+        return view('perfil')->with('reservas',$user->misReservas($id))->with('subastas',$user->misSubastas($id))->with('user',$user)->with('hotsales',$user->misHotsales($id));
     }
 
     /**

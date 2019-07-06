@@ -3,93 +3,12 @@
 <title> Mi Perfil </title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-* {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
-
-/* Style the tab */
-.tab {
-  float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 30%;
-  height: 300px;
-}
-
-/* Style the buttons inside the tab */
-.tab button {
-  display: block;
-  background-color: inherit;
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-.tab button.active {
-  background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-  float: left;
-  padding: 0px 12px;
-  border: 1px solid #ccc;
-  width: 70%;
-  border-left: none;
-  height: 300px;
-}
-a {
-    color:black;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2
-}
-.fa-times {
-  color: red;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="/css/perfilIngenieria.css">
 @Include('estilos')
 <link rel="stylesheet" type="text/css" href="/css/listaReservas.css">
 </head>
 <body> 
 @Include('Header')
-  @if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-        <li style="font-size: 15px;"><strong>Atencion!</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif
-
-
-
 <h2 style="font-size: 25px; margin-left: 30px;">Mi Perfil </h2>
 <p style="font-size: 25px; margin-left: 30px;">{{$user->name}} {{$user->secondName}}</p>
 
@@ -113,7 +32,9 @@ tr:nth-child(even) {
       <h3> Numero de tarjeta de credito: {{$user->creditCardNumber}}</h3>
       <h3> Fecha de vencimiento de la tarjeta: {{$user->creditCardDate}}</h3>
       <h3> Tipo usuario: {{$user->userType}} </h3>
-
+	  @php $date = new DateTime; $anio=($date->format('Y')) @endphp
+	  <h3> Creditos disponibles para este año: {{2-($user->cantReservas($user->id,$anio))}} </h3>
+	  <h3> Creditos disponibles para el año siguiente: {{2-($user->cantReservas($user->id,$anio+1))}} </h3>
   </p>
   </p>
 </div>
@@ -152,26 +73,42 @@ tr:nth-child(even) {
   <p> @if($subastas->first()== null)
         <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
         @endif
-          <table style="margin:30px 0px 30px 0px;">
-  <tr style="font-size: 20px;">
-    <th>Propiedad</th>
-    <th>Semana</th>
-    <th>Ubicacion</th>
-  </tr>
-        @foreach ($subastas as $subasta)
-           @php $semana=$subasta->devolverSemana($subasta->semana_id) @endphp
-     <tr style="font-size: 15px;">      
-    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
-    <td>{{$semana->date}}</td>
-    <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
-  </tr>
-        @endforeach</p> 
-         </table> 
+        <table style="margin:30px 0px 30px 0px;">
+		<tr style="font-size: 20px;">
+			<th>Propiedad</th>
+			<th>Semana</th>
+			<th>Ubicacion</th>
+		</tr>
+		@foreach ($subastas as $subasta)
+			@php $semana=$subasta->devolverSemana($subasta->semana_id) @endphp
+			<tr style="font-size: 15px;">      
+			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
+			<td>{{$semana->date}}</td>
+			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
+		  </tr>
+		@endforeach</p> 
+        </table> 
 </div>
-
 <div id="hotsales" class="tabcontent">
-  <h3>Hot Sales</h3>
-  <p></p>
+  <h3  style="font-size: 22px;">Hot Sales</h3>
+  <p> @if($hotsales->first()== null)
+        <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
+        @endif
+		<table style="margin:30px 0px 30px 0px;">
+		<tr style="font-size: 20px;">
+			<th>Propiedad</th>
+			<th>Semana</th>
+			<th>Ubicacion</th>
+		</tr>
+		@foreach ($hotsales as $hotsale)
+			@php $semana=$hotsale->devolverSemana($hotsale->semana_id) @endphp
+			<tr style="font-size: 15px;">      
+			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
+			<td>{{$semana->date}}</td>
+			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
+		  </tr>
+		@endforeach</p> 
+        </table> 
 </div>
 
 <div id="modificar" class="tabcontent">

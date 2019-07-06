@@ -20,7 +20,7 @@
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item" href=" /admin/users/{{session('id')}}"><span><i class="fas fa-user-cog"></i></span> Perfil</a>
-		 @if(session('user')->userType == "comun")
+		 @if(session('user')->misDatos(session('id'))->userType == "comun")
       	<a class="dropdown-item" href="/enviarSolicitud/{{session('id')}}"><span><i class="far fa-star"></i></span> Solicitar premium</a>
 		@endif
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>

@@ -43,7 +43,7 @@ class ReservaController extends Controller
             'date'=>'required',]);
 		    $id = session('id');
             $user=User::find($id);
-            if($user->type=='vip'){
+            if($user->userType=='vip'){
                 $date= DateTime::createFromFormat('m/d/Y',$request->date); 
                 $anio=($date->format('Y'));
                 $date->format('Y-m-d');

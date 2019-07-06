@@ -142,5 +142,12 @@ public function verificarSemana($id,$date){
       $subastas=Subasta::where('user_idWinner','=',$id)->get();
       return $subastas;
       }
-     
+    public function misHotsales($id){
+      $hotsales=Hotsale::where('user_id','=',$id)->get();
+      return $hotsales;
+      }
+	public function misDatos($id){
+		$user = User::find($id);
+		return $user;
+	}
 }
