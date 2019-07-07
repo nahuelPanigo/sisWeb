@@ -31,9 +31,9 @@ class Propiedad extends Model
  public function eliminarConSemanas($id)
     {
         $propiedad= Propiedad::find($id);
+        $semana= new Semana;
+        $semana->eliminarSemanasDeUnaPropiedad($id);
         $propiedad->deleted=true;
-        $subasta= new Semana;
-        $subasta->eliminarSemanasDeUnaPropiedad($id);
         $propiedad->save();
 }
     public function scopeLocate($query, $locate){
