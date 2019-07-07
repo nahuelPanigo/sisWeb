@@ -6,7 +6,8 @@
    <div class="input-group-prepend"></div>
    <span  id="basic-addon1"></span></span>
    <div>
-  <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
+ <!-- <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
+ -->
   <div class="datePickerBusqueda">
 			@Include('rangoFechasBusqueda')
 		</div>
@@ -59,4 +60,9 @@
 			@endforeach
 		</ul>
 		</div>
+		@endif
+		@if(session()->has('message'))
+   		 <div class="alert alert-success">
+        		{{ session()->get('message') }}
+    	</div>
 		@endif

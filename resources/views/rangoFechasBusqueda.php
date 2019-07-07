@@ -1,40 +1,21 @@
-<p> rango:<input type="text" name="datefilter" value="" /></p>
-<script type="text/javascript">
-$(function() {
-  $('input[name="datefilter"]').daterangepicker({
-    'showDropdowns': true,
-         ranges: {
-        'Today': [moment(), moment()],
-        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    },
-       'autoUpdateInput': false,
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
-      'locale': {
+<input date-range-picker id="daterange4" name="daterange4" class="form-control date-picker" type="text" ng-model="dateRange" clearable="true" options="dateRangeOptions" />
 
-          cancelLabel: 'Clear'
-    "startDate": "07/05/2019",
-    "endDate": "07/05/2020"
-}, function(start, end, label) {
-  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+<script>
+  $(function () {
+  $('input[name="daterange"]').daterangepicker({
+    "showWeekNumbers": true,
+  });
 });
 
-  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-
-  });
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-
-      $(this).val('');
-
-  });
-
-
-
+$('#duration').on('apply.daterangepicker', function (ev, picker) {
+  alert('apply clicked!');
 });
-
 </script>
+
+
+

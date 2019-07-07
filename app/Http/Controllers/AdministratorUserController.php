@@ -108,7 +108,7 @@ class AdministratorUserController extends Controller
                 $solicitud->save();
             }
        }
-    return redirect('/inicio');
+    return redirect('/inicio')->with('message', 'su solicitud fue enviada con exito');
     }
    
     public function listarSolicitudes(){

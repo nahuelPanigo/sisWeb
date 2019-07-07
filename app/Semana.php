@@ -3,6 +3,7 @@
 namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
 
 class Semana extends Model
 {
@@ -40,11 +41,12 @@ class Semana extends Model
         $propiedad= Propiedad::find($id);
         return $propiedad;
     }
-public function eliminarSemanaDeUnaPropiedad($propiedad_id){
-    $now= new DateTime();
+public function eliminarSemanasDeUnaPropiedad($propiedad_id){
+    $now = new DateTime();
     $semanas=Semana::where('propiedad_id','=',$propiedad_id)->get();
     foreach ($semanas as $semana ) {
-      if($semana->date>$now){
+        $date= DateTime::createFromFormat('Y-m-d',$semana->date);
+      if($date>$now){
         $semana->delete();
       }
     }

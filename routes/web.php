@@ -37,6 +37,7 @@ Route::get('/users/{id}/delete',      ['uses' => 'UserController@delete',     'a
 
 route::resource('propiedades','PropiedadController');
 Route::get('/propiedades/{id}/delete',      ['uses' => 'PropiedadController@delete',     'as' => 'admin.propiedades.delete']);
+Route::get('/propiedades/{id}/deleteAll',      ['uses' => 'PropiedadController@deleteAll',     'as' => 'admin.propiedades.deleteAll']);
 
 
 /*Rutas*/
