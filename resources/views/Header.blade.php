@@ -1,18 +1,7 @@
 
 <div class="barra">
    <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
-   <div class="busqueda"><form action="/propiedades/search"  onsubmit=""method="GET">
-   <div class="input-group mb-3"></div>
-   <div class="input-group-prepend"></div>
-   <span  id="basic-addon1"></span></span>
-   <div>
-  <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
-  <div class="datePickerBusqueda">
-			@Include('rangoFechasBusqueda')
-		</div>
-	</div>
-</form>
-</div>
+   @include('buscador')
 </div>
 <div class="container">
   <div class="dropdown dropleft float-right">
@@ -22,13 +11,10 @@
       <a class="dropdown-item" href=" /admin/users/{{session('id')}}"><span><i class="fas fa-user-cog"></i></span> Perfil</a>
 		 @if(session('user')->misDatos(session('id'))->userType == "comun")
       	<a class="dropdown-item" href="/enviarSolicitud/{{session('id')}}"><span><i class="far fa-star"></i></span> Solicitar premium</a>
-		@endif
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
   </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
    <header>
 
@@ -51,12 +37,4 @@
 			</ul>
 		</nav>
 		</header>
-		@if($errors->any())
-			<div class="alert alert-danger">
-		<ul>	
-			@foreach ($errors->all() as $error)
-				<li><strong>Atencion!</strong> {{ $error }}</li>
-			@endforeach
-		</ul>
-		</div>
-		@endif
+		

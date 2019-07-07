@@ -1,11 +1,11 @@
 <html>
 <head>
 <title> HSH  </title>
- <?php Include("estilos.php") ?>
+ @Include('estilos')
    <link rel="stylesheet" type="text/css" href="/css/imags.css">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    
-  <?php Include("headerIndex.blade.php") ?>
+  @Include('headerIndex')
    <body>
 		<div class="main">
 		<div class="slides">

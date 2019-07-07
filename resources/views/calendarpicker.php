@@ -20,7 +20,7 @@ function DisableSpecificDates(date) {
       $(function () {                
         $("#datepicker").datepicker({
           firstDay: 1,
-           showOn: "button",
+          showOn: "button",
           buttonImage: "images/calendar.gif",
           buttonImageOnly: true,
           buttonText: "Select date",

@@ -9,6 +9,7 @@
 
   <body>  
     @Include('Header')
+  
 		<div class="main">
 		<div class="slides">
 	 <img src="/css/imagenes/propiedad3.jpg" alt="">
@@ -17,7 +18,7 @@
 		</div>
 	</div>
 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 	<script src="/js/jquery.slides.js"></script>
 	
    	<script>

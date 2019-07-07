@@ -7,15 +7,13 @@
   <link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
   <link rel="stylesheet" type="text/css" href="/css/zoom.css">
   <link rel="stylesheet" type="text/css" href="/css/busqueda.css">
-
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <meta charset="utf-8">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 </head>
 <body>
   @Include('Header') 
@@ -28,6 +26,26 @@
     </ul>
     </div>
     @endif  <h2>Resultados de la busqueda </h2>
+    <script type='text/javascript'>
+$(function(){
+$('.input-daterange').datepicker({
+    autoclose: true
+});
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+
+
+<div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="from" placeholder="From date"/>
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="to" placeholder="To date"/>
+</div>
+
+</div>
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Ver todo  </button>
   <button class="btn" onclick="filterSelection('subastas')"> Subastas </button>
