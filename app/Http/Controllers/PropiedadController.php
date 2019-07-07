@@ -14,6 +14,7 @@ class PropiedadController extends Controller
     public function search(Request $request){
 
         $propiedades=Propiedad::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
+        dd($request);
         return view('busqueda')->with('propiedades',$propiedades);
     }
    public function busqueda(Request $request){

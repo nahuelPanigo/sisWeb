@@ -42,7 +42,7 @@ class Semana extends Model
     }
 public function eliminarSemanaDeUnaPropiedad($propiedad_id){
     $now= new DateTime();
-    $semanas=Semana::where('propiedad_id','='$propiedad_id)->get();
+    $semanas=Semana::where('propiedad_id','=',$propiedad_id)->get();
     foreach ($semanas as $semana ) {
       if($semana->date>$now){
         $semana->delete();
