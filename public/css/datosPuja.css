@@ -18,7 +18,7 @@ input[type=number]:focus, input[type=password]:focus {
 }
 
 /* Set a style for all buttons */
-button {
+.boton button {
   background-color: #4CAF50;
   color: white;
   padding: 14px 0px;
@@ -112,22 +112,22 @@ hr {
   }
 }
 /* Removes the clear button from date inputs */
-input[type="date"]::-webkit-clear-button {
+.container input[type="date"]::-webkit-clear-button {
     display: none;
 }
 /*ACA VA EL INPUT DE TIPO DATE*/
 /* Removes the spin button */
-input[type="date"]::-webkit-inner-spin-button { 
+.container input[type="date"]::-webkit-inner-spin-button { 
     display: none;
 }
 
 /* Always display the drop down caret */
-input[type="date"]::-webkit-calendar-picker-indicator {
+.container input[type="date"]::-webkit-calendar-picker-indicator {
     color: #2c3e50;
 }
 
 /* A few custom styles for date inputs */
-input[type="date"] {
+.container input[type="date"] {
     appearance: none;
     -webkit-appearance: none;
     color: #95a5a6;
@@ -140,7 +140,7 @@ input[type="date"] {
     visibility: visible !important;
 }
 
-input[type="date"], focus {
+.container input[type="date"], focus {
     color: #95a5a6;
     box-shadow: none;
     -webkit-box-shadow: none;
