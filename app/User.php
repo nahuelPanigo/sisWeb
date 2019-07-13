@@ -71,7 +71,7 @@ class User extends Model
 
 public function eliminarMisSubastas($id){
     $subastas=Subasta::where('user_idWinner','=',$id)->get();
-    $now = new DateTime();
+    $now = (new DateTime())->format('Y-m-d');
     foreach ($subastas as $subasta){
         $semana=Semana::find($subasta->semana_id);
         if($semana->date()>$now){
@@ -82,7 +82,7 @@ public function eliminarMisSubastas($id){
 
 public function eliminarMisReservas($id){
     $reservas=Reserva::where('user_id','=',$id)->get();
-    $now = new DateTime();
+    $now = (new DateTime())->format('Y-m-d');
     foreach ($reservas as $reserva){
         $semana=Semana::find($reserva->semana_id);
         if($semana->date>$now){
@@ -93,7 +93,7 @@ public function eliminarMisReservas($id){
 
 public function eliminarMisHotsales($id){
     $hotsales=Hotsale::where('user_id','=',$id)->get();
-    $now = new DateTime();
+    $now = (new DateTime())->format('Y-m-d');
     foreach ($hotsales as $hotsale){
         $semana=Semana::find($hotsale->semana_id);
         if($semana->date>$now){

@@ -8,7 +8,7 @@
       <div class="clearfix reservarBoton">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
 		<input type="hidden" value="" id="hotsale_id" name="hotsale_id">
-        <button type="submit" class="signupbtn"> Aceptar </button>
+        <button type="submit" class="signupbtn boton"> Aceptar </button>
       </div>
     </div>
   </form>

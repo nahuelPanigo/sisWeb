@@ -132,7 +132,8 @@ class HotsaleController extends Controller
     {
     }
 	public function delete(Request $request){
-		$semana = $hotsale->devolverSemana($hotsale_id);
+		$hotsale = Hotsale::find($request->hotsale_id);
+		$semana = $hotsale->devolverSemana($hotsale->semana_id);
         $semana->delete();
         return back()->with('hotsales',Hotsale::all());
 	}

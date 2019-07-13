@@ -186,7 +186,12 @@ display:table;
     font-size: 15px;
     width: 50%;
 }
-
+.buscador_admin{
+	float:left;
+	margin-left:200px;
+	font-size: 15px;
+    width: 50%;
+}
 .buscador .localidad {
      float: right;
     width: 176px;

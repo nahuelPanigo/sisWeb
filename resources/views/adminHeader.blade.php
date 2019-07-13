@@ -1,12 +1,12 @@
 <div class="barra">
    <div class="logo"><img src="/css/imagenes/hsh.png" > </div>
-   <div class="busqueda"><form action="/propiedades/adminSearch" onsubmit=""method="GET">
-   <div class="input-group mb-3"></div>
-   <div class="input-group-prepend"></div>
-   <span  id="basic-addon1"></span>
-  <input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
-</form>
-</div>
+   <div class="buscador_admin">
+		<form action="/propiedades/adminSearch" onsubmit=""method="GET">
+			<div class="input-group-prepend"></div>
+			<span  id="basic-addon1"></span>
+			<input type="text" class="form-control" placeholder="search location"name="locate" aria-label="locate" aria-describedby="search">
+		</form>
+	</div>
 </div>
 <div class="container">
   <div class="dropdown dropleft float-right">

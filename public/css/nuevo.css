@@ -65,6 +65,7 @@ body {
 .card .reserva {
   width: 100%;
   padding: 5px;
+      font-size: 15px;
     margin-top: 8px;
     height: 40px;
     letter-spacing: 1px;
