@@ -52,11 +52,11 @@ class Subasta extends Model
 		$semana = Semana::find($subasta->semana_id);
 		$now = new DateTime();
 		$date= DateTime::createFromFormat('Y-m-d',$semana->date);
-    $date->modify('-6 month');
-    if($now>=$date){
-      $date->modify('+72 hours');
- 		  return ($now<=$date);
-  	}
+		$date->modify('-6 month');
+		if($now>=$date){
+			$date->modify('+72 hours');
+			return ($now<=$date);
+		}
     return false;
 }
 
