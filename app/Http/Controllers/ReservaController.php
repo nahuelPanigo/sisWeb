@@ -62,7 +62,7 @@ class ReservaController extends Controller
                               $semana= $semana->hacerSemana($date,$request->propiedad_id);
                               $reserva = new Reserva;
 						      $reserva->hacerReserva($semana->id,$id);
-					          return back()->with('message', 'su reserva si ha registrado con exito');
+					          return back()->with('message', 'su reserva se ha registrado con exito');
 					    }else
 					       return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
 				    }else

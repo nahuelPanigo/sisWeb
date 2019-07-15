@@ -21,3 +21,8 @@
 		</ul>
 		</div>
 		@endif
+			@if(session()->has('message'))
+   		 <div class="alert alert-success">
+        		<li>{{ session()->get('message') }}</li>
+    	</div>
+		@endif
