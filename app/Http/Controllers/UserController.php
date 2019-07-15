@@ -66,7 +66,7 @@ class UserController extends Controller
             return back()->withInput()->withErrors('Debe ser mayor de 18 anios');
           }
         }
-        return view('IniciarSesion')-> with ('user', $user);
+        return view('IniciarSesion')->with ('user', $user)->with('message', 'su cuenta fue creada con exito! Por favor, inicie sesion');
       }
     /**
      * Display the specified resource.
@@ -127,7 +127,7 @@ class UserController extends Controller
 				$user->userType='comun'; 
                 $user->deleted=false; 
 				$user->save();
-				return redirect ('/inicio')-> with('user', $user); 
+				return redirect ('/inicio')-> with('user', $user)->with('message', 'se han guardado sus cambios exitosamente');; 
 			}else{
 				return redirect ('/admin/users/'.$id.'/edit')->withInput()->withErrors('las contrasenias ingresadas deben ser iguales');
 			}  

@@ -14,7 +14,7 @@ class PropiedadController extends Controller
     public function search(Request $request){
 
         $propiedades=Propiedad::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
-        dd($request);
+    
         return view('busqueda')->with('propiedades',$propiedades);
     }
    public function busqueda(Request $request){
@@ -78,7 +78,7 @@ class PropiedadController extends Controller
 			$image->save();   
 			$collection = $propiedad->images()->getEager();
 			$collection->add($image);
-        return redirect('/propiedades/listar')->with('propiedades',Propiedad::all());
+        return redirect('/propiedades/listar')->with('propiedades',Propiedad::all())->with('message', 'se ha creado la propiedad con exito!');
         }
     }
 
@@ -116,7 +116,7 @@ class PropiedadController extends Controller
 			$propiedad->description= $request->Input('description');
 			$propiedad->locate = $request->Input('locate'); 
 			$propiedad->save(); 
-			return view('adminlistarPropiedades')->with('propiedades',Propiedad::all());
+			return view('adminlistarPropiedades')->with('propiedades',Propiedad::all())->with('message', 'los cambios fueron guardados con exito');
         }
     }
 
@@ -130,14 +130,14 @@ class PropiedadController extends Controller
     {
         $propiedad=new Propiedad;
         $propiedad->eliminar($id);
-        return redirect('/propiedades/listar');
+        return redirect('/propiedades/listar')->with('message', 'la propiedad ha sido eliminada exitosamente');
     }
 
     public function deleteAll($id)
     {
         $propiedad=new Propiedad;
         $propiedad->eliminarConSemanas($id);
-        return redirect('/propiedades/listar');
+        return redirect('/propiedades/listar')->with('message', 'la propiedad ha sido eliminada junto con las subastas, hotsales y reservas posteriores a la fecha de hoy');
     }
 
     public function destroy(propiedad $propiedad)

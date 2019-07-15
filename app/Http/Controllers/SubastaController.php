@@ -26,7 +26,12 @@ class SubastaController extends Controller
 		$subastas = Subasta::all();
 		return view('adminSubastas')->with('subastas',$subastas);
 	}
+public function search(Request $request){
 
+        $subastas=Subasta::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
+    
+        return view('busqueda')->with('subastas',$subastas);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -66,7 +71,7 @@ class SubastaController extends Controller
 				$subasta->finish=0;
 				$subasta->finalPrice=$subasta->minPrice;
 				$subasta->save();
-				return view('adminSubastas')->with('subastas',Subasta::all());
+				return view('adminSubastas')->with('subastas',Subasta::all())->with('message', 'la subasta ha sido creada con exito');
 			}else{
 				return back()->with('id',$request->propiedad_id)->withErrors(['ya existe una subasta/reserva para esta semana']);
 			}
@@ -147,4 +152,5 @@ class SubastaController extends Controller
 		$subasta->save();
 		return redirect('/subastas/listar')->withErrors ([$mensaje]);
 	}
+  
 }

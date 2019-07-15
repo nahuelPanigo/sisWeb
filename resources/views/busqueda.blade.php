@@ -6,7 +6,10 @@
   <link rel="stylesheet" type="text/css" href="/css/nuevo.css">
   <link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
   <link rel="stylesheet" type="text/css" href="/css/zoom.css">
+  
   <link rel="stylesheet" type="text/css" href="/css/busqueda.css">
+    <meta charset="UTF-8">
+ 
   <meta charset="utf-8">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -39,11 +42,6 @@ $('.input-daterange').datepicker({
 <div class="container">
 
 
-<div class="input-daterange input-group" id="datepicker">
-    <input type="text" class="input-sm form-control" name="from" placeholder="From date"/>
-    <span class="input-group-addon">to</span>
-    <input type="text" class="input-sm form-control" name="to" placeholder="To date"/>
-</div>
 
 </div>
 <div id="myBtnContainer">
@@ -139,5 +137,6 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
+
 </body>
 </html>
