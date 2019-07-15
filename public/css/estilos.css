@@ -184,6 +184,8 @@ display:table;
 
 .buscador {
     font-size: 15px;
+	float:left;
+	 margin-left: 340px;
     width: 50%;
 }
 .buscador_admin{
@@ -193,17 +195,16 @@ display:table;
     width: 50%;
 }
 .buscador .localidad {
-     float: right;
-    width: 176px;
+	float:left;
 }
 .buscador .fecha {
-    width: 10px;
-    float: right;
+	float:left;
+	margin-left:10px;
 }
 .buscador .fecha > input{
 width:175px;
 }
  .boton_lupa {
-    margin-left: 788px;
-    margin-top: -21px;
+    margin-left: 20px;
+    margin-top: 30px;
 }
