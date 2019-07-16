@@ -14,7 +14,7 @@ class Propiedad extends Model
 
     public function semanas()
     {
-    	return $this->hasMany('app\Semana');
+    	return $this->hasMany('sisWeb\Semana');
     }
 
      public function images()

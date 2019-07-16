@@ -12,6 +12,6 @@ class Solicitud extends Model
 
      public function user()
     {
-    	return $this->belongsTo('app\User');
+    	return $this->belongsTo('sisWeb\User','user_id');
     }
 }

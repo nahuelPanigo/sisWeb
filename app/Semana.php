@@ -13,20 +13,20 @@ class Semana extends Model
 
     public function propiedad()
     {
-    	return $this->belongsTo('sisWeb\Propiedad');
+    	return $this->belongsTo('sisWeb\Propiedad','propiedad_id');
     }
 
      public function hotsale()
      {
-     	return $this->belongsTo('sisWeb\Hotsale');
+     	return $this->hasOne('sisWeb\Hotsale');
      }
      public function subasta()
      {
-     	return $this->belongsTo('sisWeb\Subasta');
+     	return $this->hasOne('sisWeb\Subasta');
      }
      public function reserva()
      {
-     	return $this->belongsTo('app\Reserva');
+     	return $this->hasOne('sisWeb\Reserva');
      }
      public function hacerSemana( $date,$propiedad_id){
             $semanaNueva = new Semana; 

@@ -15,12 +15,12 @@ class User extends Model
 
     public function subastas()
     {
-    	return $this->hasMany('app\Subasta');
+    	return $this->hasMany('sisWeb\Subasta');
     }
 
     public function hotsales()
     {
-    	return $this->hasMany('app\Hotsale');
+    	return $this->hasMany('sisWeb\Hotsale');
     }
 
     public function reservas()
