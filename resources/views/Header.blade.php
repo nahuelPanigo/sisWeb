@@ -10,6 +10,7 @@
     <div class="dropdown-menu">
       <a class="dropdown-item" href=" /admin/users/{{session('id')}}"><span><i class="fas fa-user-cog"></i></span> Perfil</a>
 		 @if(session('user')->misDatos(session('id'))->userType == "comun")
+		 @endif
       	<a class="dropdown-item" href="/enviarSolicitud/{{session('id')}}"><span><i class="far fa-star"></i></span> Solicitar premium</a>
       <a class="dropdown-item" href="/logout"><span ><i class="fas fa-sign-out-alt"></i></span> Cerrar Sesion</a>
     </div>
@@ -28,7 +29,7 @@
 				</li>
 				<li><a href="#" class="tercero"><span class="tercero "><i class="fas fa-th"></i></span> Categorias</a>
 				<ul>
-				<li><a href="/subastas" ><span class="xx "><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
+				<li><a href="/subastas" ><span class="xx"><i class="fas fa-bullhorn"></i></span> Subastas</a></li>
 				<li><a href="/hotsales"><span class="xx"><i class="fas fa-tags"></i></span> Hot Sales</a></li>
 				</ul>
 				</li>
@@ -37,7 +38,7 @@
 			</ul>
 		</nav>
 		</header>
-		@if($errors->any())
+	@if($errors->any())
 			<div class="alert alert-danger">
 		<ul>	
 			@foreach ($errors->all() as $error)
@@ -48,6 +49,7 @@
 		@endif
 		@if(session()->has('message'))
    		 <div class="alert alert-success">
-        		{{ session()->get('message') }}
+        		{{ session()->get('message')}}
     	</div>
 		@endif
+	

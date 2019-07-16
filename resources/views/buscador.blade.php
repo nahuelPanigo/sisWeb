@@ -6,7 +6,7 @@
      </div>
       <div class="localidad">
       <label> Localidad (opcional)</label>
-      <input type="text" placeholder="Search.." name="search">
+      <input type="text" placeholder="Search.." name="locate">
     </div>
      <button type="submit" class="boton"><i class="fa fa-search"></i></button>
     </form>

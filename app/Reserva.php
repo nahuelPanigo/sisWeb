@@ -36,10 +36,18 @@ class Reserva extends Model
         $date=DateTime::createFromFormat('Y-m-d',$semana->date);
         $now = new DateTime();
         $interval = date_diff($now,$date);
+        
         if(($interval->format('%m'))>2){
-            $semana=Semana::find($reserva->semana_id);
+            $anio=($date->format('%Y'));
+            $anioNow=($now->format('%Y'))
+            $user=User::find($reserva->user_id);
+            if($anio==$anioNow){
+                $user->creditsThisYear=$user->creditsThisYear+1;
+            }else{
+                 $user->creditsNextYear=$user->creditsNextYear+1;
+            }
             $semana->delete();
-            $reserva->delete();
+            $user->save();
             return 1;
 		}
 		return 0;
