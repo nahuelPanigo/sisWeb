@@ -77,6 +77,7 @@ class Subasta extends Model
             return false;
         }
         else{
+            $semana->delete();
             return true;
         }
      }

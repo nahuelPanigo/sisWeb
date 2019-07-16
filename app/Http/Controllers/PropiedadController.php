@@ -12,10 +12,22 @@ class PropiedadController extends Controller
 {
     
     public function search(Request $request){
-
-        $propiedades=Propiedad::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
-    
-        return view('busqueda')->with('propiedades',$propiedades);
+     if($request->datefilter == NULL){  
+        return back()->withErrors(['para realizar la busqueda debe ingresar un rango de fechas']);
+    }else{
+        if($request->locate!= NULL){
+        $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
+    }else{
+        $propiedades=Propiedad::where('deleted','=',false)->get()''
+    }
+        $todasSem=new collection;
+        foreach ($propiedades as $propiedad) {
+            $semanas=Semanas::where('id_propiedad','=',$propiedad->id)->get();
+            foreach($semanas as $semana){
+                $todasSem->push($semana);
+            }
+        }
+        $semanas=Semanas::where('id_propiedad','=','');
     }
    public function busqueda(Request $request){
 

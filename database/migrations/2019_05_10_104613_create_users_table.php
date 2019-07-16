@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
 
         schema::table('users',function($table){
             $table->boolean('deleted');
+            $table->integer('creditsThisYear');
+            $table->integer('creditsNextYear');
         });
     }
     public function down()
