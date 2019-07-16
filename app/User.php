@@ -153,6 +153,7 @@ public function verificarSemana($id,$date){
 
 public function cantCreditos($id,$anio){
     $user=User::find($id);
+    $now=new DateTime();
     $anio2=($now->format('Y'));
     if($anio2=$anio)
           return $user->creditsThisYear;
@@ -161,6 +162,7 @@ public function cantCreditos($id,$anio){
   
   public function aumentarCredito($id,$anio){
         $user=User::find($id);
+        $now=new DateTime();
         $anio2=($now->format('Y'));
         if($anio2=$anio){
           $user->creditsThisYear=$user->creditsThisYear-1;

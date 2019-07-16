@@ -39,7 +39,7 @@ class Reserva extends Model
         
         if(($interval->format('%m'))>2){
             $anio=($date->format('%Y'));
-            $anioNow=($now->format('%Y'))
+            $anioNow=($now->format('%Y'));
             $user=User::find($reserva->user_id);
             if($anio==$anioNow){
                 $user->creditsThisYear=$user->creditsThisYear+1;
