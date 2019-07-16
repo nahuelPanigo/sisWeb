@@ -12,13 +12,11 @@ class Hotsale extends Model
 
     public function user()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('sisWeb\User');
     }
-
-
-     public function semana()
+    public function semana()
      {
-     	return $this->hasOne('app\Semana');
+     	return $this->belongsTo('sisweb\Semana','semana_id');
      }
      
 	public function name(Hotsale $hotsale){

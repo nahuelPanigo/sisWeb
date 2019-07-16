@@ -6,37 +6,51 @@ use sisWeb\Propiedad;
 use Illuminate\Http\Request;
 use sisWeb\Image;
 use sisWeb\Subasta;
-use sisweb\Hotsale;
+use sisWeb\Hotsale;
+use sisWeb\Semana;
+use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 
 class PropiedadController extends Controller
 {
     
-  public function search(Request $request){
+public function search(Request $request){
      if($request->datefilter == NULL){  
         return back()->withErrors(['para realizar la busqueda debe ingresar un rango de fechas']);
     }else{
         if($request->locate!= NULL){
 
-        $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
-    }else{
-        $propiedades=Propiedad::where('deleted','=',false)->get();
-    }
-        $todasSem=new collection;
+            $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
+        }else{
+            $propiedades=Propiedad::where('deleted','=',false)->get();
+        }
+        $fechas = explode("-", $request->datefilter);
+        $fechaInicial = DateTime::createFromFormat('d/m/Y ',$fechas[0]); 
+        $fechaFinal = DateTime::createFromFormat(' d/m/Y',$fechas[1]);
+        while(($fechaInicial->format('l'))!= 'Monday'){
+            $fechaInicial->modify('+1 day');
+        }
+        $coleccion = new Collection;
+        while($fechaInicial <= $fechaFinal){
+            $coleccion->push($fechaInicial->format('Y-m-d'));
+            $fechaInicial->modify('+7 day');
+        }
         foreach ($propiedades as $propiedad) {
-            $semanas=Semanas::where('id_propiedad','=',$propiedad->id)->get();
+           $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',$fechaFinal->format('Y-m-d'))->with('hotsale')->with('reserva')->with('subasta')->get();
+           dd($semanas->first();
             foreach($semanas as $semana){
-                $todasSem->push($semana);
+                
             }
         }
-        $semanas=Semanas::where('id_propiedad','=','');
     }
   }
+
    public function busqueda(Request $request){
 
     $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
     return view('listarPropiedades')->with('propiedades',$propiedades);
-
    } 
+
    public function adminSearch(Request $request){
 	 $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
     return view('adminlistarPropiedades')->with('propiedades',$propiedades);  

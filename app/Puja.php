@@ -12,12 +12,12 @@ class Puja extends Model
     
      public function user()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('sisWeb\User');
     }
 
      public function subasta()
     {
-    	return $this->belongsTo('App\Subasta');
+    	return $this->belongsTo('sisWeb\Subasta');
     }
 
     public function crearPuja(Subasta $subasta)

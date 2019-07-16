@@ -13,12 +13,12 @@ class Reserva extends Model
 
      public function user()
     {
-    	return $this->belongsTo('app\User');
+    	return $this->belongsTo('sisWeb\User','user_id');
     }
 
      public function semana()
      {
-     	return $this->hasOne('app\Semana');
+     	return $this->hasOne('sisWeb\Semana','semana_id');
      }
 
 
