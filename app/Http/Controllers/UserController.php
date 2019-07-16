@@ -57,8 +57,8 @@ class UserController extends Controller
 					$user = new User($request->all());  
 					$user->creditCard = 'visa';
 					$user->userType='comun';
-                    $user->creaditsThisYear=2;
-                    $user->creaditsNextYear=2;
+                    $user->creditsThisYear=2;
+                    $user->creditsNextYear=2;
                     $user->deleted=false;
                     $user->save();
 				}else{

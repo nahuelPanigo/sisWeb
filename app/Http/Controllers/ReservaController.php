@@ -62,7 +62,7 @@ class ReservaController extends Controller
                               $reserva = new Reserva;
 						      $reserva->hacerReserva($semana->id,$id);
                               $user->aumentarCredito($user->id,$anio);
-					          return back()->with('message', 'su reserva si ha registrado con exito');
+					          return back()->with('message', 'su reserva se ha registrado con exito');
 					    }else
 					       return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
 				    }else
@@ -116,7 +116,7 @@ class ReservaController extends Controller
 public function delete($id){
 {       $reserva= new Reserva;
         if($reserva->eliminarReserva($id)){
-            return redirect('/inicio')with('message','se le han devueltos los creditos');
+            return redirect('/inicio')->with('message','se le han devueltos los creditos');
         }else
             return redirect('/inicio')->with('message','su reserva ha sido cancelada pero no se han devuelto los creditos por falta de anticipacion');
     }

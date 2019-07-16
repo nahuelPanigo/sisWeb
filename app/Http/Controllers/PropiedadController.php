@@ -11,14 +11,14 @@ use sisweb\Hotsale;
 class PropiedadController extends Controller
 {
     
-    public function search(Request $request){
+  public function search(Request $request){
      if($request->datefilter == NULL){  
         return back()->withErrors(['para realizar la busqueda debe ingresar un rango de fechas']);
     }else{
         if($request->locate!= NULL){
         $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
     }else{
-        $propiedades=Propiedad::where('deleted','=',false)->get()''
+        $propiedades=Propiedad::where('deleted','=',false)->get();
     }
         $todasSem=new collection;
         foreach ($propiedades as $propiedad) {
@@ -29,6 +29,7 @@ class PropiedadController extends Controller
         }
         $semanas=Semanas::where('id_propiedad','=','');
     }
+  }
    public function busqueda(Request $request){
 
     $propiedades = Propiedad::where('locate','like',"%$request->locate%")->get();
