@@ -46,12 +46,11 @@ class ReservaController extends Controller
             if($user->userType=='vip'){
                 $date= DateTime::createFromFormat('m/d/Y',$request->date); 
                 $anio=($date->format('Y'));
-                $date->format('Y-m-d');
-                $cant=$user->cantReservas($id,$anio);
+                $cant=$user->cantCreditos($id,$anio);
                 if(!($user->verificarSemana($id,$date))){
                     return back()->withErrors(['ya posee una reserva para esa fecha']);
                 }else{
-			    if($cant< 2){
+			    if($cant > 0 ){
                     $now = new DateTime(); 
                     $interval = date_diff($now, $date);
                     if(($interval->days > 180 ) and ($interval->days < 365)){
@@ -62,6 +61,7 @@ class ReservaController extends Controller
                               $semana= $semana->hacerSemana($date,$request->propiedad_id);
                               $reserva = new Reserva;
 						      $reserva->hacerReserva($semana->id,$id);
+                              $user->aumentarCredito($user->id,$anio);
 					          return back()->with('message', 'su reserva se ha registrado con exito');
 					    }else
 					       return back()->withErrors(['La propiedad en esa fecha se encuentra reservada']);
@@ -116,9 +116,9 @@ class ReservaController extends Controller
 public function delete($id){
 {       $reserva= new Reserva;
         if($reserva->eliminarReserva($id)){
-            return redirect('/inicio');
+            return redirect('/inicio')->with('message','se le han devueltos los creditos');
         }else
-            return redirect('/inicio')->withErrors('no se pudo cancelar la reserva porque no se tiene 2 o mas meses de anticipacion');
+            return redirect('/inicio')->with('message','su reserva ha sido cancelada pero no se han devuelto los creditos por falta de anticipacion');
     }
 }
 

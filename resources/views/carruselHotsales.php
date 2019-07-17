@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -137,41 +136,52 @@ input[type=text]:focus {
   <input type="text" name="search" placeholder="Search..">
 </form>
   </div>
+<div class="hotsales">
+
   <section class="regular slider">
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\propiedad1.jpg">
+      <img src="/css/imagenes/propiedad3.jpg">
 
     </div>
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\propiedad2.jpg">
+
+      <img src="/css/imagenes/propiedad3.jpg">
+
 
     </div>
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\propiedad3.jpg">
+
+      <img src="/css/imagenes/propiedad3.jpg">
+
 
     </div>
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\propiedad4.jpg">
+
+      <img src="/css/imagenes/propiedad3.jpg">
+
 
     </div>
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\marbella-1.jpg">
+      <img src="/css/imagenes/propiedad3.jpg">
+
 
     </div>
 
     <div>
 
-      <img src="C:\Users\jimen\OneDrive\Documentos\GitHub\sisWeb\public\css\imagenes\large_Modern-Villa-in-Marbella.jpg">
+
+      <img src="/css/imagenes/propiedad3.jpg">
+
 
     </div>
 
@@ -180,7 +190,8 @@ input[type=text]:focus {
 
   <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 
-  <script src="./slick/slick.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" charset="utf-8"></script>
 
   <script type="text/javascript">
 
@@ -207,7 +218,3 @@ input[type=text]:focus {
 </script>
 
 
-
-</body>
-
-</html>

@@ -57,7 +57,7 @@ public function search(Request $request){
         $now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
         $interval = date_diff($now, $newformat);
-        if(($interval->days>180)and ($interval->days < 365)){
+        if(($interval->days>180) and ($interval->days < 365)){
 			$buscarSemana=Semana::whereDate('date','=',$newformat)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
 				$semana= new Semana;

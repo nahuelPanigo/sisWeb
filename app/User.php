@@ -11,16 +11,16 @@ class User extends Model
 {
     protected $table ='users';
 
-    protected $fillable=['name','secondName','userName','creditCardNumber','creditCardCode','creditCardDate','mail','userType','creditCard','password','birthDay','dni','deleted'];
+    protected $fillable=['name','secondName','userName','creditCardNumber','creditCardCode','creditCardDate','mail','userType','creditCard','password','birthDay','dni','deleted','creditsThisYear','creditsNextYear'];
 
     public function subastas()
     {
-    	return $this->hasMany('app\Subasta');
+    	return $this->hasMany('sisWeb\Subasta');
     }
 
     public function hotsales()
     {
-    	return $this->hasMany('app\Hotsale');
+    	return $this->hasMany('sisWeb\Hotsale');
     }
 
     public function reservas()
@@ -150,4 +150,26 @@ public function verificarSemana($id,$date){
 		$user = User::find($id);
 		return $user;
 	}
+
+public function cantCreditos($id,$anio){
+    $user=User::find($id);
+    $now=new DateTime();
+    $anio2=($now->format('Y'));
+    if($anio2=$anio)
+          return $user->creditsThisYear;
+    return $user->creditsNextYear;
+}
+  
+  public function aumentarCredito($id,$anio){
+        $user=User::find($id);
+        $now=new DateTime();
+        $anio2=($now->format('Y'));
+        if($anio2=$anio){
+          $user->creditsThisYear=$user->creditsThisYear-1;
+         }else{
+          $user->creditsNextYear=$user->creditsNextYear-1;
+         } 
+         $user->save();
+  }
+
 }

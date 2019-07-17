@@ -6,7 +6,12 @@
   <link rel="stylesheet" type="text/css" href="/css/nuevo.css">
   <link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
   <link rel="stylesheet" type="text/css" href="/css/zoom.css">
-  
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+<link rel="stylesheet" type="text/css" href="/css/carruselHotsales.css">
   <link rel="stylesheet" type="text/css" href="/css/busqueda.css">
     <meta charset="UTF-8">
  
@@ -138,5 +143,7 @@ for (var i = 0; i < btns.length; i++) {
 }
 </script>
 
+<p> Algunos Hot sales disponibles </p>
+ @Include('carruselHotsales')
 </body>
 </html>

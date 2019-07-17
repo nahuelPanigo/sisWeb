@@ -13,12 +13,12 @@ class Reserva extends Model
 
      public function user()
     {
-    	return $this->belongsTo('app\User');
+    	return $this->belongsTo('sisWeb\User','user_id');
     }
 
      public function semana()
      {
-     	return $this->hasOne('app\Semana');
+     	return $this->hasOne('sisWeb\Semana','semana_id');
      }
 
 
@@ -36,10 +36,18 @@ class Reserva extends Model
         $date=DateTime::createFromFormat('Y-m-d',$semana->date);
         $now = new DateTime();
         $interval = date_diff($now,$date);
+        
         if(($interval->format('%m'))>2){
-            $semana=Semana::find($reserva->semana_id);
+            $anio=($date->format('%Y'));
+            $anioNow=($now->format('%Y'));
+            $user=User::find($reserva->user_id);
+            if($anio==$anioNow){
+                $user->creditsThisYear=$user->creditsThisYear+1;
+            }else{
+                 $user->creditsNextYear=$user->creditsNextYear+1;
+            }
             $semana->delete();
-            $reserva->delete();
+            $user->save();
             return 1;
 		}
 		return 0;

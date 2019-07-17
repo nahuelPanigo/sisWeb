@@ -16,17 +16,18 @@ class Subasta extends Model
 
      public function user()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('sisWeb\User','user_idWinner');
     } 
 
       public function pujas()
     {
-    	return $this->hasMany('app\Puja');
+    	return $this->hasMany('sisWeb\Puja');
     }
      public function semana()
      {
-     	return $this->hasOne('sisWeb\Semana');
+     	return $this->belongsTo('sisWeb\Semana','semana_id');
      }
+
     public function name(Subasta $subasta){
         $semana = new Semana;
         $semana = Semana::where('id','=',$subasta->semana_id)->first();
@@ -77,6 +78,7 @@ class Subasta extends Model
             return false;
         }
         else{
+            $semana->delete();
             return true;
         }
      }

@@ -13,7 +13,7 @@ class UserController extends Controller
         return view('listarSolicitudes')->with('usuarios',$usuarios);
     }
     public function listarUsuarios(){
-		$usuarios = User::all();
+		$usuarios = User::where('deleted','=',false);
 		return view('listarUsuarios')->with('usuarios',$usuarios);
 	}
     /**
@@ -57,6 +57,8 @@ class UserController extends Controller
 					$user = new User($request->all());  
 					$user->creditCard = 'visa';
 					$user->userType='comun';
+                    $user->creditsThisYear=2;
+                    $user->creditsNextYear=2;
                     $user->deleted=false;
                     $user->save();
 				}else{

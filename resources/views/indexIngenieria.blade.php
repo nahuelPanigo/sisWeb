@@ -9,15 +9,27 @@
 
   <body>  
     @Include('Header')
-  
-		<div class="main">
+	@php use sisWeb\Hotsale ;$hotsales = Hotsale::where('user_id','=',NULL)->get() @endphp
+	<h1 class="cartel"> Ultimos hotsales </h1>
+	<div class="main">
 		<div class="slides">
-	 <img src="/css/imagenes/propiedad3.jpg" alt="">
-  <img src="/css/imagenes/propiedad2.jpg" alt="">
-  <img src="/css/imagenes/propiedad1.jpg" alt="">
+			@foreach  ($hotsales as $hotsale)
+				@php
+					$semana=$hotsale->devolverSemana($hotsale->semana_id);
+					$propiedad=$semana->devolverDatosPropiedad($semana->propiedad_id) 
+				@endphp
+				<div>
+					<div class="hotsales">
+						<h1> Nombre:  {{$propiedad->name}}</h1>
+						<h3>Precio:  {{$hotsale -> price}} <span class="fas fa-money-bill-wave"></span></h3>
+					</div>
+					<a href="">
+						<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick=""alt="">
+					</a>
+				</div>
+			@endforeach
 		</div>
 	</div>
-
 
 	<script src="/js/jquery.slides.js"></script>
 	
