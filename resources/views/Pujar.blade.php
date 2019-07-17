@@ -11,7 +11,7 @@
       <input type="number" placeholder="monto" name="monto" autocomplete="off" required>
       <input type="hidden" value="" id="subastaID" name="subasta_id">
       <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtnPuja">Cancelar</button>
         <button type="submit" class="signupbtn"> PUJAR </button>
       </div>
     </div>

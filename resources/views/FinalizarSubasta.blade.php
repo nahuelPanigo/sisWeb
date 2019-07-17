@@ -6,7 +6,7 @@
       <h1 style="text-align:center;"> Confirmar finalizacion</h1>
       <input type="hidden" value="" id="subastaID" name="subasta_id">
       <div class="clearfix">
-        <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+        <button type="button"  onclick="document.getElementById('id01').style.display='none'" class="cancelbtnPuja">Cancelar</button>
         <button type="submit" class="signupbtn ">Finalizar</button>
       </div>
     </div>

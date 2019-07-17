@@ -8,18 +8,11 @@
   <link rel="stylesheet" type="text/css" href="/css/zoom.css">
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
-<link rel="stylesheet" type="text/css" href="/css/carruselHotsales.css">
+	<link rel="stylesheet" type="text/css" href="/css/carruselHotsales.css">
   <link rel="stylesheet" type="text/css" href="/css/busqueda.css">
-    <meta charset="UTF-8">
- 
-  <meta charset="utf-8">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
-
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 </head>
@@ -45,26 +38,52 @@ $('.input-daterange').datepicker({
 </head>
 <body>
 <div class="container">
-
-
-
 </div>
 <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Ver todo  </button>
   <button class="btn" onclick="filterSelection('subastas')"> Subastas </button>
-  <button class="btn" onclick="filterSelection('hotsales')"> Hot Sales </button>
   <button class="btn" onclick="filterSelection('propiedades')"> Propiedades libres </button>
 </div>
 
 <!-- Portfolio Gallery Grid -->
+<div class="propiedades"> <h1 style="text-align:center"> Propiedades libres </h1> </div>
 <div class="row">
-  <div class="column hotsales">
-    <div class="content">
-      <img src="/w3images/mountains.jpg" alt="HotSale" style="width:100%">
-      <h4>Hot Sale</h4>
-      <p>Lorem ipsum dolor..</p>
-    </div>
-  </div>
+	@if($propiedades->first()== null)
+	<p class="error"> Lo sentimos! En este momento no hay propiedades </p>
+	@endif
+	@foreach ($propiedades as $propiedad)
+	<div class="column propiedades">
+		<div class="card">
+			<h3>{{$propiedad->name}}</h3>
+			<div class="datos">
+				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
+				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
+			</div>
+			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			<button class="reserva"  onclick="">Mostrar semanas disponibles</button>
+		</div>
+	</div>
+	@endforeach	
+</div>
+<div class="subastas"> <h1 style="text-align:center"> Proximas subastas </h1> </div>
+<div class="row">
+	@if($subastas->first()== null)
+	<p class="error"> Lo sentimos! En este momento no hay subastas </p>
+	@endif
+	@foreach ($subastas as $subasta)
+	<div class="column subastas">
+		<div class="card">
+			<h3>{{$subasta->name($subasta)->name}}</h3>
+			<div class="datos">
+				<p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
+				<p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
+			</div>
+			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+		</div>
+	</div>
+	@endforeach
+</div>
+<!--<div class="row">
   <div class="column subastas">
     <div class="content">
       <img src="/w3images/lights.jpg" alt="Subasta" style="width:100%">
@@ -72,15 +91,7 @@ $('.input-daterange').datepicker({
       <p>Lorem ipsum dolor..</p>
     </div>
   </div>
-  <div class="column propiedades">
-    <div class="content">
-      <img src="/w3images/nature.jpg" alt="Propiedad" style="width:100%">
-      <h4>Propiedad</h4>
-      <p>Lorem ipsum dolor..</p>
-    </div>
-  </div>
  @foreach ($propiedades as $propiedad)
-  
   <div class="column propiedades">
     <div class="content">
       <img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" alt="Propiedad" style="width:100%">
@@ -89,10 +100,8 @@ $('.input-daterange').datepicker({
     </div>
   </div>
 @endforeach
-<!-- END GRID -->
 </div> 
-<!-- END MAIN -->
-</div>
+</div> -->
 <script>
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
@@ -143,7 +152,7 @@ for (var i = 0; i < btns.length; i++) {
 }
 </script>
 
-<p> Algunos Hot sales disponibles </p>
+<h1 style="text-align:center"> Algunos Hot sales disponibles </h1>
  @Include('carruselHotsales')
 </body>
 </html>
