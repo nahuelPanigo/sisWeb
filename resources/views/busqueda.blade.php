@@ -51,15 +51,15 @@ $('.input-daterange').datepicker({
 	@if($propiedades->first()== null)
 	<p class="error"> Lo sentimos! En este momento no hay propiedades </p>
 	@endif
-	@foreach ($propiedades as $propiedad)
+	@foreach ($propiedades as $elemento)
 	<div class="column propiedades">
 		<div class="card">
-			<h3>{{$propiedad->name}}</h3>
+			<h3>{{$elemento->propiedad->name}}</h3>
 			<div class="datos">
-				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
-				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
+				<p><span class="fas fa-map-marker-alt"></span> {{$elemento->propiedad -> locate}} </p>
+				<p><span class="fas fa-info-circle"></span> {{$elemento->propiedad -> description}} </p>
 			</div>
-			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 			<button class="reserva"  onclick="">Mostrar semanas disponibles</button>
 		</div>
 	</div>
@@ -78,30 +78,11 @@ $('.input-daterange').datepicker({
 				<p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
 				<p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
 			</div>
-			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			<img src="{{str_replace('public/', '/storage/', $subasta->name($subasta)->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 		</div>
 	</div>
 	@endforeach
 </div>
-<!--<div class="row">
-  <div class="column subastas">
-    <div class="content">
-      <img src="/w3images/lights.jpg" alt="Subasta" style="width:100%">
-      <h4>Subasta </h4>
-      <p>Lorem ipsum dolor..</p>
-    </div>
-  </div>
- @foreach ($propiedades as $propiedad)
-  <div class="column propiedades">
-    <div class="content">
-      <img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" alt="Propiedad" style="width:100%">
-      <h4>{{$propiedad->name}}</h4>
-      <p>{{$propiedad->locate}}</p>
-    </div>
-  </div>
-@endforeach
-</div> 
-</div> -->
 <script>
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
