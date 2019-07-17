@@ -56,18 +56,16 @@ public function search(Request $request){
                     $f=DateTime::createFromFormat('Y-m-d',$semana->date);
                     $f=$f->format('m/d/Y');
                     $Fechas->push($f);
-                }else
-                    if($semana->reserva==NULL){
+                }
+                if(($semana->reserva==NULL)and($semana->estoyEnElRango($coleccion,$semana))){
                         $subastas->push($semana->subasta);
-                    }
+                }
             }
             $fecha= new Fecha;
             $fecha->propiedad=$propiedad;
             $fecha->fechas=$Fechas;
             $propiedadesConFechas->push($fecha);
-        }
-        
-      
+        }   
     return view('busqueda')->with('propiedades',$propiedadesConFechas)->with('subastas',$subastas)->with('hotsales',$hotsales);
   }
 

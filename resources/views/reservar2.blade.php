@@ -4,8 +4,7 @@
   	{{ csrf_field()}}
     <div class="container"  style="width: 102%;">
       <h1 style="text-align:center;"> Reservar  </h1>
-      <h2 style="text-align: center;"> Realizar reserva para la semana de {{$semana}} de la propiedad {{$elemento->propiedad->name}}</h2>
-      <input type="hidden" value={{$semana}} name="date">
+      <input type="hidden" id="semana"value="" name="date">
       <input type="hidden" name="propiedad_id" id="propiedad_id"value="">
       <div class="clearfix reservarBoton">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtnPuja">Cancelar</button>
@@ -13,10 +12,11 @@
       </div>
     </div>
   </form>
-</div>.
+</div>
 <script>
-  function mostrarModal(id){
+  function mostrarModal(id, semana){
     document.getElementById('propiedad_id').value=id;
+    document.getElementById('semana').value=semana;
     document.getElementById('id01').style.display='block';
   }
 // Get the modal

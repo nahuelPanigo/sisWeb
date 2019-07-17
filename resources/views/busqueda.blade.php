@@ -73,28 +73,45 @@ $('.input-daterange').datepicker({
   </thead>
   <tbody>
 
-      @foreach ($elemento->fechas as $semana )
+    @foreach ($elemento->fechas as $semana )
     <tr>
      
       <th scope="row"> <span class="far fa-calendar-alt">  </span></th>
       <td>{{$semana}}</td>
       <td><button  style="    background: white;
     color: black;
-    border-radius: 6px;" onclick="document.getElementById('id01').style.display='block'">Reservar</button></td>
-    @include('reservar2')
-      
+    border-radius: 6px;" onclick="mostrarModal({{$elemento->propiedad->id, $semana}})">Reservar</button></td>      
     </tr>
     @endforeach
+   @include('reservar2')
   </tbody>
 </table>
   </div>
 </div>
 </div>
+</div>
 	</div>
 	@endforeach	
 </div>
-
-
+</div>
+<div class="subastas"> <h1 style="text-align:center"> Proximas subastas </h1> </div>
+<div class="row">
+  @if($subastas->first()== null)
+  <p class="error"> Lo sentimos! En este momento no hay subastas </p>
+  @endif
+  @foreach ($subastas as $subasta)
+  <div class="column subastas">
+    <div class="card">
+      <h3>{{$subasta->name($subasta)->name}}</h3>
+      <div class="datos">
+        <p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
+        <p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
+      </div>
+      <img src="{{str_replace('public/', '/storage/', $subasta->name($subasta)->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+    </div>
+  </div>
+  @endforeach 
+</div>
 <script>
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
@@ -147,6 +164,7 @@ for (var i = 0; i < btns.length; i++) {
 <div class="hotsales">
 <h1 style="text-align:center"> Algunos Hot sales disponibles </h1>
  @Include('carruselHotsales')
+</div>
 </div>
 </body>
 </html>
