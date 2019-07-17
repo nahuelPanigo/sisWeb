@@ -41,7 +41,7 @@ Route::get('/propiedades/{id}/deleteAll',      ['uses' => 'PropiedadController@d
 
 
 /*Rutas de subastas */
-Route::get('/subastas/{id}/delete',      ['uses' => 'SubastaController@delete',     'as' => 'admin.subastas.delete']);
+Route::post('/subastas/delete',      ['uses' => 'SubastaController@delete',     'as' => 'admin.subastas.delete']);
 route::resource('subastas','SubastaController');
 Route::get('/subastas/{id}/create',      ['uses' => 'SubastaController@create',     'as' => 'categorias.subastas.create']);
 Route::post('/subastas/finalizar', 'SubastaController@finalizarSubasta');

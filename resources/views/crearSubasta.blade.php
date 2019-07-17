@@ -14,7 +14,7 @@
           {{ csrf_field() }}
        <div class="registrar_propiedad">
 	   <input type="hidden" name="propiedad_id" value="{{$id}}">
-        <input type="text" id="precio" name="minPrice" placeholder="Precio inicial" autocomplete="off"><br> <br>
+        <input type="text" style="margin-left:30px"id="precio" name="minPrice" placeholder="Precio inicial" autocomplete="off"><br> <br>
 		<div class="datePicker">
 			@Include('calendarpicker')
 		</div>

@@ -15,26 +15,26 @@
 @foreach ($subastas as $subasta)
 <div class="columns">
   <ul class="price">
-    <li class="header">{{$subasta->name($subasta)->name}} <a href="{{ route('admin.subastas.delete',$subasta->id)}}" class="boton_cancelar"> <span class="fas fa-trash-alt"></span> </a></li>
+    <li class="header">{{$subasta->name($subasta)->name}} <button onclick="mostrarModal2({{$subasta->id}})" class="boton_cancelar"> <span class="fas fa-trash-alt"></span> </button></li>
     <li class="grey">{{"$".$subasta->finalPrice}}</li>
     <li> <span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span> </li>
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>
     <li><span class="fas fa-map-marker-alt"> {{$subasta->name($subasta)->locate}}</span></li>
     <li><span class="far fa-clock"></span></li>
 	@if($subasta->finish == 1)
-		<div class="boton inactiva finalizada"> Finalizada </div>
+		<div class="boton inactiva finalizada" style="margin-left:160px;"> Finalizada </div>
 	@else
 		@if($subasta->puedeFinalizar2($subasta))
-			<div class="boton"> <button onclick="mostrarModal({{$subasta->id}})" > Finalizar</button> </div>
+			<div class="boton" style="margin-left:160px;"> <button onclick="mostrarModal({{$subasta->id}})" > Finalizar</button> </div>
 		@else	
-			<div class="boton inactiva" > Incactiva/subasta </div>
+			<div class="boton inactiva" style="margin-left:160px;"> Incactiva/subasta </div>
 		@endif
 	@endif
   </ul>
   @Include('FinalizarSubasta')
 </div>
 @endforeach
-
+@Include('eliminarSubasta')
 
 </body>
 </html>

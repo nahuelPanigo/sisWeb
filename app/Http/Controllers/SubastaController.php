@@ -122,10 +122,10 @@ public function search(Request $request){
      * @return \Illuminate\Http\Response
      */
 
-    public function delete($id)
+    public function delete(Request $request)
     {
         $subasta=new Subasta;
-        $subasta->eliminar($id);
+        $subasta->eliminar($request->subasta_id);
         return redirect('/subastas/listar')->with('message', 'la subasta ha sido eliminada exitosamente');
     }
 
