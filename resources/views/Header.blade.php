@@ -18,7 +18,6 @@
 </div>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
    <header>
-
 		<nav class="menu">
 			<ul>
 				<li><a href="/inicio" ><span class="primero"><i class="fas fa-home"></i></span> Inicio</a></li>

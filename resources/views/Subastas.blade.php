@@ -26,9 +26,9 @@
 	@else
 	<div class="boton inactiva"> Incactiva </div>
 	@endif
-@Include('Pujar')
   </ul>
 </div>
 @endforeach
+@Include('Pujar')
 </body>
 </html>

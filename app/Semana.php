@@ -4,6 +4,7 @@ namespace sisWeb;
 
 use Illuminate\Database\Eloquent\Model;
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 
 class Semana extends Model
 {
@@ -51,4 +52,14 @@ public function eliminarSemanasDeUnaPropiedad($propiedad_id){
       }
     }
   }
+
+ public function estoyEnElRango(Collection $col,Semana $semana){
+    foreach ($col as $date) {
+        if($date == $semana->date){
+            return true;
+        }    
+    }
+    return false;
+ }
+
 }

@@ -8,6 +8,7 @@ use sisWeb\Image;
 use sisWeb\Subasta;
 use sisWeb\Hotsale;
 use sisWeb\Semana;
+use sisWeb\Fecha;
 use DateTime;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -17,10 +18,8 @@ class PropiedadController extends Controller
 public function search(Request $request){
      if($request->datefilter == NULL){  
         return back()->withErrors(['para realizar la busqueda debe ingresar un rango de fechas']);
-    }else{
+    }
         if($request->locate!= NULL){
-
-
             $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
         }else{
             $propiedades=Propiedad::where('deleted','=',false)->get();
@@ -32,18 +31,46 @@ public function search(Request $request){
             $fechaInicial->modify('+1 day');
         }
         $coleccion = new Collection;
+        $hotsales = new collection;
+        $propiedadesConFechas = new Collection;
+        $subastas = new Collection; 
+        $now=new DateTime();
+        $now=$now->format('Y-m-d');
+        $semanasHot = Semana::whereDate('date','>=',$now)->with('hotsale')->get();
+        foreach ($semanasHot as $semana){
+                foreach ($propiedades as $propiedad) {
+                       if(($propiedad->id == $semana->propiedad_id)and($semana->hotsale != NULL)){
+                        $hotsales->push($semana->hotsale);
+                       }
+                }   
+         }
         while($fechaInicial <= $fechaFinal){
             $coleccion->push($fechaInicial->format('Y-m-d'));
             $fechaInicial->modify('+7 day');
         }
         foreach ($propiedades as $propiedad) {
-           $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',$fechaFinal->format('Y-m-d'))->with('hotsale')->with('reserva')->with('subasta')->get();
+
+           $Fechas = new Collection;
+           $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',($fechaFinal->format('Y-m-d')))->with('reserva')->with('subasta')->get();
+
             foreach($semanas as $semana){
-                
+                if((!($semana->estoyEnElRango($coleccion,$semana)))or($semana->reserva==NULL)){
+                    $f=DateTime::createFromFormat('Y-m-d',$semana->date);
+                    $f=$f->format('m/d/Y');
+                    $Fechas->push($f);
+				if(($semana->estoyEnElRango($coleccion,$semana))and($semana->subasta!=NULL)){
+					$subastas->push($semana->subasta);
+				}
             }
+            $fecha= new Fecha;
+            $fecha->propiedad=$propiedad;
+            $fecha->fechas=$Fechas;
+            $propiedadesConFechas->push($fecha);
         }
-    }return view('busqueda')->with('propiedades', $propiedades);
+        
+    return view('busqueda')->with('propiedades',$propiedadesConFechas)->with('subastas',$subastas)->with('hotsales',$hotsales);
   }
+
 
    public function busqueda(Request $request){
 
