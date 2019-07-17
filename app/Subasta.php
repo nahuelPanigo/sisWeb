@@ -89,4 +89,20 @@ class Subasta extends Model
   }
 
 
+  public function eliminar($id)
+    {
+        $now = new DateTime();
+        $subasta= Subasta::find($id)->with('semana');
+        $date= DateTime::createFromFormat('Y-m-d',$subasta->semana->date);
+        if($subasta->user_idWinner != NULL){
+            $user->find($subasta->user_id_Winner);
+            if(($date->format('Y'))==($now->format('Y'))){
+              $user->creditsThisYear=$user->creditsThisYear+1;
+            }else{
+              $user->creditsNextYear=$user->creditsNextYear+1;
+            }
+         $user->save();   
+        }
+        $Subasta->semana->delete();
+    }
 }
