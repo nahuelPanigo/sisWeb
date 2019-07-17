@@ -121,6 +121,14 @@ public function search(Request $request){
      * @param  \sisWeb\Subasta  $subasta
      * @return \Illuminate\Http\Response
      */
+
+    public function delete($id)
+    {
+        $subasta=new Subasta;
+        $subasta->eliminar($id);
+        return redirect('/subastas/listar')->with('message', 'la subasta ha sido eliminada exitosamente');
+    }
+
     public function destroy(Subasta $subasta)
     {
         
