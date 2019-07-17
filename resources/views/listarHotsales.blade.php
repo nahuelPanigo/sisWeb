@@ -29,12 +29,11 @@
 				<p><span class="fas fa-dollar-sign"></span>   {{$hotsale -> price}}</p> 
 			</div>
 			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-				<button class="reserva"  onclick="mostrarModal({{$hotsale->id}}})"> Comprar</button>
-				@include('comprar')
+				<button class="reserva"  onclick="mostrarModal({{$hotsale->id}})"> Comprar</button>
 		</div>
 	</div>
 	@endforeach
+	@include('comprar')
 	</div>
-	@include('galeriaDeFotos')
 </body>
 </html>

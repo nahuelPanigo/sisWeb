@@ -22,8 +22,11 @@
 		 @endphp
 		<div class="column">
 			<div class="card">
-				<h3>{{$propiedad->name}}</h3>
-				<div class="datos">
+				<h3>{{$propiedad->name}} @if ($hotsale->user_id!=NULL)
+				 <span class="fas fa-check-square" style="color:green" title="Compado"></span>
+				@endif</h3>  
+				
+ 				<div class="datos">
 					<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
 					<p>   <span class="fas fa-clock"> </span> {{$hotsale->devolverSemana($hotsale->semana_id)->date}} </p>
 				<p><span class="fas fa-money-bill-wave"></span>    {{$hotsale -> price}}</p>

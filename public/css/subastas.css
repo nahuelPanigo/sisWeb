@@ -69,3 +69,7 @@
 .finalizada{
 	background-color:blue;
 }
+.boton_cancelar{
+    color:red;
+	margin-left:50px;
+}

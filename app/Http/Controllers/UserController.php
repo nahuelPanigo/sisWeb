@@ -13,7 +13,7 @@ class UserController extends Controller
         return view('listarSolicitudes')->with('usuarios',$usuarios);
     }
     public function listarUsuarios(){
-		$usuarios = User::where('deleted','=',false);
+		$usuarios = User::where('deleted','=',false)->get();
 		return view('listarUsuarios')->with('usuarios',$usuarios);
 	}
     /**

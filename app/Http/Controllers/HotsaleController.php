@@ -23,7 +23,7 @@ class HotsaleController extends Controller
     }
 	
 	public function indexAdmin(){
-		$hotsales = Hotsale::where('user_id','=',NULL)->get();
+		$hotsales = Hotsale::all();
 		return view('adminHotsale')->with('hotsales',$hotsales);
 	}
     /**
@@ -53,7 +53,7 @@ class HotsaleController extends Controller
             }else{
 				$hotsale -> user_id = session('id');
 				$hotsale->save();
-				return back()->with('mensaje',"Se a comprado el hotsale con exito");
+				return back()->with('message',"Se a comprado el hotsale con exito");
 			}
 	}
 	
@@ -64,8 +64,8 @@ class HotsaleController extends Controller
 			'precio' =>'required']);
 		$now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
-        $interval = date_diff($now, $newformat);
-		if($interval->days < 180){
+        $dentro6Meses = $now->modify('+6 month');
+		if($dentro6Meses > $newformat ){
 			$newDate = date("Y/m/d", strtotime($request->date));
 			$buscarSemana=Semana::where ('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
@@ -81,7 +81,7 @@ class HotsaleController extends Controller
 				$hotsale->save();
 				return redirect('/hotsales/indexAdmin');
 			}else{
-			  return back()->with('id',$request->propiedad_id)->withErrors(['La semana se encuentra ocupada']);	
+			  return back()->with('id',$request->propiedad_id)->withErrors(['La semana se encuentra ocupada o siendo subastada']);	
 			}				
 		}else{
 			return back()->with('id',$request->propiedad_id)->withErrors(['la semana debe iniciar dentro de menos de 6 meses']);

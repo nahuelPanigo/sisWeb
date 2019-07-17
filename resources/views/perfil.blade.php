@@ -33,8 +33,8 @@
       <h3> Fecha de vencimiento de la tarjeta: {{$user->creditCardDate}}</h3>
       <h3> Tipo usuario: {{$user->userType}} </h3>
 	  @php $date = new DateTime; $anio=($date->format('Y')) @endphp
-	  <h3> Creditos disponibles para este año: {{2-($user->cantReservas($user->id,$anio))}} </h3>
-	  <h3> Creditos disponibles para el año siguiente: {{2-($user->cantReservas($user->id,$anio+1))}} </h3>
+	  <h3> Creditos disponibles para este año: {{($user->cantCreditos($user->id,$anio))}} </h3>
+	  <h3> Creditos disponibles para el año siguiente: {{($user->cantCreditos($user->id,$anio+1))}} </h3>
   </p>
   </p>
 </div>

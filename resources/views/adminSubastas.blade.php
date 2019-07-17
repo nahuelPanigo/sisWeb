@@ -15,7 +15,7 @@
 @foreach ($subastas as $subasta)
 <div class="columns">
   <ul class="price">
-    <li class="header">{{$subasta->name($subasta)->name}}</li>
+    <li class="header">{{$subasta->name($subasta)->name}} <a href="{{ route('admin.subastas.delete',$subasta->id)}}" class="boton_cancelar"> <span class="fas fa-trash-alt"></span> </a></li>
     <li class="grey">{{"$".$subasta->finalPrice}}</li>
     <li> <span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span> </li>
     <li> <span class="fas fa-home"> {{$subasta->name($subasta)->name}} </span></li>

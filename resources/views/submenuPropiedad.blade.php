@@ -2,9 +2,9 @@
     <span class=""></span></button>
     <ul class="dropdown-menu" >
 		<li class="submenu-item"><a href="{{ route('propiedades.edit',$propiedad->id)}}" class="submenu-link"><span class="fas fa-pencil-alt"></span> Editar Propiedad </a></li>
-		<li class="submenu-item"><a class="submenu-link" data-href="{{ route('admin.propiedades.deleteAll',$propiedad->id)}}"  data-toggle="modal" data-target="#confirm-delete">
+		<li class="submenu-item" style="cursor:pointer"><a class="submenu-link" data-href="{{ route('admin.propiedades.deleteAll',$propiedad->id)}}"  data-toggle="modal" data-target="#confirm-delete">
         <span class="far fa-trash-alt"></span> Eliminar Propiedad </a></li>
-        <li class="submenu-item"><a  class="submenu-link" data-href="{{ route('admin.propiedades.delete',$propiedad->id)}}" data-toggle="modal" data-target="#confirm-delete">
+        <li class="submenu-item" style="cursor:pointer"><a  class="submenu-link" data-href="{{ route('admin.propiedades.delete',$propiedad->id)}}" data-toggle="modal" data-target="#confirm-delete">
 		<span class="far fa-trash-alt"></span> Suspender Propiedad </a></li>
 		<li class="submenu-item"><hr class="submenu-seperator" /></li>					
 		<li class="submenu-item"><a href="{{route('categorias.subastas.create',$propiedad->id)}}" class="submenu-link"><span class="far fa-flag"></span> Subastar </a></li>			

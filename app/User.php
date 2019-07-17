@@ -132,7 +132,7 @@ public function verificarSemana($id,$date){
 	public function puedeGanar($id,$date){
 		$user=User::find($id);
 		$dateFormat = DateTime::createFromFormat('Y-m-d',$date);
-		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantReservas($id,$dateFormat->format('%Y')))and($user->deleted==false));
+		return(($user->verificarSemana($id,$dateFormat)) and ($user->cantCreditos($id,$dateFormat->format('%Y')))and($user->deleted==false));
 	}	
     public function misReservas($id){
       $reservas=Reserva::where('user_id','=',$id)->get();
@@ -155,8 +155,9 @@ public function cantCreditos($id,$anio){
     $user=User::find($id);
     $now=new DateTime();
     $anio2=($now->format('Y'));
-    if($anio2=$anio)
+    if($anio2==$anio){
           return $user->creditsThisYear;
+	}
     return $user->creditsNextYear;
 }
   
@@ -164,7 +165,7 @@ public function cantCreditos($id,$anio){
         $user=User::find($id);
         $now=new DateTime();
         $anio2=($now->format('Y'));
-        if($anio2=$anio){
+        if($anio2==$anio){
           $user->creditsThisYear=$user->creditsThisYear-1;
          }else{
           $user->creditsNextYear=$user->creditsNextYear-1;

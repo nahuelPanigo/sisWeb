@@ -5,7 +5,7 @@
     <div class="container">
       <h1 style="text-align:center;"> ¿Está seguro que quiere eliminar el hotsale? </h1>
 		</div>
-      <div class="clearfix reservarBoton">
+      <div style="margin-left:280px" class="clearfix reservarBoton">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtnPuja">Cancelar</button>
 		<input type="hidden" value="" id="hotsale_id" name="hotsale_id">
         <button type="submit" class="signupbtn boton"> Aceptar </button>
