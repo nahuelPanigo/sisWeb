@@ -25,7 +25,11 @@
 
     }
 
-
+ .slick-arrow{
+    color: black;
+    font-size: 5px;
+    margin-top:13px;
+}
 
     .slick-slide img {
 
@@ -51,17 +55,17 @@
 
       transition: all ease-in-out .3s;
 
-      opacity: .2;
+ 
 
     }
 
 .slick-list {
-  height: 130px;
+  height: 200px;
 }
 
     .slick-active {
 
-      opacity: .5;
+    
 
     }
 
@@ -69,7 +73,7 @@
 
     .slick-current {
 
-      opacity: 1;
+  
 
     }
 
@@ -191,7 +195,7 @@
 
     height: auto;
 
-    border: 1px solid transparent;
+    border: 1px solid black;
 }
 .slick-arrow.slick-hidden {
     display: none;
@@ -234,17 +238,17 @@
 
     cursor: pointer;
 
-    color: transparent;
+    color: black;
     border: none;
     outline: none;
-    background: transparent;
+   
 }
 .slick-prev:hover,
 .slick-prev:focus,
 .slick-next:hover,
 .slick-next:focus
 {
-    color: transparent;
+    color: black;
     outline: none;
     background: transparent;
 }
@@ -253,12 +257,12 @@
 .slick-next:hover:before,
 .slick-next:focus:before
 {
-    opacity: 1;
+ 
 }
 .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before
 {
-    opacity: .25;
+    
 }
 
 .slick-prev:before,
@@ -268,8 +272,8 @@
     font-size: 20px;
     line-height: 1;
 
-    opacity: .75;
-    color: white;
+    
+    color: black;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -314,6 +318,9 @@
 /* Dots */
 .slick-dotted.slick-slider
 {
+        background: #e0e0e0;
+    height: 238px;
+    border-radius: 10px;
     margin-bottom: 30px;
 }
 
@@ -347,7 +354,7 @@
 }
 .slick-dots li button
 {
-    font-size: 0;
+    font-size: 13;
     line-height: 0;
 
     display: block;
@@ -358,10 +365,10 @@
 
     cursor: pointer;
 
-    color: transparent;
+    color: black;
     border: 0;
     outline: none;
-    background: transparent;
+    
 }
 .slick-dots li button:hover,
 .slick-dots li button:focus
@@ -371,7 +378,7 @@
 .slick-dots li button:hover:before,
 .slick-dots li button:focus:before
 {
-    opacity: 1;
+
 }
 .slick-dots li button:before
 {
@@ -389,7 +396,7 @@
     content: '•';
     text-align: center;
 
-    opacity: .25;
+   
     color: black;
 
     -webkit-font-smoothing: antialiased;
@@ -397,6 +404,6 @@
 }
 .slick-dots li.slick-active button:before
 {
-    opacity: .75;
+   
     color: black;
 }

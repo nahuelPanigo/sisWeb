@@ -10,7 +10,7 @@
   <body>  
     @Include('Header')
 	@php use sisWeb\Hotsale ;$hotsales = Hotsale::where('user_id','=',NULL)->get() @endphp
-	<h1 class="cartel"> Ultimos hotsales </h1>
+	<h1 class="cartel" style="font-size: 30px;"> Ultimos hotsales </h1>
 	<div class="main">
 		<div class="slides">
 			@foreach  ($hotsales as $hotsale)
@@ -20,7 +20,7 @@
 				@endphp
 				<div>
 					<div class="hotsales">
-						<h1> Nombre:  {{$propiedad->name}}</h1>
+						<h1> Propiedad:  {{$propiedad->name}}</h1>
 						<h3>Precio:   <span class="fas fa-dollar-sign"></span> {{$hotsale -> price}} </h3>
 					</div>
 					<a href="">

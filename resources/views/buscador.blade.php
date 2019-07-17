@@ -2,7 +2,7 @@
     <form action="/propiedades/search" method="GET">
 		<div class="localidad">
 			<label> Localidad (opcional)</label> <br>
-			<input type="text" placeholder="Search.." name="search">
+			<input type="text" placeholder="Search.." name="locate">
 		</div>
 		<div class="fecha">
 			<label> Fecha </label><br>
