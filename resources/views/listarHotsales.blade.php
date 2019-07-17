@@ -25,7 +25,7 @@
 			<h3>{{$propiedad->name}}</h3>
 			<div class="datos">
 				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
-				<p>   <span class="fas fa-clock"> </span> {{$hotsale->devolverSemana($hotsale->semana_id)->date}} </p>
+				<p>   <span class="far fa-calendar-alt">  </span> {{$hotsale->devolverSemana($hotsale->semana_id)->date}} </p>
 				<p><span class="fas fa-dollar-sign"></span>   {{$hotsale -> price}}</p> 
 			</div>
 			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">

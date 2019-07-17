@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/css/nuevo.css">
   <link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
-  <link rel="stylesheet" type="text/css" href="/css/zoom.css">
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="/css/carruselHotsales.css">
@@ -18,31 +17,24 @@
 </head>
 <body>
   @Include('Header') 
-  @if($errors->any())
-      <div class="alert alert-danger">
-    <ul>  
-      @foreach ($errors->all() as $error)
-        <li><strong>Danger!</strong> {{ $error }}</li>
-      @endforeach
-    </ul>
-    </div>
-    @endif  <h2>Resultados de la busqueda </h2>
+ <h2>Resultados de la busqueda </h2>
     <script type='text/javascript'>
 $(function(){
 $('.input-daterange').datepicker({
     autoclose: true
 });
 });
-
 </script>
 </head>
 <body>
-<div class="container">
+<div class="container" style="width: 0px;">
 </div>
-<div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Ver todo  </button>
-  <button class="btn" onclick="filterSelection('subastas')"> Subastas </button>
-  <button class="btn" onclick="filterSelection('propiedades')"> Propiedades libres </button>
+<div id="myBtnContainer" style="    width: 350px;
+    height: 45px;
+    background: #989696;">
+  <button class="btn active" style="margin:5px;"onclick="filterSelection('all')"> Ver todo  </button>
+  <button class="btn" style="margin:5px;" onclick="filterSelection('subastas')"> Subastas </button>
+  <button class="btn" style="margin:5px;" onclick="filterSelection('propiedades')"> Propiedades libres </button>
 </div>
 
 <!-- Portfolio Gallery Grid -->
@@ -51,57 +43,58 @@ $('.input-daterange').datepicker({
 	@if($propiedades->first()== null)
 	<p class="error"> Lo sentimos! En este momento no hay propiedades </p>
 	@endif
-	@foreach ($propiedades as $propiedad)
+	@foreach ($propiedades as $elemento)
 	<div class="column propiedades">
 		<div class="card">
-			<h3>{{$propiedad->name}}</h3>
+			<h3>{{$elemento->propiedad->name}}</h3>
 			<div class="datos">
-				<p><span class="fas fa-map-marker-alt"></span> {{$propiedad -> locate}} </p>
-				<p><span class="fas fa-info-circle"></span> {{$propiedad -> description}} </p>
+				<p><span class="fas fa-map-marker-alt"></span> {{$elemento->propiedad -> locate}} </p>
+				<p><span class="fas fa-info-circle"></span> {{$elemento->propiedad -> description}} </p>
 			</div>
-			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-			<button class="reserva"  onclick="">Mostrar semanas disponibles</button>
-		</div>
+			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}"  class="hover-shadow cursor">
+		
+    <div class="fechasDisponibles" style="margin-top:27px;">
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#{{$elemento->propiedad->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Ver semanas disponibles
+  </a>
+
+
+</p>
+<div class="collapse" id="{{$elemento->propiedad->id}}">
+  <div class="card card-body">
+   <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Comienzo semana</th>
+      <th scope="col">Reservar</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      @foreach ($elemento->fechas as $semana )
+    <tr>
+     
+      <th scope="row"> <span class="far fa-calendar-alt">  </span></th>
+      <td>{{$semana}}</td>
+      <td><button  style="    background: white;
+    color: black;
+    border-radius: 6px;" onclick="document.getElementById('id01').style.display='block'">Reservar</button></td>
+    @include('reservar2')
+      
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+  </div>
+</div>
+</div>
 	</div>
 	@endforeach	
 </div>
-<div class="subastas"> <h1 style="text-align:center"> Proximas subastas </h1> </div>
-<div class="row">
-	@if($subastas->first()== null)
-	<p class="error"> Lo sentimos! En este momento no hay subastas </p>
-	@endif
-	@foreach ($subastas as $subasta)
-	<div class="column subastas">
-		<div class="card">
-			<h3>{{$subasta->name($subasta)->name}}</h3>
-			<div class="datos">
-				<p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
-				<p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
-			</div>
-			<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-		</div>
-	</div>
-	@endforeach
-</div>
-<!--<div class="row">
-  <div class="column subastas">
-    <div class="content">
-      <img src="/w3images/lights.jpg" alt="Subasta" style="width:100%">
-      <h4>Subasta </h4>
-      <p>Lorem ipsum dolor..</p>
-    </div>
-  </div>
- @foreach ($propiedades as $propiedad)
-  <div class="column propiedades">
-    <div class="content">
-      <img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" alt="Propiedad" style="width:100%">
-      <h4>{{$propiedad->name}}</h4>
-      <p>{{$propiedad->locate}}</p>
-    </div>
-  </div>
-@endforeach
-</div> 
-</div> -->
+
+
 <script>
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
@@ -151,8 +144,9 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
-
+<div class="hotsales">
 <h1 style="text-align:center"> Algunos Hot sales disponibles </h1>
  @Include('carruselHotsales')
+</div>
 </body>
 </html>
