@@ -19,7 +19,7 @@ Route::resource('administrador', 'AdministratorUserController');
 Route::get('/sesion/adminLogout', 'Auth\LoginController@adminLogOut');
 Route::get('/administrator/logIn','sesionController@indexAdmin');
 Route::get ('/propiedades/adminSearch','PropiedadController@adminSearch');
-Route::get ('/hotsales/indexAdmin','HotsaleController@indexAdmin');
+Route::get ('/hotsales/indexAdmin{hotsales}','HotsaleController@indexAdmin');
 Route::get('/users/listarUsuarios','UserController@listarUsuarios');
 /* fin de cosas de administrador*/
 

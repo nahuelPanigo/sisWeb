@@ -19,14 +19,18 @@ public function search(Request $request){
      if($request->datefilter == NULL){  
         return back()->withErrors(['para realizar la busqueda debe ingresar un rango de fechas']);
     }
+    $fechas = explode("-", $request->datefilter);
+    $fechaInicial = DateTime::createFromFormat('d/m/Y ',$fechas[0]); 
+    $fechaFinal = DateTime::createFromFormat(' d/m/Y',$fechas[1]);
+    $interval = date_diff($fechaInicial,$fechaFinal);
+    if($interval->days <7){
+        return back()->withErrors(['debe ingresar un rango mayor a 1 semana']);
+    }
         if($request->locate!= NULL){
-            $propiedades=Propiedad::locate($request->get('locate'))->where('deleted','=',false)->get();
+            $propiedades = Propiedad::where('locate','like',"%$request->locate%")->where('deleted','=',false)->get();
         }else{
-            $propiedades=Propiedad::where('deleted','=',false)->get();
+            $propiedades = Propiedad::where('deleted','=',false)->get();
         }
-        $fechas = explode("-", $request->datefilter);
-        $fechaInicial = DateTime::createFromFormat('d/m/Y ',$fechas[0]); 
-        $fechaFinal = DateTime::createFromFormat(' d/m/Y',$fechas[1]);
         while(($fechaInicial->format('l'))!= 'Monday'){
             $fechaInicial->modify('+1 day');
         }
@@ -39,7 +43,7 @@ public function search(Request $request){
         $semanasHot = Semana::whereDate('date','>=',$now)->with('hotsale')->get();
         foreach ($semanasHot as $semana){
                 foreach ($propiedades as $propiedad) {
-                       if(($propiedad->id == $semana->propiedad_id)and($semana->hotsale != NULL)){
+                       if(($propiedad->id == $semana->propiedad_id)and($semana->hotsale != NULL)and($semana->hotsale->user_id==NULL)){
                         $hotsales->push($semana->hotsale);
                        }
                 }   
@@ -64,7 +68,9 @@ public function search(Request $request){
             $fecha= new Fecha;
             $fecha->propiedad=$propiedad;
             $fecha->fechas=$Fechas;
-            $propiedadesConFechas->push($fecha);
+            if(!($Fechas->isEmpty())){
+                $propiedadesConFechas->push($fecha);
+            }
         }   
     return view('busqueda')->with('propiedades',$propiedadesConFechas)->with('subastas',$subastas)->with('hotsales',$hotsales);
   }

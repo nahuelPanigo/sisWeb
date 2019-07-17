@@ -10,7 +10,7 @@
      @Include('adminHeader')
     <div class="caja">
     <h1 class="registrar_propiedad_h1"> Crear hotsale </h1> <br> <br>
-      <form  onsubmit="" method="POST" action="{{route('hotsales.store')}}" enctype="multipart/form-data">
+      <form  onsubmit="" method="POST" action=// enctype="multipart/form-data">
           {{ csrf_field() }}
        <div class="registrar_propiedad">
 	   <input type="hidden" name="propiedad_id" value="{{$id}}">

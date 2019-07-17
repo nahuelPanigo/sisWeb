@@ -19,7 +19,7 @@ class HotsaleController extends Controller
     public function index()
     {
         $hotsales = Hotsale::where('user_id','=',NULL)->get();
-		return view('listarHotsales')->with('hotsales',$hotsales);
+        return view('listarHotsales')->with('hotsales',$hotsales);
     }
 	
 	public function indexAdmin(){

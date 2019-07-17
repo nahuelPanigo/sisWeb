@@ -21,26 +21,36 @@
    <button class="modificar"> <a href="/users/{{session('id')}}/delete" id="defaultOpen">Eliminar Cuenta</a></button>
 </div>
 <div id="datos" class="tabcontent">
-  <h3>Mis Datos</h3>
+  <h3 style="font-size: 25px;">Mis Datos</h3>
   <p>
       <h3> Nombre: {{$user->name}}</h3>
+      <br>
       <h3> Apellido: {{$user->secondName}} </h3>
+      <br>
       <h3> Nombre de Usuario: {{$user->userName}}</h3>
+      <br>
       <h3> Documento:{{$user->dni}} </h3>
+      <br>
       <h3> Fecha de nacimiento: {{$user->birthDay}}</h3>
+      <br>
       <h3> Email: {{$user->mail}}</h3>
+      <br>
       <h3> Numero de tarjeta de credito: {{$user->creditCardNumber}}</h3>
+      <br>
       <h3> Fecha de vencimiento de la tarjeta: {{$user->creditCardDate}}</h3>
+      <br>
       <h3> Tipo usuario: {{$user->userType}} </h3>
+      <br>
 	  @php $date = new DateTime; $anio=($date->format('Y')) @endphp
 	  <h3> Creditos disponibles para este año: {{2-($user->cantReservas($user->id,$anio))}} </h3>
+    <br>
 	  <h3> Creditos disponibles para el año siguiente: {{2-($user->cantReservas($user->id,$anio+1))}} </h3>
   </p>
   </p>
 </div>
 
 <div id="reservas" class="tabcontent">
-  <h3 style="font-size: 22px;">Mis Reservas</h3>
+  <h3 style="font-size: 25px;">Mis Reservas</h3>
   <table style="margin:30px 0px 30px 0px;">
   <tr style="font-size: 20px;">
     <th>Propiedad</th>
@@ -50,12 +60,12 @@
 
   <p>
     @if($reservas->first()== null)
-        <p class="error"> Lo sentimos! En este momento no posee reservas  </p>
+        <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no posee reservas  </p>
         @endif
         @foreach ($reservas as $reserva)
        
     @php $semana=$reserva->devolverSemana($reserva->semana_id) @endphp
-    <tr style="font-size: 15px;">
+    <tr style="font-size: 20px;">
     <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
     <td>{{$semana->date}}</td>
     <td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
@@ -69,7 +79,7 @@
 </div>
 
 <div id="subastas" class="tabcontent">
-  <h3 style="font-size: 22px;">Mis Subastas</h3>
+  <h3 style="font-size: 25px;">Mis Subastas</h3>
   <p> @if($subastas->first()== null)
         <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
         @endif
@@ -81,7 +91,7 @@
 		</tr>
 		@foreach ($subastas as $subasta)
 			@php $semana=$subasta->devolverSemana($subasta->semana_id) @endphp
-			<tr style="font-size: 15px;">      
+			<tr style="font-size: 20px;">      
 			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
 			<td>{{$semana->date}}</td>
 			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
@@ -90,7 +100,7 @@
         </table> 
 </div>
 <div id="hotsales" class="tabcontent">
-  <h3  style="font-size: 22px;">Hot Sales</h3>
+  <h3  style="font-size: 25px;">Hot Sales</h3>
   <p> @if($hotsales->first()== null)
         <p class="error" style="font-size: 20px;"> Lo sentimos! En este momento no esta participando en alguna subasta  </p>
         @endif
@@ -102,7 +112,7 @@
 		</tr>
 		@foreach ($hotsales as $hotsale)
 			@php $semana=$hotsale->devolverSemana($hotsale->semana_id) @endphp
-			<tr style="font-size: 15px;">      
+			<tr style="font-size: 20px;">      
 			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->name}}</td>
 			<td>{{$semana->date}}</td>
 			<td>{{$semana->devolverDatosPropiedad($semana->propiedad_id)->locate}}</td>
