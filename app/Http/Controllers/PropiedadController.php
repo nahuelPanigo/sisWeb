@@ -6,12 +6,13 @@ use sisWeb\Propiedad;
 use Illuminate\Http\Request;
 use sisWeb\Image;
 use sisWeb\Subasta;
-use sisweb\Hotsale;
-
+use sisWeb\Hotsale;
+ 
 class PropiedadController extends Controller
 {
     
     public function search(Request $request){
+        dd();
 
         $propiedades=Propiedad::locate($request->get('locate'))->orderBy('id','DESC')->paginate();
     
