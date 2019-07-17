@@ -45,7 +45,7 @@ class PujaController extends Controller
             $subasta=Subasta::where('id','=',$request->subasta_id)->first();
 			$fechaSubasta = DateTime::createFromFormat('Y-m-d',$subasta->date($subasta));
 			$user = new User;
-			if(($user->cantCreditos(session('id'),$fechaSubasta->format('Y')))==0){
+			if(($user->cantReservas(session('id'),$fechaSubasta->format('Y')))==2){
 				return back()->withErrors(['No posee creditos para participar en la subasta']);
 			}
 			if(!($user->verificarSemana(session('id'),$fechaSubasta))){

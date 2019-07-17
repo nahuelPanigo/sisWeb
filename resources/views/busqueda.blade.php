@@ -52,51 +52,11 @@ $('.input-daterange').datepicker({
 				<p><span class="fas fa-info-circle"></span> {{$elemento->propiedad -> description}} </p>
 			</div>
 			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}"  class="hover-shadow cursor">
-		
-    <div class="fechasDisponibles" style="margin-top:27px;">
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#{{$elemento->propiedad->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Ver semanas disponibles
-  </a>
-
-
-</p>
-<div class="collapse" id="{{$elemento->propiedad->id}}">
-  <div class="card card-body">
-   <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Comienzo semana</th>
-      <th scope="col">Reservar</th>
-    </tr>
-  </thead>
-  <tbody>
-
-      @foreach ($elemento->fechas as $semana )
-    <tr>
-     
-      <th scope="row"> <span class="far fa-calendar-alt">  </span></th>
-      <td>{{$semana}}</td>
-      <td><button  style="    background: white;
-    color: black;
-    border-radius: 6px;" onclick="document.getElementById('id01').style.display='block'">Reservar</button></td>
-    @include('reservar2')
-      
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-			<button class="reserva"  onclick="">Mostrar semanas disponibles</button>
 		</div>
 	</div>
 	@endforeach	
 </div>
-<div class="subastas"> <h1 style="text-align:center"> Proximas subastas </h1> </div>
+<div class="subastas"> <h1 style="text-align:center"> subastas </h1> </div>
 <div class="row">
 	@if($subastas->first()== null)
 	<p class="error"> Lo sentimos! En este momento no hay subastas </p>
@@ -106,14 +66,15 @@ $('.input-daterange').datepicker({
 		<div class="card">
 			<h3>{{$subasta->name($subasta)->name}}</h3>
 			<div class="datos">
-				<p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
+	<p><span class="fas fa-map-marker-alt"></span> {{$subasta->name($subasta)->locate}} </p>
 				<p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
 			</div>
 			<img src="{{str_replace('public/', '/storage/', $subasta->name($subasta)->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
 		</div>
 	</div>
-	@endforeach	
+	@endforeach
 </div>
+
 <script>
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
