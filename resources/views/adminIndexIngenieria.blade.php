@@ -21,8 +21,7 @@
 				<div>
 					<div class="hotsales">
 						<h1> Nombre:  {{$propiedad->name}}</h1>
-						<h3>Precio:   <span class="fas fa-dollar-sign"></span>  {{$hotsale -> price}} | Fecha:
-						<span class="fas fa-clock"> </span>	{{$hotsale->devolverSemana($hotsale->semana_id)->date}}</h3>
+						<h3>Precio:  {{$hotsale -> price}} <span class="fas fa-money-bill-wave"></span></h3>
 					</div>
 					<a href="">
 						<img src="{{str_replace('public/', '/storage/', $propiedad->images()->first()->archiveName)}}" onclick=""alt="">

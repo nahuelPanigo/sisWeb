@@ -50,15 +50,16 @@ public function search(Request $request){
         }
         foreach ($propiedades as $propiedad) {
            $Fechas = new Collection;
-           $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',($fechaFinal->format('Y-m-d')))->with('reserva')->with('subasta')->get();
+           $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',$fechaFinal->format('Y-m-d'))->with('reserva')->with('subasta')->get();
             foreach($semanas as $semana){
                 if((!($semana->estoyEnElRango($coleccion,$semana)))or($semana->reserva==NULL)){
                     $f=DateTime::createFromFormat('Y-m-d',$semana->date);
                     $f=$f->format('m/d/Y');
                     $Fechas->push($f);
-				if(($semana->estoyEnElRango($coleccion,$semana))and($semana->subasta!=NULL)){
-					$subastas->push($semana->subasta);
-				}
+                }else
+                    if($semana->reserva==NULL){
+                        $subastas->push($semana->subasta);
+                    }
             }
             $fecha= new Fecha;
             $fecha->propiedad=$propiedad;
@@ -66,6 +67,7 @@ public function search(Request $request){
             $propiedadesConFechas->push($fecha);
         }
         
+      
     return view('busqueda')->with('propiedades',$propiedadesConFechas)->with('subastas',$subastas)->with('hotsales',$hotsales);
   }
 

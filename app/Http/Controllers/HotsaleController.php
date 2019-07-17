@@ -64,8 +64,8 @@ class HotsaleController extends Controller
 			'precio' =>'required']);
 		$now = new DateTime();
         $newformat=DateTime::createFromFormat('m/d/Y',$request->date); 
-        $interval = $now->modify('+6 month');
-		if($interval > $newformat){
+        $interval = date_diff($now, $newformat);
+		if($interval->days < 180){
 			$newDate = date("Y/m/d", strtotime($request->date));
 			$buscarSemana=Semana::where ('date','=',$newDate)->where('propiedad_id','=',$request->propiedad_id)->first();
 			if(is_null($buscarSemana)){
