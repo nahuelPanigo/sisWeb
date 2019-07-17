@@ -1,18 +1,4 @@
-<html>
-
-<head>
-
-  <title>Slick Playground</title>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="stylesheet" type="text/css" href="./slick/slick.css">
-
-  <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
-
-  <style type="text/css">
-
+<style>
     html, body {
 
       margin: 0;
@@ -124,18 +110,9 @@ input[type=text]:focus {
 
   </style>
 
-</head>
-
-<body>
-
-
 <div class="hotsales">
 
-<div class="buscador">
-<form>
-  <input type="text" name="search" placeholder="Search..">
-</form>
-  </div>
+
 <div class="hotsales">
 
   <section class="regular slider">

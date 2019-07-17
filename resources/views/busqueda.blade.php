@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="/css/nuevo.css">
   <link rel="stylesheet" type="text/css" href="/css/datosPuja.css">
-  <link rel="stylesheet" type="text/css" href="/css/zoom.css">
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
 <link rel="stylesheet" type="text/css" href="/css/carruselHotsales.css">
-  <link rel="stylesheet" type="text/css" href="/css/busqueda.css">
+ 
     <meta charset="UTF-8">
  
   <meta charset="utf-8">
@@ -78,6 +76,7 @@ $('.input-daterange').datepicker({
       <h4>Propiedad</h4>
       <p>Lorem ipsum dolor..</p>
     </div>
+
   </div>
  @foreach ($propiedades as $propiedad)
   
@@ -87,8 +86,40 @@ $('.input-daterange').datepicker({
       <h4>{{$propiedad->name}}</h4>
       <p>{{$propiedad->locate}}</p>
     </div>
+    <div class="fechasDisponibles">
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#{{$propiedad->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Ver fechas disponibles
+  </a>
+
+
+</p>
+<div class="collapse" id="{{$propiedad->id}}">
+  <div class="card card-body">
+   <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Desde</th>
+      <th scope="col">Hasta</th>
+      <th scope="col">Reservar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td><button   onclick="document.getElementById('id01').style.display='block'">Reservar</button></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+</div>
+</div>
   </div>
 @endforeach
+@include('reserva')
 <!-- END GRID -->
 </div> 
 <!-- END MAIN -->
@@ -142,7 +173,6 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 </script>
-
 <p> Algunos Hot sales disponibles </p>
  @Include('carruselHotsales')
 </body>

@@ -38,12 +38,11 @@ public function search(Request $request){
         }
         foreach ($propiedades as $propiedad) {
            $semanas=Semana::where('propiedad_id','=',$propiedad->id)->whereDate('date','>=',$coleccion->first())->whereDate('date','<=',$fechaFinal->format('Y-m-d'))->with('hotsale')->with('reserva')->with('subasta')->get();
-           dd($semanas->first());
             foreach($semanas as $semana){
                 
             }
         }
-    }
+    }return view('busqueda')->with('propiedades', $propiedades);
   }
 
    public function busqueda(Request $request){
