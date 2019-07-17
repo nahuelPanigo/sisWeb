@@ -68,7 +68,7 @@ public function search(Request $request){
         
     return view('busqueda')->with('propiedades',$propiedadesConFechas)->with('subastas',$subastas)->with('hotsales',$hotsales);
   }
-
+}
 
    public function busqueda(Request $request){
 
