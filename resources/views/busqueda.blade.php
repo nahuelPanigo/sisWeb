@@ -51,47 +51,39 @@ $('.input-daterange').datepicker({
 				<p><span class="fas fa-map-marker-alt"></span> {{$elemento->propiedad -> locate}} </p>
 				<p><span class="fas fa-info-circle"></span> {{$elemento->propiedad -> description}} </p>
 			</div>
-			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}"  class="hover-shadow cursor">
-		
-    <div class="fechasDisponibles" style="margin-top:27px;">
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#{{$elemento->propiedad->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Ver semanas disponibles
-  </a>
-
-
-</p>
-<div class="collapse" id="{{$elemento->propiedad->id}}">
-  <div class="card card-body">
-   <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Comienzo semana</th>
-      <th scope="col">Reservar</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    @foreach ($elemento->fechas as $semana )
-    <tr>
-     
-      <th scope="row"> <span class="far fa-calendar-alt">  </span></th>
-      <td>{{$semana}}</td>
-      <td><button  style="    background: white;
-    color: black;
-    border-radius: 6px;" onclick="mostrarModal({{$elemento->propiedad->id, $semana}})">Reservar</button></td>      
-    </tr>
-    @endforeach
-   @include('reservar2')
-  </tbody>
-</table>
-  </div>
-</div>
-</div>
-</div>
+			<img src="{{str_replace('public/', '/storage/', $elemento->propiedad->images()->first()->archiveName)}}"  class="hover-shadow cursor">	
+			<div class="fechasDisponibles" style="margin-top:27px;">
+				 <p><a class="btn btn-primary" data-toggle="collapse" data-target="#{{$elemento->propiedad->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+					Ver semanas disponibles</a></p>
+				<div class="collapse" name="collapse" id="{{$elemento->propiedad->id}}">
+					<div class="card card-body">
+						   <table class="table table-dark">
+							  <thead>
+								<tr>
+								  <th scope="col"></th>
+								  <th scope="col">Comienzo semana</th>
+								  <th scope="col">Reservar</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								@foreach ($elemento->fechas as $semana )
+								<tr>
+								  <th scope="row"> <span class="far fa-calendar-alt">  </span></th>
+								  <td>{{$semana}}</td>
+								  <td><button  style="background: white;
+								color: black;
+								border-radius: 6px;" onclick="mostrarModal({{$elemento->propiedad->id, $semana}})">Reservar		</button></td>      
+									</tr>
+								@endforeach
+							  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	@endforeach	
+	@include('reservar2')
 </div>
 </div>
 <div class="subastas"> <h1 style="text-align:center"> Proximas subastas </h1> </div>
@@ -108,11 +100,21 @@ $('.input-daterange').datepicker({
         <p><span class="far fa-calendar-alt"> {{$subasta->date($subasta)}} </span></p>
       </div>
       <img src="{{str_replace('public/', '/storage/', $subasta->name($subasta)->images()->first()->archiveName)}}" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+		@if($subasta->estaActiva($subasta))
+		<div class="botonSubasta"><button onclick="mostrarModal({{$subasta->id}})"> PUJAR </button></div>
+		@else
+		<div class="botonSubasta inactiva"> Incactiva </div>
+		@endif
     </div>
   </div>
   @endforeach 
 </div>
 <script>
+$(document).click(function(e) {
+		if (!$(e.target).is('.card-body')) {
+    	$('.collapse').collapse('hide');	    
+    }
+});
 filterSelection("all") // Execute the function and show all columns
 function filterSelection(c) {
   var x, i;
@@ -162,9 +164,8 @@ for (var i = 0; i < btns.length; i++) {
 }
 </script>
 <div class="hotsales">
-<h1 style="text-align:center"> Algunos Hot sales disponibles </h1>
- @Include('carruselHotsales')
-</div>
+	<h1 style="text-align:center"> Algunos Hot sales disponibles </h1>
+	@include('carruselhotsales')
 </div>
 </body>
 </html>

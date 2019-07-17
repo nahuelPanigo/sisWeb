@@ -72,3 +72,24 @@ h1 {
   background-color: #666;
    color: white;
 } 
+.botonSubasta{
+	background-color: #4CAF50;
+    color: white;
+    padding: 14px 0px;
+    border: none;
+    width: 135px;
+    opacity: 0.9;
+    font-size: 18px;
+	margin-left: 80px;
+    margin-top: 10px;
+}
+.inactiva{
+	background-color: red;
+    color: white;
+    padding: 14px 0px;
+    border: none;
+    width: 135px;
+    opacity: 0.9;
+    font-size: 18px;
+    text-align: center;
+}
